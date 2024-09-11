@@ -1,0 +1,13 @@
+@if ((field && textVerify(erros) || (field && textErroServer))) {
+<div class="pt-1">
+  @if(textErroServer){
+  <small class="msg-field-required">
+    {{ textErroServer }}
+  </small>
+  } @else {
+  <small class="msg-field-required">
+    {{ text }}
+  </small>
+  }
+</div>
+}

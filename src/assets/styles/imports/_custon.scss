@@ -1,0 +1,26 @@
+.section-title {
+  margin: 0 0 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .new-item{
+    width: auto;
+  }
+
+  h2,
+  h3,
+  h4 {
+    font-size: 1.5em;
+    color: $primaryColor;
+    font-weight: 400;
+  }
+
+  h3 {
+    font-size: 1em
+  }
+
+  h4 {
+    font-size: 0.75em
+  }
+}

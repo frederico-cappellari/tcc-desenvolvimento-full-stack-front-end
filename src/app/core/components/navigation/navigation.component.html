@@ -1,0 +1,16 @@
+<div [ngClass]="{'nav-after': !menuActived}"></div>
+<nav id="navbarNavigation" class="navbar-navigation custom-collapse" [ngClass]="{'collapsed': !menuActived}">
+  <ul class="list-links">
+
+    <li class="nav-link">
+      <a href="#" (click)="toggleCollapsed('exemplo', $event)" [attr.aria-expanded]="isCollapsed['exemplo']" [ngClass]="{'active': activeRoute('exemplo')}" aria-controls="collapseEvent">
+        <i class="bi bi-house"></i>
+        <span>Exemplo</span>
+      </a>
+      <ul [collapse]="!isCollapsed['exemplo']" [isAnimated]="true" class="list-unstyled">
+        <li class="second-link"><a [routerLink]="['/exemplo/lista']" [ngClass]="{'active': activeRoute('/exemplo/lista')}">Lista</a></li>
+        <li class="second-link"><a [routerLink]="['/exemplo/formulario']" [ngClass]="{'active': activeRoute('/exemplo/formulario')}">Formulário</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>

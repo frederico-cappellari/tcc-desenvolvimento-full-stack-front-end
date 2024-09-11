@@ -1,0 +1,50 @@
+<section class="section-title">
+  <div>
+    <h2>Exemplo de Formulário</h2>
+    <h3>{{actionLabel}}</h3>
+  </div>
+</section>
+
+<section class="section-form">
+  <form [formGroup]="form" (ngSubmit)="salvar()">
+    <div class="form-group row mb-3">
+      <div class="col-sm-12 col-xl-8">
+        <label class="col-sm-12 pb-1">Nome</label>
+        <textarea id="name" class="form-control" rows="2" formControlName="name" placeholder="Nome" maxlength="200"></textarea>
+        <app-field-message [field]="fieldMessageRequired('name')" [erros]="fieldErros('name')"></app-field-message>
+      </div>
+    </div>
+
+    <div class="form-group row mb-3">
+      <div class="col-sm-12 col-xl-8">
+        <label class="col-sm-12 pb-1">Área</label>
+        <input id="area" class="form-control" formControlName="area" placeholder="Área" />
+        <app-field-message [field]="fieldMessageRequired('area')" [erros]="fieldErros('area')"></app-field-message>
+      </div>
+    </div>
+
+    <div class="form-group row mb-3">
+      <div class="col-sm-12 col-xl-8">
+        <label class="col-sm-12 pb-1">População</label>
+        <input id="population" class="form-control" formControlName="population" placeholder="Número da População" />
+        <app-field-message [field]="fieldMessageRequired('population')" [erros]="fieldErros('population')"></app-field-message>
+      </div>
+    </div>
+
+    <div class="form-group row mb-3">
+      <div class="col-sm-4">
+        <label class="col-sm-12 pb-1">Continente</label>
+        <ng-select id="continent" class="ng-select-alternative" [items]="list" bindLabel="label" bindValue="id" placeholder="Selecione" formControlName="continent">
+        </ng-select>
+        <app-field-message [field]="fieldMessageRequired('continent')" [erros]="fieldErros('continent')"></app-field-message>
+      </div>
+    </div>
+
+    <div class="form-group row d-flex justify-content-end">
+      <div class="col-sm-8 col-sm-offset-2 d-flex justify-content-end">
+        <button class="btn btn-white me-2" type="button">Voltar</button>
+        <button class="btn btn-primary" type="submit">Salvar</button>
+      </div>
+    </div>    
+  </form>
+</section>

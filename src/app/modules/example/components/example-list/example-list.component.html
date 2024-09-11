@@ -1,0 +1,41 @@
+<section class="section-title">
+  <h2>Exemplo de Lista</h2>
+  <a class="btn btn-primary new-item" [routerLink]="['/exemplo/adicionar']">Novo</a>
+</section>
+
+<section class="section-list">
+  <div class="table-conteiner">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Country</th>
+          <th>Area</th>
+          <th>Population</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        @for (item of entity | paginate: {
+        itemsPerPage: pagination.itemsPerPage,
+        currentPage: pagination.currentPage,
+        totalItems: entity.length}; track item.name; let i = $index) {
+        <tr>
+          <th scope="row">{{ i + 1 }}</th>
+          <td>
+            {{ item.name }}
+          </td>
+          <td>{{ item.area | number }}</td>
+          <td>{{ item.population | number }}</td>
+          <td></td>
+        </tr>
+        }
+        <tr *ngIf="!entity?.length" class="border-b-radius">
+          <td colspan="5" class="text-center">Nenhum cadastrado encontrado.</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <app-pagination [pagination]="pagination" [totalItems]="entity.length"></app-pagination>
+</section>

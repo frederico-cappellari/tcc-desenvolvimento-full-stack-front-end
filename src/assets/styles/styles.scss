@@ -1,0 +1,44 @@
+// Importing Bootstrap SCSS file.
+@import "bootstrap/scss/bootstrap";
+@import "bootstrap-icons/font/bootstrap-icons.scss";
+
+//Fonts
+@import 'imports/fonts';
+
+// Variables, Mixins
+@import 'imports/variables';
+@import 'imports/mixins';
+
+//theme
+@import 'imports/custon';
+@import 'imports/buttons';
+@import 'imports/navbar';
+@import 'imports/table';
+@import 'imports/forms';
+@import 'imports/loading';
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'open sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
+
+  body {
+    color: $text-color;
+
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: #C9D4E4;
+      border-radius: 2px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: #E7E9EF;
+    }
+  }
+}
