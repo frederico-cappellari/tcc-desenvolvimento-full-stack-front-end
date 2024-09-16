@@ -35,4 +35,3 @@ steps:
     ArtifactName: dist
     publishLocation: FilePath
     TargetPath: '$(pastaPublicacao)'
-
