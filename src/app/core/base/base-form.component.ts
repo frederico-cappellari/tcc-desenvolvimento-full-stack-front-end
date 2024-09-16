@@ -4,7 +4,7 @@ import { BaseComponent } from "./base.component";
 
 export abstract class BaseFormComponent<T> extends BaseComponent {
 
-  actionLabel: string = 'Novo';
+  actionLabel = 'Novo';
   form: FormGroup = new FormGroup({});
   _entity: T;
 

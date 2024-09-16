@@ -2,6 +2,7 @@ import { CommonModule } from '@angular/common';
 import { Component, Input } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { Pagination } from '../../models/pagination.model';
 
 @Component({
   selector: 'app-pagination',
@@ -11,6 +12,6 @@ import { PaginationModule } from 'ngx-bootstrap/pagination';
   styleUrl: './pagination.component.scss'
 })
 export class PaginationComponent {
-  @Input() pagination: any = {}
-  @Input() totalItems: number = 0;
+  @Input() pagination: Pagination = { itemsPerPage: 0, currentPage: 0, totalItems: 0, maxSize: 0 };
+  @Input() totalItems = 0;
 }

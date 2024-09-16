@@ -6,24 +6,28 @@ import { Country } from '../models/example.model';
 
 const COUNTRIES: Country[] = [
   {
+    id: 1,
     name: 'Russia',
     area: 17075200,
     population: 146989754,
     continent: 4,
   },
   {
+    id: 2,
     name: 'Canada',
     area: 9976140,
     population: 36624199,
     continent: 2,
   },
   {
+    id: 3,
     name: 'United States',
     area: 9629091,
     population: 324459463,
     continent: 2,
   },
   {
+    id: 4,
     name: 'China',
     area: 9596960,
     population: 1409517397,

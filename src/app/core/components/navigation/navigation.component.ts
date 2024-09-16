@@ -12,7 +12,7 @@ import { CollapseModule } from 'ngx-bootstrap/collapse';
 })
 export class NavigationComponent {
 
-  @Input() menuActived: boolean = true;
+  @Input() menuActived = true;
   isCollapsed: Record<string, boolean> = {};
   private actived = false;
 

@@ -17,7 +17,7 @@ export class AuthInterceptor implements HttpInterceptor {
           let changedRequest = request;
 
           // Cria o headerSettings a partir dos headers atuais
-          const headerSettings: { [name: string]: string | string[] } = {};
+          const headerSettings: Record<string, string | string[]> = {};
           for (const key of request.headers.keys()) {
             headerSettings[key] = request.headers.getAll(key) || '';
           }
@@ -48,7 +48,7 @@ export class AuthInterceptor implements HttpInterceptor {
       this.router.navigate(['/']);
     } else if (error.status === 401) {
       this.authService.cleanJWT();
-      window.location.href = window.location.href;
+      this.router.navigate(['login']);
       return of(error.message);
     }
     throw error;

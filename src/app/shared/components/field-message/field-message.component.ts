@@ -10,11 +10,11 @@ import { Component, Input } from '@angular/core';
 export class FieldMessageComponent {
 
   @Input() field: boolean | undefined = false;
-  @Input() textErroServer: string = '';
+  @Input() textErroServer = '';
   @Input() erros: any;
-  text: string = '';
+  text = '';
 
-  textVerify(erro: any): boolean {
+  textVerify(erro: boolean): boolean {
     if (erro) {
       Object.keys(erro).forEach(key => {
         this.text = '';

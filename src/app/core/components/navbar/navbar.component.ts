@@ -14,7 +14,7 @@ import { NavigationComponent } from '../navigation/navigation.component';
 export class NavbarComponent {
 
   @Output() menuToggle = new EventEmitter<boolean>();
-  @Input() menuActived: boolean = true;
+  @Input() menuActived = true;
 
   toggleMenu(): void {
     this.menuActived = !this.menuActived;

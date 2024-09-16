@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
 import { BaseFormComponent } from '../../../../core/base/base-form.component';
 import { FieldMessageComponent } from '../../../../shared/components/field-message/field-message.component';
@@ -14,6 +14,7 @@ import { ExampleService } from '../../services/example.service';
     // Importações necessárias para o funcionamento do formulário e dos componentes utilizados.
     FormsModule,
     ReactiveFormsModule,
+    RouterModule,
     NgLabelTemplateDirective,
     NgOptionTemplateDirective,
     NgSelectComponent,

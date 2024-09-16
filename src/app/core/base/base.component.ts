@@ -5,9 +5,7 @@ import { EventSharedService } from '../../shared/services/event-shared.service';
 export abstract class BaseComponent {
 
   private _sub: Subscription[] = [];
-  private _loading: boolean = true;
-
-  constructor() { }
+  private _loading = true;
 
   /**
    * Adicionar uma Subscription a lista.
@@ -49,7 +47,7 @@ export abstract class BaseComponent {
   /**
    * Alertas
    */
-  alertConfirmation(data: any = null, msg = 'Tem certeza que deseja excluir?') {
+  alertConfirmation(msg = 'Tem certeza que deseja excluir?') {
     return new Observable<boolean>((observer) => {
       Swal.fire({
         title: '',
@@ -69,7 +67,7 @@ export abstract class BaseComponent {
     });
   }
 
-  confirmation(msg = 'Operação realizada com sucesso!', title = 'Sucesso', icon: any = 'success', cancel: boolean = false) {
+  confirmation(msg = 'Operação realizada com sucesso!', title = 'Sucesso', icon: any = 'success', cancel = false) {
     return new Observable<boolean>((observer) => {
       Swal.fire({
         title: title,
@@ -89,7 +87,7 @@ export abstract class BaseComponent {
     });
   }
 
-  msgSuccess(msg: string = 'Deletado com sucesso') {
+  msgSuccess(msg = 'Deletado com sucesso') {
     Swal.fire({
       title: 'Sucesso!',
       text: msg,
@@ -98,7 +96,7 @@ export abstract class BaseComponent {
     });
   }
 
-  msgError(erro: string = '') {
+  msgError(erro = '') {
     Swal.fire({
       title: 'Erro na Solicitação',
       text: erro,

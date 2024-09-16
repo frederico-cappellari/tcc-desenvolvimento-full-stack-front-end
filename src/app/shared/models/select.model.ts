@@ -1,4 +1,4 @@
 export interface Select {
-  id?: any;
-  label?: any;
+  id?: string | number;
+  label?: string | number;
 }

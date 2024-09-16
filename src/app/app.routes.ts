@@ -8,7 +8,7 @@ export const routes: Routes = [
   {
     path: 'exemplo',
     loadChildren: () => import('./modules/example/example.routes').then(r => r.ExampleRoutes),
-    canActivate: [UsuarioAutenticadoGuard],
+    //canActivate: [UsuarioAutenticadoGuard],
     component: StandardComponent,
   },
   { path: 'logout', redirectTo: 'login' },

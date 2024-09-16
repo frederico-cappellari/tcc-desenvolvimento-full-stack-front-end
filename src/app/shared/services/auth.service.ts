@@ -1,4 +1,4 @@
-import { HttpClient, HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { firstValueFrom, lastValueFrom, of, throwError } from 'rxjs';
 import { catchError, switchMap } from 'rxjs/operators';
@@ -9,8 +9,7 @@ import { environment } from '../../../environments/environment';
 })
 export class AuthService {
 
-  singlePromise: any; // Armazena uma promessa única para evitar múltiplas requisições simultâneas.
-  urlLogin: string = '/sme/mapa-governo-api/api/v1/login';
+  urlLogin = ''; // URL para rota de login;
 
   constructor(private http: HttpClient) { }
 

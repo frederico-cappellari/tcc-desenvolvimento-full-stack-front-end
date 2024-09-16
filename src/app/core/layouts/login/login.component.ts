@@ -19,10 +19,10 @@ export class LoginComponent implements OnInit {
     usuario: '', // Campo para o nome de usuário.
     senha: '', // Campo para a senha.
   };
-  invalido: string = ''; // Mensagem de erro exibida em caso de falha no login.
-  loading: boolean = false; // Indica se a operação de login está em andamento.
+  invalido = ''; // Mensagem de erro exibida em caso de falha no login.
+  loading = false; // Indica se a operação de login está em andamento.
   date = new Date(); // Armazena a data atual para ser usada no template.
-  recoverActive: boolean = false; // Campo para o CPF usado na recuperação de senha.
+  recoverActive = false; // Campo para o CPF usado na recuperação de senha.
   recover: any = {
     cpf: '',
   };

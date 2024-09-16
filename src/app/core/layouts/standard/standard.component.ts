@@ -17,7 +17,7 @@ export class StandardComponent extends BaseComponent implements OnInit, OnDestro
 
   body: HTMLBodyElement | null = document.querySelector('body');
   menuActived = true;
-  stateLoad: boolean = true;
+  stateLoad = true;
 
   constructor(private cdr: ChangeDetectorRef) {
     super();

@@ -78,6 +78,36 @@
         line-height: 18px;
         vertical-align: middle;
       }
+
+      .btn-action {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        a,
+        button {
+          border: 0;
+          background-color: inherit;
+          font-size: 1.5em;
+          color: $primaryColor;
+          margin-right: 16px;
+          cursor: pointer;
+          text-decoration: none;
+          transition: 3ms;
+
+          &:last-child {
+            margin-right: 0;
+          }
+
+          &.delete {
+            color: $dangerColor;
+          }
+
+          &:hover {
+            opacity: 0.8;
+          }
+        }
+      }
     }
   }
 }
