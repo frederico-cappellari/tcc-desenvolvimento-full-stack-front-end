@@ -1,0 +1,124 @@
+
+pipeline {
+
+    agent { label 'vhost' }
+
+// mantem ultimos 3 builds e bloqueia build concurrente
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '3'))
+        disableConcurrentBuilds()
+    }
+    
+// parametros recebidos do AzureDevops
+    parameters {
+        string(name: 'BUILD_ID', defaultValue: '', description: 'Id do Buil TFS')                
+        string(name: 'REPOS_URI', defaultValue: 'harbor.intra.rs.gov.br/procergs-apm/apm-angular', description: "URI do repositorio de imagens no modelo cliente-sistema/app.")
+        string(name: 'VERSAO',   defaultValue: '0.1', description: 'Versão da imagem')
+        booleanParam(name: 'EXECUTE_SONAR', defaultValue: false, description: 'Usar Sonar?')
+        booleanParam(name: 'USE_QUALITYGATES', defaultValue: false, description: 'Usar Quality Gates?')      
+    } 
+
+    environment {         
+        BUILD_ID = "${params.BUILD_ID}"
+        REPOS_CREDS = credentials('harbor.intra')        
+        DEPLOY_TEMPLATE = 'pipelines/jenkins/kubernetes/deploy-desenv.yaml'        
+    }  
+
+    stages {
+
+//Validate
+        stage('Validate') {
+             steps {
+                script {
+                    sh "pwd"
+                }
+            }
+        }
+
+
+//Executar a anÃ¡lise estatica no SonarQube. 
+        stage("QUALITY ANALYSIS") {
+            when{
+                expression { params.EXECUTE_SONAR }
+            }      
+            tools {
+                jdk 'openjdk-11'
+            }      
+            steps {              
+                script {                 
+                    scannerHome = tool 'SonarQube Scanner 4.x'                                       
+                }
+                withSonarQubeEnv('sonar_procergs_9x') {				  
+                  sh "${scannerHome}/bin/sonar-scanner -Dsonar.projectKey=${env.JOB_NAME} -Dsonar.sources=./"                  
+                }
+            }
+        }
+
+//Usa a SharedLib de QualityGate. 
+        stage("QUALITY GATE") {
+            when{
+                expression { params.USE_QUALITYGATES }
+            }
+            steps {			    
+                echo "Run Quality Gates ${params.USE_QUALITYGATES}..."				
+                //timeout(time: 3, unit: 'MINUTES') {
+				sleep(60) //(tricky) https://community.sonarsource.com/t/waitforqualitygate-timeout-in-jenkins/2116/8  
+                waitForQualityGate abortPipeline: true
+                //}
+            }
+        } 
+  
+// monta a imagem da aplicacao        
+        stage('Build image') {
+            steps {
+                script {
+                    sh "docker build --ulimit nofile=4096:4096 --tag ${REPOS_URI}:${VERSAO} -f Dockerfile ."                  
+                }
+             }
+        }
+
+// envia imagem ao repositorio interno
+        stage('Upload Image') {
+            steps {
+                script {                    
+                    sh "docker login --username ${env.REPOS_CREDS_USR} --password ${env.REPOS_CREDS_PSW} ${REPOS_URI}"
+                    sh "docker push ${REPOS_URI}:${VERSAO}"
+                }
+            }
+        }
+
+//analise de vulnerabilidades
+        stage('Verifica Imagem') {
+             steps {                
+                sh "grype registry:${REPOS_URI}:${VERSAO}"                  
+            }
+        }
+
+// libera versao no kubernetes open
+        stage('Deploy Kub3760-DESENV') {
+            steps {
+                script {
+                    FAILED_STAGE = STAGE_NAME
+                    // substitui variavel %IMAGE% no template.                    
+                    sh "sed -e 's,__IMAGE__,${REPOS_URI}:${VERSAO},g' \
+                        ${DEPLOY_TEMPLATE} > ${DEPLOY_TEMPLATE}.new"
+
+                    withCredentials(
+                         [kubeconfigFile(credentialsId: 'k8s-open-desenv',variable: 'kubeconfig')])
+                    {
+                     sh "cat $kubeconfig > kubeconfig"
+                     sh "kubectl --kubeconfig=kubeconfig apply -f ${DEPLOY_TEMPLATE}.new"
+                    }
+                }
+            }
+        }
+
+  }
+
+  //post {
+  //  changed {
+      //enviaEmail('????@procergs.rs.gov.br')      
+  //   }
+  // }
+
+}

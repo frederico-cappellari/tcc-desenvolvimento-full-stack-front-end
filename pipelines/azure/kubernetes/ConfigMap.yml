@@ -1,0 +1,11 @@
+apiVersion: v1
+data:
+  SOE_AUTH: %SOE_AUTH%
+  SOE_PROFILE: %SOE_PROFILE%
+  SOE_CLIENT_ID: %SOE_CLIENT_ID%
+  SERVER_URL: %SERVER_URL%
+  CLIENT_URL: %CLIENT_URL%
+kind: ConfigMap
+metadata:
+  name: apmangular-configmap
+  namespace: %NAMESPACE_DEPLOY%

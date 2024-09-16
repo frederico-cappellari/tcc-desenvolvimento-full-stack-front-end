@@ -1,0 +1,87 @@
+# Pipeline APM Angular - Kubernetes
+trigger: none
+
+pool:
+  name: RHEL Docker
+
+variables:
+- group: APM_Angular_K8s
+
+stages:
+- stage: build
+  displayName: build da imagem
+
+  jobs:
+    - job:
+      pool:
+        name: RHEL Docker
+      steps:
+      - task: Docker@1
+        displayName: 'Build da imagem'
+        inputs:
+          containerregistrytype: 'Container Registry'
+          dockerRegistryEndpoint: APM-Angular-docker-registry
+          command: 'Build an image'
+          dockerFile: Dockerfile
+          imageName: '$(IMAGEM_NAME)'
+
+      - task: Docker@1
+        displayName: 'Push da imagem'
+        inputs:
+          containerregistrytype: 'Container Registry'
+          dockerRegistryEndpoint: APM-Angular-docker-registry
+          command: 'Push an image'
+          imageName: '$(IMAGEM_NAME)'
+
+      - task: Docker@0
+        displayName: 'Exclui imagem local do agente de build'
+        inputs:
+          containerregistrytype: 'Container Registry'
+          dockerRegistryConnection: APM-Angular-docker-registry
+          action: 'Run a Docker command'
+          customCommand: 'rmi $(REGISTRY_HOST)/$(IMAGEM_NAME)'
+
+      - task: PublishBuildArtifacts@1
+        displayName: 'Publica templates k8s para uso dos stages de deploy'
+        inputs:
+          PathtoPublish: 'pipelines/azure/kubernetes'
+          ArtifactName: 'k8s-templates'
+          publishLocation: 'Container'
+
+- stage: deployDes
+  displayName: deploy para desenvolvimento
+  dependsOn: build
+  variables:
+    - group: APM_Angular_DES_K8s
+  jobs:
+    - deployment:
+      pool:
+        name: RHEL Docker
+      environment: APM-Angular-Des
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - template: 'deploy-k8s-template.yml@self'
+              parameters:
+                Namespace: $(NAMESPACE_DEPLOY)
+                KubernetesServiceEndpoint: 'APM-Angular-k8s'
+
+- stage: deployPrd
+  displayName: deploy para produção
+  dependsOn: deployDes
+  variables:
+    - group: APM_Angular_PRO_K8s
+  jobs:
+    - deployment:
+      pool:
+        name: RHEL Docker
+      environment: APM-Angular-Prd
+      strategy:
+        runOnce:
+          deploy:
+            steps:
+            - template: 'deploy-k8s-template.yml@self'
+              parameters:
+                Namespace: $(NAMESPACE_DEPLOY)
+                KubernetesServiceEndpoint: 'APM-Angular-k8s'                

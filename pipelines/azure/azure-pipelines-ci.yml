@@ -1,0 +1,48 @@
+#
+# Pipeline para Build de CI (Continuous Integration) para a aplicação Angular.
+# Faz o build utilizando o node.js e o Lint para validação do código.
+#
+
+# Não retirar essas variáveis
+# Elas são importantes para debug de problemas
+# e ficarão aqui para exemplo da empresa
+variables:
+- name: GIT_TRACE
+  value: 1 
+- name: GIT_CURL_VERBOSE
+  value: 1
+- name: GIT_SSH_COMMAND
+  value: ssh -vvv
+
+trigger:
+   branches:
+     include:
+       - master
+
+pool:
+  name: PROCERGS
+  demands:
+    - agent.name -equals PROCERGS-04
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '19.X'
+  displayName: 'Install Node.js'
+
+- task: Npm@1
+  displayName: Npm Install
+  inputs:
+    command: 'install'
+
+- task: Npm@1
+  displayName: Run ng build
+  inputs:
+    command: 'custom'
+    customCommand: 'run ng build'
+
+- task: Npm@1
+  displayName: Run ng lint
+  inputs:
+    command: 'custom'
+    customCommand: 'run ng lint'

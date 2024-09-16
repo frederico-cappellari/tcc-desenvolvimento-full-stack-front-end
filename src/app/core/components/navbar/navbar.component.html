@@ -1,0 +1,38 @@
+<nav class="navbar navbar-expand-lg" data-bs-theme="dark">
+  <div class="container-fluid">
+    <div class="navbar-logo">
+      <button class="btn btn-default btn-toggler" type="button" (click)="toggleMenu()">
+        <i class="bi bi-list"></i>
+      </button>
+      <a class="navbar-brand" href="#">APM</a>
+    </div>
+
+    <ul class="navbar-top-links">
+      <li class="dropdown" dropdown>
+        <a dropdownToggle title="Usuário conectado" class="info_user">
+          <i class="bi bi-person user-icon"></i>
+          <div class="user-name">Nome Usuário</div>
+          <i class="bi bi-caret-down-fill dropdown-icon"></i>
+        </a>
+        <ul *dropdownMenu class="dropdown-menu animated fadeInRight" role="menu">
+          <li class="dropdown-user-name">
+            <div>Nome Usuário</div>
+          </li>
+          <li>
+            <a class="dropdown-item">
+              <i class="bi bi-person"></i>Alterar Senha
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" [routerLink]="['/logout']" routerLinkActive="router-link-active" >
+              <i class="bi bi-box-arrow-right"></i> Sair
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</nav>
+<div class="nav-width"></div>
+<!-- Left navigation bar -->
+<app-navigation [menuActived]="menuActived"></app-navigation>

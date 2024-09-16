@@ -1,0 +1,13 @@
+<div id="main">
+  <!-- Top navbar -->
+  <app-navbar (menuToggle)="onMenuToggle($event)" [menuActived]="menuActived"></app-navbar>
+  <!-- Main page -->
+  <div id="main-content" [ngClass]="{'menu-wrapper-size': !menuActived}">
+    <!-- Main view routes-->
+    <router-outlet></router-outlet>
+    @if (stateLoad) {
+    <app-loading></app-loading>
+    }
+  </div>
+  <!-- End page-->
+</div>

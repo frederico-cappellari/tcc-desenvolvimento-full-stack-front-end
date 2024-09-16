@@ -1,0 +1,61 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    ambiente: %AMBIENTE%
+    cliente: PROCERGS
+    sistema: APM
+  name: apmangular
+  namespace: %NAMESPACE_DEPLOY%
+spec:
+  replicas: %REPLICAS%
+  selector:
+    matchLabels:
+      name: apmangular
+  strategy: {}
+  template:
+    metadata:
+      labels:
+        name: apmangular
+    spec:
+      containers:
+        - name: apmangular
+          image: %REGISTRY_HOST%/%IMAGEM_NAME%
+          ports:
+            - containerPort: 80
+          env:
+            - name: SOE_AUTH
+              valueFrom:
+                configMapKeyRef:
+                  name: apmangular-configmap
+                  key: SOE_AUTH
+            - name: SOE_PROFILE
+              valueFrom:
+                configMapKeyRef:
+                  name: apmangular-configmap
+                  key: SOE_PROFILE
+            - name: SOE_CLIENT_ID
+              valueFrom:
+                configMapKeyRef:
+                  name: apmangular-configmap
+                  key: SOE_CLIENT_ID
+            - name: SERVER_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: apmangular-configmap
+                  key: SERVER_URL
+            - name: CLIENT_URL
+              valueFrom:
+                configMapKeyRef:
+                  name: apmangular-configmap
+                  key: CLIENT_URL
+          resources:
+            limits:
+              cpu: 100m
+              memory: 128Mi
+            requests:
+              cpu: 100m
+              memory: 128Mi
+      restartPolicy: Always
+      imagePullSecrets:
+        - name: oracle-registry-secret
