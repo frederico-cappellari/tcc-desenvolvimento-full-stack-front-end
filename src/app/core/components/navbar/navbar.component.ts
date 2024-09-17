@@ -3,6 +3,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { NavigationComponent } from '../navigation/navigation.component';
+import { AuthService } from '../../../shared/services/auth.service';
 
 @Component({
   selector: 'app-navbar',
@@ -15,6 +16,12 @@ export class NavbarComponent {
 
   @Output() menuToggle = new EventEmitter<boolean>();
   @Input() menuActived = true;
+
+  constructor(private authService: AuthService) {}
+
+  logout() {
+    this.authService.logout();
+  }
 
   toggleMenu(): void {
     this.menuActived = !this.menuActived;

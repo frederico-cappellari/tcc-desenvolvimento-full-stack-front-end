@@ -7,12 +7,12 @@ import { AuthService } from './auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router) {}
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (request.url.indexOf('login') === -1 && request.url.indexOf('public') === -1) {
-      // Converte a Promise do token em um Observable com 'from'
-      return from(this.authService.getJWT()).pipe(
+      // Converte a chamada ao token em um Observable com 'from'
+      return from(this.authService.getAccessToken()).pipe(
         switchMap(token => {
           let changedRequest = request;
 
@@ -47,8 +47,7 @@ export class AuthInterceptor implements HttpInterceptor {
     if (error.status === 403) {
       this.router.navigate(['/']);
     } else if (error.status === 401) {
-      this.authService.cleanJWT();
-      this.router.navigate(['login']);
+      this.authService.logout();
       return of(error.message);
     }
     throw error;

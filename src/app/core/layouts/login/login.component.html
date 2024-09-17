@@ -7,39 +7,17 @@
         </div>
         <h2 class="font-weight-bold">LOGIN</h2>
       </div>
-      <div>
-        <form *ngIf="!recoverActive" class="mt-4" role="form" (ngSubmit)="login($event)">
-          <h3 class="text-center">Acesso ao Sistema</h3>
-          <div class="form-group mb-3">
-            <input type="text" name="usuario" class="form-control" placeholder="CPF" required maxlength="11" [(ngModel)]="loginForm.usuario" />
-          </div>
-          <div class="form-group mb-3">
-            <input type="password" name="senha" class="form-control" placeholder="Senha" required [(ngModel)]="loginForm.senha" />
-          </div>
-          <div *ngIf="invalido" class="form-group m-b m-t invalido-p-l">
-            <p class="text-danger">{{ invalido }}</p>
-          </div>
-          <button type="submit" class="btn btn-primary btn-block mb-3">Entrar</button>
-          <a href="#" (click)="recoverPassword($event)"><small>Esqueci minha senha</small></a>
-        </form>
-        <hr />
-        <form *ngIf="recoverActive" class="mt-4">
-          <h3 class="text-center">Recuperar Senha</h3>
-          <div class="form-group mb-3">
-            <input type="text" name="cpf" class="form-control" placeholder="CPF" required maxlength="11" />
-          </div>
-          <button type="submit" class="btn btn-primary btn-block mb-3">Recuperar Senha</button>
-          <a href="#" (click)="recoverPassword($event)"><small>Voltar para o login</small></a>
-          <hr />
-        </form>
+      <div class="content-soe">
+        <button type="button" (click)="login()">
+          <img src="../../../../assets/images/marca_SOE.png" class="marca-soe" />
 
-        <div class="text-right mt-3">
-          <img class="me-3" width="auto" height="20" src="assets/images/procergsLogo.png" alt="Procergs Logo" />
-          <small>&copy;{{date.getFullYear()}}</small>
-        </div>
+          <p><i>Identifique-se para entrar</i></p>
+        </button>
+      </div>
+
+      <div class="text-right mt-3">
+        <img class="me-3" width="auto" height="20" src="assets/images/procergsLogo.png" alt="Procergs Logo" />
+        <small>&copy;{{date.getFullYear()}}</small>
       </div>
     </div>
   </div>
-</div>
-
-<app-loading *ngIf="loading"></app-loading>
