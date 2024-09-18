@@ -4,13 +4,13 @@ import { Router, RouterModule } from '@angular/router';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @Component({
-  selector: 'app-navigation',
+  selector: 'app-menu',
   standalone: true,
   imports: [CommonModule, CollapseModule, RouterModule],
-  templateUrl: './navigation.component.html',
-  styleUrls: ['./navigation.component.scss'],
+  templateUrl: './menu.component.html',
+  styleUrls: ['./menu.component.scss'],
 })
-export class NavigationComponent {
+export class MenuComponent {
 
   @Input() menuActived = true;
   isCollapsed: Record<string, boolean> = {};

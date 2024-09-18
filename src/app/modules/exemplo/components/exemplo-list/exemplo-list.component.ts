@@ -5,22 +5,23 @@ import { TooltipModule } from "ngx-bootstrap/tooltip";
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BaseListComponent } from '../../../../core/base/base-list.component';
 import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
-import { Country } from '../../models/example.model';
-import { ExampleService } from '../../services/example.service';
+import { Exemplo } from '../../models/examplo.model';
+import { ExemploService } from '../../services/exemplo.service';
+import { ExemploPipe } from '../../../../shared/pipes/exemplo.pipe';
 
 @Component({
-  selector: 'app-example-list',
+  selector: 'app-exemplo-list',
   standalone: true,
-  imports: [CommonModule, RouterModule, DecimalPipe, NgxPaginationModule, PaginationComponent, TooltipModule],
-  providers: [ExampleService],
-  templateUrl: './example-list.component.html',
-  styleUrl: './example-list.component.scss',
+  imports: [CommonModule, RouterModule, DecimalPipe, NgxPaginationModule, PaginationComponent, TooltipModule, ExemploPipe],
+  providers: [ExemploService],
+  templateUrl: './exemplo-list.component.html',
+  styleUrl: './exemplo-list.component.scss',
 })
 
-export class ExampleListComponent extends BaseListComponent<Country> implements OnInit {
+export class ExemploListComponent extends BaseListComponent<Exemplo> implements OnInit {
 
   constructor(
-    private exampleService: ExampleService,
+    private exemploService: ExemploService,
   ) {
     super()
   }
@@ -31,7 +32,7 @@ export class ExampleListComponent extends BaseListComponent<Country> implements 
 
   initList() {
     this.loading();
-    this.entity = this.exampleService.getCountry();
+    this.entity = this.exemploService.getExemplo();
     this.loaded();
   }
 
@@ -45,7 +46,7 @@ export class ExampleListComponent extends BaseListComponent<Country> implements 
 
   excluir(id: number) {
     this.loading();
-    this.exampleService.delete(id).subscribe({
+    this.exemploService.delete(id).subscribe({
       next: () => {
         this.confirmation('Deletado com sucesso').subscribe(() => {
           this.initList();

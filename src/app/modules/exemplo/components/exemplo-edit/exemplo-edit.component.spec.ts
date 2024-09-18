@@ -2,15 +2,15 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ActivatedRoute } from '@angular/router';
-import { ExampleEditComponent } from './example-edit.component';
+import { ExemploEditComponent } from './exemplo-edit.component';
 
-describe('ExampleEditComponent', () => {
-  let component: ExampleEditComponent;
-  let fixture: ComponentFixture<ExampleEditComponent>;
+describe('ExemploEditComponent', () => {
+  let component: ExemploEditComponent;
+  let fixture: ComponentFixture<ExemploEditComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ExampleEditComponent, HttpClientTestingModule],
+      imports: [ExemploEditComponent, HttpClientTestingModule],
       providers: [
         {
           provide: ActivatedRoute,
@@ -26,7 +26,7 @@ describe('ExampleEditComponent', () => {
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(ExampleEditComponent);
+    fixture = TestBed.createComponent(ExemploEditComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

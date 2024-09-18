@@ -1,15 +1,15 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
-import { ExampleListComponent } from './example-list.component';
+import { ExemploListComponent } from './exemplo-list.component';
 
-describe('ExampleListComponent', () => {
-  let component: ExampleListComponent;
-  let fixture: ComponentFixture<ExampleListComponent>;
+describe('ExemploListComponent', () => {
+  let component: ExemploListComponent;
+  let fixture: ComponentFixture<ExemploListComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ExampleListComponent, HttpClientTestingModule],
+      imports: [ExemploListComponent, HttpClientTestingModule],
       providers: [
         {
           provide: ActivatedRoute,
@@ -22,7 +22,7 @@ describe('ExampleListComponent', () => {
     })
       .compileComponents();
 
-    fixture = TestBed.createComponent(ExampleListComponent);
+    fixture = TestBed.createComponent(ExemploListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

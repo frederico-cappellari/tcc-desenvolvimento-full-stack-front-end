@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
-import { NavigationComponent } from '../navigation/navigation.component';
 import { AuthService } from '../../../shared/services/auth.service';
+import { MenuComponent } from '../menu/menu.component';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule, NavigationComponent, BsDropdownModule, RouterModule],
+  imports: [CommonModule, MenuComponent, BsDropdownModule, RouterModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'
 })

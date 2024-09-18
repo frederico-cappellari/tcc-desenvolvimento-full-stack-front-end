@@ -7,7 +7,7 @@ export const routes: Routes = [
   { path: '', redirectTo: 'exemplo/lista', pathMatch: 'full' },
   {
     path: 'exemplo',
-    loadChildren: () => import('./modules/example/example.routes').then(r => r.ExampleRoutes),
+    loadChildren: () => import('./modules/exemplo/exemplo.routes').then(r => r.ExemploRoutes),
     canMatch: [AuthGuard],
     component: StandardComponent,
   },
