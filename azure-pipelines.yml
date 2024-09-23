@@ -23,10 +23,10 @@ steps:
     command: 'install'
 
 - task: Npm@1
-  displayName: Run ng build
+  displayName: Run ng build (des)
   inputs:
     command: 'custom'
-    customCommand: 'run ng build'
+    customCommand: 'ng build --configuration=des'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact (profs02)'
