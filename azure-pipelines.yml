@@ -18,16 +18,15 @@ steps:
   displayName: 'Install Node.js'
 
 - task: Npm@1
-  displayName: Install Angular CLI
+  displayName: Npm Install
   inputs:
-    command: 'custom'
-    customCommand: 'install @angular/cli'
+    command: 'install'
 
 - task: Npm@1
-  displayName: Run ng build with des configuration
+  displayName: Run npm build:des
   inputs:
     command: 'custom'
-    customCommand: 'ng build --configuration=des'
+    customCommand: 'run build:des'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact (profs02)'
