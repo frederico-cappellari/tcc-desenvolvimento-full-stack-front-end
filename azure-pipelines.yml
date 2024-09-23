@@ -26,7 +26,7 @@ steps:
   displayName: Run ng build (des)
   inputs:
     command: 'custom'
-    customCommand: 'ng build --configuration=des'
+    customCommand: 'npx ng build --configuration=des'
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact (profs02)'
