@@ -9,34 +9,34 @@
   <form [formGroup]="form" (ngSubmit)="salvar()">
     <div class="form-group row mb-3">
       <div class="col-sm-12 col-xl-8">
-        <label for="name" class="col-sm-12 pb-1">Nome</label>
-        <textarea id="name" class="form-control" rows="2" formControlName="name" placeholder="Nome" maxlength="200"></textarea>
-        <app-field-message [field]="fieldMessageRequired('name')" [erros]="fieldErros('name')"></app-field-message>
+        <label for="nome" class="col-sm-12 pb-1">Nome</label>
+        <textarea id="nome" class="form-control" rows="2" formControlName="nome" placeholder="Nome" maxlength="200"></textarea>
+        <app-field-message [field]="fieldMessageRequired('nome')" [erros]="fieldErros('nome')"></app-field-message>
       </div>
     </div>
 
     <div class="form-group row mb-3">
       <div class="col-sm-12 col-xl-8">
-        <label for="area" class="col-sm-12 pb-1">Área</label>
-        <input id="area" class="form-control" formControlName="area" placeholder="Área" />
-        <app-field-message [field]="fieldMessageRequired('area')" [erros]="fieldErros('area')"></app-field-message>
+        <label for="matricula" class="col-sm-12 pb-1">Matrícula</label>
+        <input id="matricula" class="form-control" formControlName="matricula" placeholder="Número da Matrícula" mask="0*"/>
+        <app-field-message [field]="fieldMessageRequired('matricula')" [erros]="fieldErros('matricula')"></app-field-message>
       </div>
     </div>
 
     <div class="form-group row mb-3">
       <div class="col-sm-12 col-xl-8">
-        <label for="population" class="col-sm-12 pb-1">População</label>
-        <input id="population" class="form-control" formControlName="population" placeholder="Número da População" />
-        <app-field-message [field]="fieldMessageRequired('population')" [erros]="fieldErros('population')"></app-field-message>
+        <label for="ano" class="col-sm-12 pb-1">Ano</label>
+        <input id="ano" class="form-control" formControlName="ano" placeholder="Ano" mask="0*"/>
+        <app-field-message [field]="fieldMessageRequired('ano')" [erros]="fieldErros('ano')"></app-field-message>
       </div>
     </div>
 
     <div class="form-group row mb-3">
       <div class="col-sm-4">
-        <label for="continent" class="col-sm-12 pb-1">Continente</label>
-        <ng-select id="continent" class="ng-select-alternative" [items]="list" bindLabel="label" bindValue="id" placeholder="Selecione" formControlName="continent">
+        <label for="curso" class="col-sm-12 pb-1">Curso</label>
+        <ng-select id="curso" class="ng-select-alternative" [items]="list" bindLabel="label" bindValue="id" placeholder="Selecione" formControlName="curso">
         </ng-select>
-        <app-field-message [field]="fieldMessageRequired('continent')" [erros]="fieldErros('continent')"></app-field-message>
+        <app-field-message [field]="fieldMessageRequired('curso')" [erros]="fieldErros('curso')"></app-field-message>
       </div>
     </div>
 

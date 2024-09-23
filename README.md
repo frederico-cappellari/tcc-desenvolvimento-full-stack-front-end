@@ -101,3 +101,7 @@ Este projeto utiliza uma variedade de bibliotecas para fornecer funcionalidades 
 7. sweetalert2
    O sweetalert2 é uma biblioteca independente que permite a criação de modais customizados e responsivos com uma interface de usuário agradável. É amplamente utilizada para mostrar alertas, confirmações e outros tipos de diálogos modais.
    Documentação: [SweetAlert2](https://sweetalert2.github.io/)
+
+8. ngx-mask
+   Este pacote simplifica a aplicação de máscaras em inputs. Ele é particularmente útil quando se trata de formatar e validar dados de entrada, como números de telefone, datas, CPFs, entre outros, em formulários web.
+   Documentação: [ngx-mask](https://github.com/JsDaddy/ngx-mask/blob/develop/USAGE.md)

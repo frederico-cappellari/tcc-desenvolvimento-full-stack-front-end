@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { BaseFormComponent } from '../../../../core/base/base-form.component';
 import { FieldMessageComponent } from '../../../../shared/components/field-message/field-message.component';
 import { Exemplo } from '../../models/examplo.model';
@@ -15,6 +16,7 @@ import { ExemploService } from '../../services/exemplo.service';
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    NgxMaskDirective,
     NgLabelTemplateDirective,
     NgOptionTemplateDirective,
     NgSelectComponent,
@@ -22,6 +24,7 @@ import { ExemploService } from '../../services/exemplo.service';
   ],
   providers: [
     ExemploService,
+    provideNgxMask(),
   ],
   templateUrl: './exemplo-edit.component.html',
   styleUrls: ['./exemplo-edit.component.scss'],
@@ -46,10 +49,10 @@ export class ExemploEditComponent extends BaseFormComponent<Exemplo> implements 
   private initForm(): void {
     // Configura o formulário com controles e validadores.
     this.form = new FormGroup({
-      name: new FormControl('', [Validators.required]),
-      area: new FormControl(null, [Validators.required]),
-      population: new FormControl(null, [Validators.required]),
-      continent: new FormControl(null, [Validators.required]),
+      nome: new FormControl('', [Validators.required]),
+      matricula: new FormControl(null, [Validators.required]),
+      curso: new FormControl(null, [Validators.required]),
+      ano: new FormControl(null, [Validators.required]),
     });
 
     // Se a entidade já existir (edição), preenche o formulário com os dados existentes.
