@@ -4,7 +4,7 @@ import { StandardComponent } from './core/layouts/standard/standard.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 
 export const routes: Routes = [
- // { path: '', redirectTo: 'exemplo/lista', pathMatch: 'full' },
+  { path: '', redirectTo: 'exemplo/lista', pathMatch: 'full' },
   {
     path: 'exemplo',
     loadChildren: () => import('./modules/exemplo/exemplo.routes').then(r => r.ExemploRoutes),
