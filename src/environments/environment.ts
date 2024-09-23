@@ -8,8 +8,8 @@ export const environment = {
   soeauth: {
     authority: 'https://soe.intra.rs.gov.br/soeauth-des/.well-known/openid-configuration',
     clientId: 'apm.i2.des.5Q2MC0k5pwA5Vy1JNfV',
-    redirectUrl: "https://apm02.des.intra.rs.gov.br",
-    postLogoutRedirectUri: "https://apm02.des.intra.rs.gov.br",
+    redirectUrl: "http://localhost:4200",
+    postLogoutRedirectUri: "http://localhost:4200",
     scope: 'openid',
     responseType: 'code',
     silentRenew: true,
