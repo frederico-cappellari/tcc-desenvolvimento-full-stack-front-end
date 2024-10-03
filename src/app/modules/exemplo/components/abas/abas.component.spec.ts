@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { AbasComponent } from './abas.component';
+import { provideAnimations } from '@angular/platform-browser/animations'; // Importa o provedor de animações
 
 describe('AbasComponent', () => {
   let component: AbasComponent;
@@ -8,7 +8,10 @@ describe('AbasComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [AbasComponent]
+      imports: [AbasComponent],
+      providers: [
+        provideAnimations(),
+      ]
     })
     .compileComponents();
 

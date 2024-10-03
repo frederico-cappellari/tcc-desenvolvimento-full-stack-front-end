@@ -1,6 +1,14 @@
-import { ExemploRoutes } from './exemplo.routes';
-import { ExemploListComponent } from './components/exemplo-list/exemplo-list.component';
+import { AbasComponent } from './components/abas/abas.component';
+import { AcordeaoComponent } from './components/acordeao/acordeao.component';
+import { ArrastaSoltaComponent } from './components/arrasta-solta/arrasta-solta.component';
+import { BarraProgressoComponent } from './components/barra-progresso/barra-progresso.component';
+import { CarrosselComponent } from './components/carrossel/carrossel.component';
+import { ClassificavelComponent } from './components/classificavel/classificavel.component';
 import { ExemploEditComponent } from './components/exemplo-edit/exemplo-edit.component';
+import { ExemploListComponent } from './components/exemplo-list/exemplo-list.component';
+import { GraficoComponent } from './components/grafico/grafico.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { ExemploRoutes } from './exemplo.routes';
 import { ExemploResolver } from './resolver/exemplo.resolver';
 
 describe('ExemploRoutes', () => {
@@ -15,13 +23,51 @@ describe('ExemploRoutes', () => {
             component: ExemploListComponent,
           },
           {
-            path: 'adicionar',
-            component: ExemploEditComponent,
+            path: 'formulario',
+            children: [
+              { path: '', redirectTo: 'adicionar', pathMatch: 'full' },
+              {
+                path: 'adicionar',
+                component: ExemploEditComponent,
+              },
+              {
+                path: ':id',
+                component: ExemploEditComponent,
+                resolve: { entity: ExemploResolver }
+              },
+            ]
           },
           {
-            path: ':id',
-            component: ExemploEditComponent,
-            resolve: { entity: ExemploResolver }
+            path: 'abas',
+            component: AbasComponent,
+          },
+          {
+            path: 'acordeao',
+            component: AcordeaoComponent,
+          },
+          {
+            path: 'arrasta-e-solta',
+            component: ArrastaSoltaComponent,
+          },
+          {
+            path: 'barra-de-progresso',
+            component: BarraProgressoComponent,
+          },
+          {
+            path: 'carrossel',
+            component: CarrosselComponent,
+          },
+          {
+            path: 'classificavel',
+            component: ClassificavelComponent,
+          },
+          {
+            path: 'grafico',
+            component: GraficoComponent,
+          },
+          {
+            path: 'modal',
+            component: ModalComponent,
           },
         ]
       },
@@ -35,14 +81,14 @@ describe('ExemploRoutes', () => {
     expect(route?.pathMatch).toBe('full');
   });
 
-  it('should have child routes defined', () => {
+  it('should have correct child routes defined', () => {
     const parentRoute = ExemploRoutes.find(r => r.path === '' && r.children);
     expect(parentRoute).toBeTruthy();
 
     const childrenRoute = parentRoute?.children;
     expect(childrenRoute).toBeTruthy();
     expect(Array.isArray(childrenRoute)).toBe(true);
-    expect(childrenRoute?.length).toBe(3);
+    expect(childrenRoute?.length).toBe(10); // número de rotas
   });
 
   it('should define the correct components for the routes', () => {
@@ -52,9 +98,17 @@ describe('ExemploRoutes', () => {
 
     if (childrenRoute) {
       expect(childrenRoute[0].component).toBe(ExemploListComponent);
-      expect(childrenRoute[1].component).toBe(ExemploEditComponent);
-      expect(childrenRoute[2].component).toBe(ExemploEditComponent);
-      expect(childrenRoute[2].resolve).toEqual({ entity: ExemploResolver });
+      expect(childrenRoute[1].children![1].component).toBe(ExemploEditComponent);
+      expect(childrenRoute[1].children![2].component).toBe(ExemploEditComponent);
+      expect(childrenRoute[1].children![2].resolve).toEqual({ entity: ExemploResolver });
+      expect(childrenRoute[2].component).toBe(AbasComponent);
+      expect(childrenRoute[3].component).toBe(AcordeaoComponent);
+      expect(childrenRoute[4].component).toBe(ArrastaSoltaComponent);
+      expect(childrenRoute[5].component).toBe(BarraProgressoComponent);
+      expect(childrenRoute[6].component).toBe(CarrosselComponent);
+      expect(childrenRoute[7].component).toBe(ClassificavelComponent);
+      expect(childrenRoute[8].component).toBe(GraficoComponent);
+      expect(childrenRoute[9].component).toBe(ModalComponent);
     }
   });
 });
