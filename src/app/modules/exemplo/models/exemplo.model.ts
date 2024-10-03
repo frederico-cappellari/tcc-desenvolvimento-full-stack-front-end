@@ -4,4 +4,5 @@ export interface Exemplo {
   matricula: number;
   curso: number;
   ano: number;
+  data?: any;
 }

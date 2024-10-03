@@ -4,6 +4,7 @@ import { RouterModule } from '@angular/router';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { AuthService } from '../../../shared/services/auth.service';
 import { MenuComponent } from '../menu/menu.component';
+import { Usuario } from '../../../shared/models/usuario.model';
 
 @Component({
   selector: 'app-navbar',
@@ -16,8 +17,15 @@ export class NavbarComponent {
 
   @Output() menuToggle = new EventEmitter<boolean>();
   @Input() menuActived = true;
+  userInfo!: Usuario;
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) {
+    this.authService.getUserInfo().subscribe({
+      next: (res) => {
+        this.userInfo = res;
+      },
+    });
+  }
 
   logout() {
     this.authService.logout();

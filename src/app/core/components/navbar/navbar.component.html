@@ -11,12 +11,12 @@
       <li class="dropdown" dropdown>
         <a dropdownToggle title="Usuário conectado" class="info_user">
           <i class="bi bi-person user-icon"></i>
-          <div class="user-name">Nome Usuário</div>
+          <div class="user-name">{{userInfo.name}}</div>
           <i class="bi bi-caret-down-fill dropdown-icon"></i>
         </a>
         <ul *dropdownMenu class="dropdown-menu animated fadeInRight" role="menu">
           <li class="dropdown-user-name">
-            <div>Nome Usuário</div>
+            <div>{{userInfo.name}}</div>
           </li>
           <li>
             <a class="dropdown-item">

@@ -1,6 +1,6 @@
 <section class="section-title">
   <h2>Exemplo de Lista</h2>
-  <a class="btn btn-primary new-item" [routerLink]="['/exemplo/adicionar']">Novo</a>
+  <a class="btn btn-primary new-item" [routerLink]="['/exemplo/formulario/adicionar']">Novo</a>
 </section>
 
 <section class="section-list">
@@ -29,8 +29,8 @@
           <td>{{ item.ano | number }}</td>
           <td>
             <div class="btn-action">
-              <a routerLink="/exemplo/{{item.id}}"><i class="bi bi-pencil-square" tooltip="Editar" placement="bottom"></i></a>
-              <button class="delete" (click)="confirmDelete(item.id)"><i class="bi bi-trash" tooltip="Excluir" placement="bottom"></i></button>
+              <a routerLink="/exemplo/formulario/{{item.id}}"><i class="bi bi-pencil-square" tooltip="Editar" placement="bottom"></i></a>
+              <button class="delete" *ngIf="item?.id" (click)="confirmDelete(item?.id)"><i class="bi bi-trash" tooltip="Excluir" placement="bottom"></i></button>
             </div>
           </td>
         </tr>

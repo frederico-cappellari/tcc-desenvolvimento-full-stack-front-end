@@ -36,12 +36,14 @@ export class ExemploListComponent extends BaseListComponent<Exemplo> implements 
     this.loaded();
   }
 
-  confirmDelete(id: number) {
-    this.alertConfirmation().subscribe((confirmed) => {
-      if (confirmed) {
-        this.excluir(id);
-      }
-    });
+  confirmDelete(id: number | undefined) {
+    if(id){
+      this.alertConfirmation().subscribe((confirmed) => {
+        if (confirmed) {
+          this.excluir(id);
+        }
+      });
+    }
   }
 
   excluir(id: number) {

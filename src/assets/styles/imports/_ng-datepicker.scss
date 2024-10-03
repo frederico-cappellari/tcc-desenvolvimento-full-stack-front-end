@@ -1,0 +1,17 @@
+@import "ngx-bootstrap/datepicker/bs-datepicker.scss";
+
+.theme-green .bs-datepicker-head {
+  background-color: $primaryColor;
+}
+
+.theme-green .bs-datepicker-body table td.week span {
+  color: $primaryColor;
+}
+
+.theme-green .bs-datepicker-body table td span.selected, .theme-green .bs-datepicker-body table td.selected span {
+  background-color: $primaryColor;
+}
+
+.bs-datepicker-container {
+  padding: 0;
+}

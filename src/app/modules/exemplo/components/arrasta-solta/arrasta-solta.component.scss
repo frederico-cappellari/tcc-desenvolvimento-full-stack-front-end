@@ -1,0 +1,14 @@
+::ng-deep {
+  .sortable-item {
+    background-color: #F8F8F8;
+    border: 1px solid #333;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 10px 0;
+    margin: 10px 0;
+    cursor: move;
+  }
+}

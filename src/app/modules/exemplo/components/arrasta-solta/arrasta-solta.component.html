@@ -1,0 +1,22 @@
+<section class="section-title">
+  <h2>Exemplo de componente de Arrasta e Solta</h2>
+</section>
+
+<div class="row">
+  <div class="col-xs-6 col-6 col-md-5 col-lg-3">
+    <bs-sortable [(ngModel)]="itemEsquerda" fieldName="name" itemClass="sortable-item" itemActiveClass="sortable-item-active" placeholderItem="Arraste aqui" placeholderClass="placeholderStyle text-center" wrapperClass="sortable-wrapper"></bs-sortable>
+  </div>
+  <div class="col-xs-6 col-6 col-md-5 col-lg-3">
+    <bs-sortable [(ngModel)]="itemDireita" fieldName="name" itemClass="sortable-item" itemActiveClass="sortable-item-active" placeholderItem="Arraste aqui" placeholderClass="placeholderStyle text-center" wrapperClass="sortable-wrapper"></bs-sortable>
+  </div>
+</div>
+
+<div class='row'>
+  <div class="col-xs-6 col-6 col-md-5 col-lg-3">
+    <pre class="code-preview">model: {{ itemEsquerda | json }}</pre>
+  </div>
+
+  <div class="col-xs-6 col-6 col-md-5 col-lg-3">
+    <pre class="code-preview">model: {{ itemDireita | json }}</pre>
+  </div>
+</div>
