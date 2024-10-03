@@ -5,7 +5,7 @@ import { TooltipModule } from "ngx-bootstrap/tooltip";
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BaseListComponent } from '../../../../core/base/base-list.component';
 import { PaginationComponent } from '../../../../shared/components/pagination/pagination.component';
-import { Exemplo } from '../../models/examplo.model';
+import { Exemplo } from '../../models/exemplo.model';
 import { ExemploService } from '../../services/exemplo.service';
 import { ExemploPipe } from '../../../../shared/pipes/exemplo.pipe';
 
@@ -36,12 +36,14 @@ export class ExemploListComponent extends BaseListComponent<Exemplo> implements 
     this.loaded();
   }
 
-  confirmDelete(id: number) {
-    this.alertConfirmation().subscribe((confirmed) => {
-      if (confirmed) {
-        this.excluir(id);
-      }
-    });
+  confirmDelete(id: number | undefined) {
+    if(id){
+      this.alertConfirmation().subscribe((confirmed) => {
+        if (confirmed) {
+          this.excluir(id);
+        }
+      });
+    }
   }
 
   excluir(id: number) {
@@ -59,4 +61,3 @@ export class ExemploListComponent extends BaseListComponent<Exemplo> implements 
   }
 
 }
-

@@ -8,7 +8,7 @@ import { ptBrLocale } from 'ngx-bootstrap/locale';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { BaseFormComponent } from '../../../../core/base/base-form.component';
 import { FieldMessageComponent } from '../../../../shared/components/field-message/field-message.component';
-import { Exemplo } from '../../models/examplo.model';
+import { Exemplo } from '../../models/exemplo.model';
 import { ExemploService } from '../../services/exemplo.service';
 
 defineLocale('pt-br', ptBrLocale);

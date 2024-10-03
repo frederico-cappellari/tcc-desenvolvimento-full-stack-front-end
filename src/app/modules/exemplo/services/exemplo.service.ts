@@ -2,9 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BaseService } from '../../../core/base/base.service';
 import { Select } from '../../../shared/models/select.model';
-import { Exemplo } from '../models/examplo.model';
+import { Exemplo } from '../models/exemplo.model';
 
-const ALUNOS: Exemplo[] = [
+export const ALUNOS: Exemplo[] = [
   {
     id: 1,
     nome: 'Aluno 1',
@@ -35,7 +35,7 @@ const ALUNOS: Exemplo[] = [
   },
 ];
 
-const CURSOS: Select[] = [
+export const CURSOS: Select[] = [
   { id: 1, label: 'Robótica' },
   { id: 2, label: 'Informática' },
   { id: 3, label: 'Eletrônica' },

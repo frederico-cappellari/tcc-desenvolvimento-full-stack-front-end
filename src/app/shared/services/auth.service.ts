@@ -18,7 +18,7 @@ export class AuthService {
     this.oidcSecurityService.logoff().subscribe((result) => console.log(result));
   }
 
-  getAccessToken(){
+  getAccessToken() {
     return this.oidcSecurityService.getAccessToken();
   }
 

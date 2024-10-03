@@ -19,7 +19,7 @@
         @for (item of entity | paginate: {
         itemsPerPage: pagination.itemsPerPage,
         currentPage: pagination.currentPage,
-        totalItems: entity.length}; track item; let i = $index) {
+        totalItems: entity.length}; track $index; let i = $index) {
         <tr>
           <th>{{ item.matricula }}</th>
           <td>
@@ -30,7 +30,7 @@
           <td>
             <div class="btn-action">
               <a routerLink="/exemplo/formulario/{{item.id}}"><i class="bi bi-pencil-square" tooltip="Editar" placement="bottom"></i></a>
-              <button class="delete" (click)="confirmDelete(item.id)"><i class="bi bi-trash" tooltip="Excluir" placement="bottom"></i></button>
+              <button class="delete" *ngIf="item?.id" (click)="confirmDelete(item?.id)"><i class="bi bi-trash" tooltip="Excluir" placement="bottom"></i></button>
             </div>
           </td>
         </tr>
