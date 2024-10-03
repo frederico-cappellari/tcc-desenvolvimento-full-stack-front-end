@@ -2,12 +2,16 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, RouterModule } from '@angular/router';
 import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
+import { defineLocale, formatDate } from 'ngx-bootstrap/chronos';
+import { BsDatepickerModule, BsLocaleService } from 'ngx-bootstrap/datepicker';
+import { ptBrLocale } from 'ngx-bootstrap/locale';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
 import { BaseFormComponent } from '../../../../core/base/base-form.component';
 import { FieldMessageComponent } from '../../../../shared/components/field-message/field-message.component';
 import { Exemplo } from '../../models/examplo.model';
 import { ExemploService } from '../../services/exemplo.service';
 
+defineLocale('pt-br', ptBrLocale);
 @Component({
   selector: 'app-exemplo-edit',
   standalone: true,
@@ -20,6 +24,7 @@ import { ExemploService } from '../../services/exemplo.service';
     NgLabelTemplateDirective,
     NgOptionTemplateDirective,
     NgSelectComponent,
+    BsDatepickerModule,
     FieldMessageComponent,
   ],
   providers: [
@@ -36,8 +41,10 @@ export class ExemploEditComponent extends BaseFormComponent<Exemplo> implements 
   constructor(
     public override activatedRoute: ActivatedRoute,
     private exemploService: ExemploService, // Serviço injetado para manipular operações relacionadas ao modelo.
+    private localeService: BsLocaleService,
   ) {
     super(activatedRoute); // Chama o construtor da classe base para inicializar o roteamento.
+    this.localeService.use('pt-br');
   }
 
   ngOnInit(): void {
@@ -53,6 +60,7 @@ export class ExemploEditComponent extends BaseFormComponent<Exemplo> implements 
       matricula: new FormControl(null, [Validators.required]),
       curso: new FormControl(null, [Validators.required]),
       ano: new FormControl(null, [Validators.required]),
+      data: new FormControl(null, [Validators.required]),
     });
 
     // Se a entidade já existir (edição), preenche o formulário com os dados existentes.
@@ -62,9 +70,11 @@ export class ExemploEditComponent extends BaseFormComponent<Exemplo> implements 
     }
   }
 
-  private getDataCreate(): Exemplo {
-    // Retorna os dados do formulário como uma nova instância do modelo Exemplo.
-    return { ...this.form.value };
+  // Retorna os dados do formulário como uma nova instância do modelo Exemplo.
+  getDataCreate(): Exemplo {
+    const formValue = { ...this.form.value } as Exemplo; // Espalha as propriedades do formulário no modelo
+    formValue.data = formValue.data ? formatDate(formValue.data, 'DD/MM/YYYY') : null; // Formata a data corretamente
+    return formValue;
   }
 
   salvar(): void {

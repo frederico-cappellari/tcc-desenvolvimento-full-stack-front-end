@@ -8,7 +8,16 @@
         <span>Exemplo</span>
       </a>
       <ul [collapse]="!isCollapsed['exemplo']" [isAnimated]="true" class="list-unstyled">
+        <li class="second-link"><a [routerLink]="['/exemplo/abas']" [ngClass]="{'active': activeRoute('/exemplo/abas')}">Abas</a></li>
+        <li class="second-link"><a [routerLink]="['/exemplo/acordeao']" [ngClass]="{'active': activeRoute('/exemplo/acordeao')}">Acordeão</a></li>
+        <li class="second-link"><a [routerLink]="['/exemplo/arrasta-e-solta']" [ngClass]="{'active': activeRoute('/exemplo/arrasta-e-solta')}">Arrasta e Solta</a></li>
+        <li class="second-link"><a [routerLink]="['/exemplo/barra-de-progresso']" [ngClass]="{'active': activeRoute('/exemplo/barra-de-progresso')}">Barras de Progresso</a></li>
+        <li class="second-link"><a [routerLink]="['/exemplo/carrossel']" [ngClass]="{'active': activeRoute('/exemplo/carrossel')}">Carrossel</a></li>
+        <li class="second-link"><a [routerLink]="['/exemplo/classificavel']" [ngClass]="{'active': activeRoute('/exemplo/classificavel')}">Classificável</a></li>
+        <li class="second-link"><a [routerLink]="['/exemplo/formulario']" [ngClass]="{'active': activeRoute('/exemplo/formulario')}">Formulário</a></li>
+        <li class="second-link"><a [routerLink]="['/exemplo/grafico']" [ngClass]="{'active': activeRoute('/exemplo/grafico')}">Gráfico</a></li>
         <li class="second-link"><a [routerLink]="['/exemplo/lista']" [ngClass]="{'active': activeRoute('/exemplo/lista')}">Lista</a></li>
+        <li class="second-link"><a [routerLink]="['/exemplo/modal']" [ngClass]="{'active': activeRoute('/exemplo/modal')}">Modal</a></li>
       </ul>
     </li>
   </ul>

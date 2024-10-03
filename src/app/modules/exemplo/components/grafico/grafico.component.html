@@ -1,0 +1,30 @@
+<section class="section-title">
+  <h2>Exemplo de componente de Gráfico</h2>
+</section>
+
+
+<div class="row">
+  <div class="col-md-12 col-lg-8">
+    <div class="canva">
+      <canvas baseChart [type]="'line'" [data]="lineChart.data" [options]="lineChart.options" [legend]="lineChart.legend"></canvas>
+    </div>
+  </div>
+  <div class="col-md-12 col-lg-3">
+    <div class="canva">
+      <canvas baseChart [type]="'pie'" [datasets]="pieChart.datasets" [labels]="pieChart.labels" [options]="pieChart.options" [plugins]="pieChart.plugins" [legend]="pieChart.legend"></canvas>
+    </div>
+  </div>
+</div>
+
+<div class="row my-5">
+  <div class="col-md-12 col-lg-8">
+    <div class="canva">
+      <canvas baseChart [type]="'bar'" [data]="barChart.data" [options]="barChart.options" [legend]="barChart.legend"></canvas>
+    </div>
+  </div>
+  <div class="col-md-12 col-lg-3">
+    <div class="canva">
+      <canvas baseChart [type]="'doughnut'" [datasets]="doughnutChart.datasets" [labels]="doughnutChart.labels" [options]="doughnutChart.options" [legend]="doughnutChart.legend"></canvas>
+    </div>
+  </div>
+</div>

@@ -18,7 +18,7 @@
     <div class="form-group row mb-3">
       <div class="col-sm-12 col-xl-8">
         <label for="matricula" class="col-sm-12 pb-1">Matrícula</label>
-        <input id="matricula" class="form-control" formControlName="matricula" placeholder="Número da Matrícula" mask="0*"/>
+        <input id="matricula" class="form-control" formControlName="matricula" placeholder="Número da Matrícula" mask="0*" />
         <app-field-message [field]="fieldMessageRequired('matricula')" [erros]="fieldErros('matricula')"></app-field-message>
       </div>
     </div>
@@ -26,7 +26,7 @@
     <div class="form-group row mb-3">
       <div class="col-sm-12 col-xl-8">
         <label for="ano" class="col-sm-12 pb-1">Ano</label>
-        <input id="ano" class="form-control" formControlName="ano" placeholder="Ano" mask="0*"/>
+        <input id="ano" class="form-control" formControlName="ano" placeholder="Ano" mask="0*" />
         <app-field-message [field]="fieldMessageRequired('ano')" [erros]="fieldErros('ano')"></app-field-message>
       </div>
     </div>
@@ -40,11 +40,19 @@
       </div>
     </div>
 
+    <div class="form-group row mb-3">
+      <div class="col-sm-4">
+        <label for="data" class="col-sm-12 pb-1">Data</label>
+        <input id="iptData" class="form-control" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" formControlName="data" autocomplete="off" />
+        <app-field-message [field]="fieldMessageRequired('data')" [erros]="fieldErros('data')"></app-field-message>
+      </div>
+    </div>
+
     <div class="form-group row d-flex justify-content-end">
       <div class="col-sm-8 col-sm-offset-2 d-flex justify-content-end">
         <button class="btn btn-white me-2" type="button" routerLink="/exemplo">Voltar</button>
         <button class="btn btn-primary" type="submit">Salvar</button>
       </div>
-    </div>    
+    </div>
   </form>
 </section>

@@ -21,4 +21,9 @@ export class AuthService {
   getAccessToken(){
     return this.oidcSecurityService.getAccessToken();
   }
+
+  getUserInfo(){
+    return this.oidcSecurityService.getUserData();
+  }
+
 }
