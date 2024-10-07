@@ -16,4 +16,5 @@ export const environment = {
     useRefreshToken: true,
     // logLevel: LogLevel.Debug,
   },
+  mapsKey: 'AIzaSyAsPR982x3S-7a8SSHJzgIiUrnWU1c82X0',
 };

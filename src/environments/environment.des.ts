@@ -14,4 +14,5 @@ export const environment = {
     silentRenew: true,
     useRefreshToken: true,
   },
+  mapsKey: 'AIzaSyAsPR982x3S-7a8SSHJzgIiUrnWU1c82X0',
 };

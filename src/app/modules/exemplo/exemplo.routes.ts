@@ -10,6 +10,7 @@ import { ExemploListComponent } from './components/exemplo-list/exemplo-list.com
 import { GraficoComponent } from './components/grafico/grafico.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ExemploResolver } from './resolver/exemplo.resolver';
+import { MapaComponent } from './components/mapa/mapa.component';
 
 export const ExemploRoutes: Routes = [
 
@@ -63,6 +64,10 @@ export const ExemploRoutes: Routes = [
       {
         path: 'grafico',
         component: GraficoComponent,
+      },
+      {
+        path: 'mapa',
+        component: MapaComponent,
       },
       {
         path: 'modal',
