@@ -10,7 +10,8 @@
     "test": "ng test",
     "lint": "eslint . --ext .ts,.html",
     "lint:fix": "eslint . --ext .ts,.html --fix",
-    "api": "node ./src/server/server.js"
+    "api": "node ./src/server/server.js",
+    "api:des": "node ./dist/procergs-apm-angular/browser/server/server.js"
   },
   "private": true,
   "dependencies": {

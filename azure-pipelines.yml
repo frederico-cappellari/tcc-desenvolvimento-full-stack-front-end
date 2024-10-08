@@ -35,7 +35,8 @@ steps:
   displayName: 'Run API (Node.js Server)'
   inputs:
     command: 'custom'
-    customCommand: 'run api'
+    customCommand: 'run api:des'
+  workingDirectory: '$(Build.SourcesDirectory)/dist/procergs-apm-angular/browser'
 
 # Publica os artefatos de build para o destino correto
 - task: PublishBuildArtifacts@1
