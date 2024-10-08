@@ -17,17 +17,27 @@ steps:
     versionSpec: '20.12.x'
   displayName: 'Install Node.js'
 
+# Instala as dependências
 - task: Npm@1
-  displayName: Npm Install
+  displayName: 'Npm Install'
   inputs:
     command: 'install'
 
+# Executa o build para o ambiente 'des'
 - task: Npm@1
-  displayName: Run npm build:des
+  displayName: 'Run npm build:des'
   inputs:
     command: 'custom'
     customCommand: 'run build:des'
 
+# Inicia o servidor Node.js após o build
+- task: Npm@1
+  displayName: 'Run API (Node.js Server)'
+  inputs:
+    command: 'custom'
+    customCommand: 'run api'
+
+# Publica os artefatos de build para o destino correto
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact (profs02)'
   inputs:

@@ -60,6 +60,6 @@ export class ExemploService extends BaseService<Exemplo> {
   }
 
   public getPathModule(): string {
-    return '/exemplo';
+    return '/alunos';
   }
 }

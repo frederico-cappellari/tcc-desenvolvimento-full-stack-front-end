@@ -4,7 +4,7 @@ export const environment = {
   production: true,
   // Configurações Aplicação:
   clientUrl: 'http://localhost:4200',
-  apiUrl: 'http://localhost',
+  apiUrl: 'http://localhost:3000',
   soeauth: {
     authority: 'https://soe.intra.rs.gov.br/soeauth-des/.well-known/openid-configuration',
     clientId: 'apm.i2.des.5Q2MC0k5pwA5Vy1JNfV',

@@ -1,0 +1,46 @@
+{
+  "alunos": [
+    {
+      "id": 2,
+      "nome": "Aluno 1",
+      "matricula": 12555110,
+      "curso": 2,
+      "ano": 3,
+      "data": "23/10/2024"
+    },
+    {
+      "nome": "Aluno 2",
+      "matricula": "1416110",
+      "curso": 3,
+      "ano": "2",
+      "data": "23/10/2024",
+      "id": 3
+    },
+    {
+      "nome": "Aluno 3",
+      "matricula": "2459130",
+      "curso": 1,
+      "ano": "1",
+      "data": "23/10/2024",
+      "id": 5
+    }
+  ],
+  "cursos": [
+    {
+      "id": 1,
+      "label": "Robótica"
+    },
+    {
+      "id": 2,
+      "label": "Informática"
+    },
+    {
+      "id": 3,
+      "label": "Eletrônica"
+    },
+    {
+      "id": 4,
+      "label": "Mecânica"
+    }
+  ]
+}

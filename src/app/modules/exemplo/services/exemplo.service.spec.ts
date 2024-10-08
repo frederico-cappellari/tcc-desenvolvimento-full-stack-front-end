@@ -18,7 +18,7 @@ describe('Exemplo Service', () => {
     });
 
     it('should get path module', () => {
-        expect(service.getPathModule()).toBe('/exemplo');
+        expect(service.getPathModule()).toBe('/alunos');
     });
 
     it('should return an array of alunos', () => {

@@ -32,12 +32,21 @@ export class ExemploListComponent extends BaseListComponent<Exemplo> implements 
 
   initList() {
     this.loading();
-    this.entity = this.exemploService.getExemplo();
-    this.loaded();
+    this.addSub(
+      this.exemploService.findAll().subscribe({
+        next: (res) => {
+          this.entity = res;
+          this.loaded();
+        },
+        error: (error) => {
+          this.handleError(error);
+        }
+      })
+    )
   }
 
   confirmDelete(id: number | undefined) {
-    if(id){
+    if (id) {
       this.alertConfirmation().subscribe((confirmed) => {
         if (confirmed) {
           this.excluir(id);
@@ -50,6 +59,7 @@ export class ExemploListComponent extends BaseListComponent<Exemplo> implements 
     this.loading();
     this.exemploService.delete(id).subscribe({
       next: () => {
+        this.loaded();
         this.confirmation('Deletado com sucesso').subscribe(() => {
           this.initList();
         });

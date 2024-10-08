@@ -9,7 +9,8 @@
     "build:des": "ng build --configuration=des",
     "test": "ng test",
     "lint": "eslint . --ext .ts,.html",
-    "lint:fix": "eslint . --ext .ts,.html --fix"
+    "lint:fix": "eslint . --ext .ts,.html --fix",
+    "api": "node ./src/server/server.js"
   },
   "private": true,
   "dependencies": {

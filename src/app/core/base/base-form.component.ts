@@ -1,6 +1,7 @@
 import { FormGroup } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { BaseComponent } from "./base.component";
+import { defineLocale, formatDate } from 'ngx-bootstrap/chronos';
 
 export abstract class BaseFormComponent<T> extends BaseComponent {
 
@@ -20,6 +21,22 @@ export abstract class BaseFormComponent<T> extends BaseComponent {
   fieldErros(field: string) {
     return this.form.controls[field]?.errors;
   }
+
+  formataData(data: string | Date): string | null {
+    if (data instanceof Date) {
+      // Formata a data do tipo Date para 'DD/MM/YYYY'
+      return formatDate(data, 'DD/MM/YYYY');
+    } else {
+      const formatoData = /^\d{2}\/\d{2}\/\d{4}$/;
+      // Verifica se a string está no formato 'DD/MM/YYYY'
+      if (formatoData.test(data)) {
+        return data;
+      } else {
+        // Retorna null se o formato não for válido
+        return null;
+      }
+    }
+  }  
 
   markAsDirty() {
     if (this.form) {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
-import { ActivatedRoute, RouterModule } from '@angular/router';
+import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
 import { defineLocale, formatDate } from 'ngx-bootstrap/chronos';
 import { BsDatepickerModule, BsLocaleService } from 'ngx-bootstrap/datepicker';
@@ -40,6 +40,7 @@ export class ExemploEditComponent extends BaseFormComponent<Exemplo> implements 
 
   constructor(
     public override activatedRoute: ActivatedRoute,
+    public router: Router,
     private exemploService: ExemploService, // Serviço injetado para manipular operações relacionadas ao modelo.
     private localeService: BsLocaleService,
   ) {
@@ -73,7 +74,7 @@ export class ExemploEditComponent extends BaseFormComponent<Exemplo> implements 
   // Retorna os dados do formulário como uma nova instância do modelo Exemplo.
   getDataCreate(): Exemplo {
     const formValue = { ...this.form.value } as Exemplo; // Espalha as propriedades do formulário no modelo
-    formValue.data = formValue.data ? formatDate(formValue.data, 'DD/MM/YYYY') : null; // Formata a data corretamente
+    formValue.data = formValue.data ? this.formataData(formValue.data) : null; // Formata a data corretamente
     return formValue;
   }
 
@@ -92,14 +93,13 @@ export class ExemploEditComponent extends BaseFormComponent<Exemplo> implements 
     // Subscreve-se à operação de salvamento e gerencia o sucesso e o erro.
     this.addSub(
       saveOperation.subscribe({
-        next: (res) => this.onSaveSuccess(res), // Chama o método de sucesso ao salvar.
+        next: () => this.onSaveSuccess(), // Chama o método de sucesso ao salvar.
         error: (error) => this.onSaveError(error), // Chama o método de erro ao salvar.
       })
     );
   }
 
-  private onSaveSuccess(res: Exemplo): void {
-    this.entity = res; // Atualiza a entidade com os dados retornados.
+  private onSaveSuccess(): void {
     const message = this.entity?.id ? 'Alterado com sucesso!' : 'Criado com sucesso!'; // Define a mensagem de sucesso.
 
     // Se for uma atualização, exibe a mensagem de sucesso e finaliza o carregamento.
@@ -109,7 +109,7 @@ export class ExemploEditComponent extends BaseFormComponent<Exemplo> implements 
     } else {
       // Se for uma criação, exibe a confirmação e possibilita redirecionar para outra página.
       this.confirmation(message).subscribe(() => {
-        // Código para redirecionamento aqui.
+        this.router.navigate(["/exemplo/lista"]);
       });
       this.loaded();
     }

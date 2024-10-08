@@ -28,7 +28,8 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "src/.htaccess",
-              "src/assets"
+              "src/assets",
+              "src/server"
             ],
             "styles": [
               "src/styles.scss"

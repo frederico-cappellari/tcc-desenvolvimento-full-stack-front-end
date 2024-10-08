@@ -48,6 +48,14 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
      ```
    - abrir no browser: `http://localhost:4200/`
 
+   ## Rodando o Servidor Node.js
+
+   Para suportar a aplicação front-end, você também pode precisar de um servidor back-end simples em Node.js. Esse servidor pode ser utilizado para gerenciar requisições de API, como obter, adicionar, atualizar ou deletar dados.
+
+   ```
+    > npm run api
+   ```
+
 ## Outras dicas:
 
 1. Rodar a verificação de código:
