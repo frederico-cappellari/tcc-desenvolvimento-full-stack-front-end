@@ -28,7 +28,7 @@ steps:
     SonarQube: 'sonar-apm-angular-aap'
     scannerMode: 'CLI'
     configMode: 'manual'
-    cliProjectKey: 'apm-angular-aap'
+    cliProjectKey: 'org.sonarqube:com.procergs.apm-angular-aap'
     cliSources: '.'
 
 # Executa o build para o ambiente 'des'
