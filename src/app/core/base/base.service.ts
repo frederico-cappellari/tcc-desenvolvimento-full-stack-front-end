@@ -1,6 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../environments/environment';
+import { PaginationRequest } from '../../shared/models/pagination.model';
 
 
 export abstract class BaseService<T> {
@@ -11,6 +12,10 @@ export abstract class BaseService<T> {
 
   public getById(id: number): Observable<T> {
     return this.http.get<T>(this.baseUrl + '/' + id, { headers: this.headers });
+  }
+
+  public getListPaginate(pagina: number, total: number): Observable<PaginationRequest> {
+    return this.http.get<PaginationRequest>(this.baseUrl + '?asc=true&pagina=' + pagina + '&tamanhoPagina=' + total, { headers: this.headers });
   }
 
   public findAll(): Observable<T[]> {
@@ -31,6 +36,10 @@ export abstract class BaseService<T> {
 
   public update(obj: T, id: number): Observable<T> {
     return this.http.put<T>(this.baseUrl + '/' + id, obj, { headers: this.headers });
+  }
+
+  public patchUpdate(obj: T, id: number): Observable<T> {
+    return this.http.patch<T>(this.baseUrl + '/' + id, obj, { headers: this.headers });
   }
 
   public delete(id: number): Observable<any> {

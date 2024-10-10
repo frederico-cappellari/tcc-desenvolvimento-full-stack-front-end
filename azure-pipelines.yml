@@ -17,7 +17,7 @@ steps:
     versionSpec: '20.12.x'
   displayName: 'Install Node.js'
 
-# Instala as dependências
+# Instala as dependências do projeto
 - task: Npm@1
   displayName: 'Npm Install'
   inputs:
@@ -29,14 +29,6 @@ steps:
   inputs:
     command: 'custom'
     customCommand: 'run build:des'
-
-# Inicia o servidor Node.js após o build
-- task: Npm@1
-  displayName: 'Run API (Node.js Server)'
-  inputs:
-    command: 'custom'
-    customCommand: 'run api:des'
-  workingDirectory: '$(Build.SourcesDirectory)/dist/procergs-apm-angular/browser'
 
 # Publica os artefatos de build para o destino correto
 - task: PublishBuildArtifacts@1

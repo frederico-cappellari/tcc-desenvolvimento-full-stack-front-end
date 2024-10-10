@@ -1,5 +1,6 @@
 <div class="pagination-content" *ngIf="totalItems > 0">
-  <pagination [boundaryLinks]="true" [customFirstTemplate]="firstTemplate" [customLastTemplate]="lastTemplate" [customPreviousTemplate]="prevTemplate" [customNextTemplate]="nextTemplate" [totalItems]="totalItems" [(ngModel)]="pagination.currentPage" [itemsPerPage]="pagination.itemsPerPage" [maxSize]="pagination.maxSize"></pagination>
+  <pagination [boundaryLinks]="true" [customFirstTemplate]="firstTemplate" [customLastTemplate]="lastTemplate" [customPreviousTemplate]="prevTemplate" [customNextTemplate]="nextTemplate" [totalItems]="totalItems" [(ngModel)]="pagination.currentPage" [itemsPerPage]="pagination.itemsPerPage" [maxSize]="pagination.maxSize" (pageChanged)="pageChanged($event)">
+  </pagination>
   <ng-template #prevTemplate let-direction="direction">
     Anterior
   </ng-template>

@@ -9,17 +9,17 @@
   <form [formGroup]="form" (ngSubmit)="salvar()">
     <div class="form-group row mb-3">
       <div class="col-sm-12 col-xl-8">
-        <label for="nome" class="col-sm-12 pb-1">Nome</label>
-        <textarea id="nome" class="form-control" rows="2" formControlName="nome" placeholder="Nome" maxlength="200"></textarea>
-        <app-field-message [field]="fieldMessageRequired('nome')" [erros]="fieldErros('nome')"></app-field-message>
+        <label for="nomeAlu" class="col-sm-12 pb-1">Nome</label>
+        <textarea id="nomeAlu" class="form-control" rows="2" formControlName="nomeAlu" placeholder="Nome do Aluno" maxlength="200"></textarea>
+        <app-field-message [field]="fieldMessageRequired('nomeAlu')" [erros]="fieldErros('nomeAlu')"></app-field-message>
       </div>
     </div>
 
     <div class="form-group row mb-3">
       <div class="col-sm-12 col-xl-8">
-        <label for="matricula" class="col-sm-12 pb-1">Matrícula</label>
-        <input id="matricula" class="form-control" formControlName="matricula" placeholder="Número da Matrícula" mask="0*" />
-        <app-field-message [field]="fieldMessageRequired('matricula')" [erros]="fieldErros('matricula')"></app-field-message>
+        <label for="nroIntAlu" class="col-sm-12 pb-1">Matrícula</label>
+        <input id="nroIntAlu" class="form-control" formControlName="nroIntAlu" placeholder="Número da Matrícula" mask="0*" />
+        <app-field-message [field]="fieldMessageRequired('nroIntAlu')" [erros]="fieldErros('nroIntAlu')"></app-field-message>
       </div>
     </div>
 
