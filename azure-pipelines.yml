@@ -23,12 +23,24 @@ steps:
   inputs:
     command: 'install'
 
+- task: SonarQubePrepare@6
+  inputs:
+    SonarQube: 'sonar-apm-angular-aap'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'org.sonarqube:com.procergs.apm-angular-aap'
+    cliSources: '.'
+
 # Executa o build para o ambiente 'des'
 - task: Npm@1
   displayName: 'Run npm build:des'
   inputs:
     command: 'custom'
     customCommand: 'run build:des'
+
+- task: SonarQubePublish@6
+  inputs:
+    pollingTimeoutSec: '300'
 
 # Publica os artefatos de build para o destino correto
 - task: PublishBuildArtifacts@1
