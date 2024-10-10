@@ -1,0 +1,6 @@
+{
+    "sonarlint.connectedMode.project": {
+        "connectionId": "https-sonar-9x-pro-intra-rs-gov-br",
+        "projectKey": "apm-angular-aap"
+    }
+}
