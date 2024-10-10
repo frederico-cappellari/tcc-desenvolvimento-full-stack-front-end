@@ -31,11 +31,11 @@ steps:
 #     cliProjectKey: 'org.sonarqube:com.procergs.apm-angular-aap'
 #     cliSources: '.'
 
-- script: |
-    sonar-scanner \
-      -Dsonar.projectKey=apm-angular-aap \
-      -Dsonar.sources=src 
-  displayName: 'Run SonarQube analysis'
+- task: CmdLine@2
+  displayName: 'Sonar Quality Gate'
+  inputs:
+    script: |
+      sonar-scanner -Dsonar.projectKey=apm-angular-aap -Dsonar.sources=src
 
 # Executa o build para o ambiente 'des'
 - task: Npm@1
