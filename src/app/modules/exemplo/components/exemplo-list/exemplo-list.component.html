@@ -11,7 +11,6 @@
           <th>Matrícula</th>
           <th>Aluno(a)</th>
           <th>Curso</th>
-          <th>Ano</th>
           <th></th>
         </tr>
       </thead>
@@ -19,18 +18,17 @@
         @for (item of entity | paginate: {
         itemsPerPage: pagination.itemsPerPage,
         currentPage: pagination.currentPage,
-        totalItems: entity.length}; track $index; let i = $index) {
+        totalItems: pagination.totalItems}; track $index; let i = $index) {
         <tr>
-          <th>{{ item.matricula }}</th>
+          <th>{{ item.nroIntAlu }}</th>
           <td>
-            {{ item.nome }}
+            {{ item.nomeAlu }}
           </td>
           <td>{{ item.curso | ExemploPipe }}</td>
-          <td>{{ item.ano }}</td>
           <td>
             <div class="btn-action">
-              <a routerLink="/exemplo/formulario/{{item.id}}"><i class="bi bi-pencil-square" tooltip="Editar" placement="bottom"></i></a>
-              <button class="delete" *ngIf="item?.id" (click)="confirmDelete(item?.id)"><i class="bi bi-trash" tooltip="Excluir" placement="bottom"></i></button>
+              <a routerLink="/exemplo/formulario/{{item.nroIntAlu}}"><i class="bi bi-pencil-square" tooltip="Editar" placement="bottom"></i></a>
+              <button class="delete" *ngIf="item?.nroIntAlu" (click)="confirmDelete(item?.nroIntAlu)"><i class="bi bi-trash" tooltip="Excluir" placement="bottom"></i></button>
             </div>
           </td>
         </tr>
@@ -42,5 +40,5 @@
     </table>
   </div>
 
-  <app-pagination [pagination]="pagination" [totalItems]="entity.length"></app-pagination>
+  <app-pagination [pagination]="pagination" [totalItems]="pagination.totalItems"></app-pagination>
 </section>

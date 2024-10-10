@@ -28,6 +28,7 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
 4. Reiniciar o computador para que o Integrated Terminal do Vs Code reconheça os comandos npm.
 
 5. Abrir e executar a aplicação no Visual Studio Code:
+
    - Clicar em File -> Open Folder... e selecionar a pasta raíz do projeto
    - Clicar em View -> Integrated Terminal, para abrir o terminal:
    - Fazer o restore dos pacotes:
@@ -48,13 +49,9 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
      ```
    - abrir no browser: `http://localhost:4200/`
 
-   ## Rodando o Servidor Node.js
+   ## Rodando o Servidor (API Quarkus)
 
-   Para suportar a aplicação front-end, você também pode precisar de um servidor back-end simples em Node.js. Esse servidor pode ser utilizado para gerenciar requisições de API, como obter, adicionar, atualizar ou deletar dados.
-
-   ```
-    > npm run api
-   ```
+   Para suportar a aplicação front-end, utilizamos a APM.Java.Quarkus (`https://azuredevops.pro.intra.rs.gov.br/tfs/PROCERGSCollection/DGT.AAP/_git/APM.Java.Quarkus`)
 
 ## Outras dicas:
 

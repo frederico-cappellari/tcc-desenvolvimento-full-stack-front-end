@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { NgLabelTemplateDirective, NgOptionTemplateDirective, NgSelectComponent } from '@ng-select/ng-select';
-import { defineLocale, formatDate } from 'ngx-bootstrap/chronos';
+import { defineLocale } from 'ngx-bootstrap/chronos';
 import { BsDatepickerModule, BsLocaleService } from 'ngx-bootstrap/datepicker';
 import { ptBrLocale } from 'ngx-bootstrap/locale';
 import { NgxMaskDirective, provideNgxMask } from 'ngx-mask';
@@ -57,15 +57,15 @@ export class ExemploEditComponent extends BaseFormComponent<Exemplo> implements 
   private initForm(): void {
     // Configura o formulário com controles e validadores.
     this.form = new FormGroup({
-      nome: new FormControl('', [Validators.required]),
-      matricula: new FormControl(null, [Validators.required]),
-      curso: new FormControl(null, [Validators.required]),
-      ano: new FormControl(null, [Validators.required]),
-      data: new FormControl(null, [Validators.required]),
+      nomeAlu: new FormControl('', [Validators.required]),
+      nroIntAlu: new FormControl({value: null, disabled: true}),
+      curso: new FormControl(null),
+      ano: new FormControl(null),
+      data: new FormControl(null),  
     });
 
     // Se a entidade já existir (edição), preenche o formulário com os dados existentes.
-    if (this.entity?.id) {
+    if (this.entity?.nroIntAlu) {
       this.actionLabel = 'Editar'; // Atualiza o rótulo de ação para indicar que é uma edição.
       this.form.patchValue(this.entity); // Preenche o formulário com os valores da entidade.
     }
@@ -86,8 +86,8 @@ export class ExemploEditComponent extends BaseFormComponent<Exemplo> implements 
     this.loading(); // Inicia o estado de carregamento enquanto a operação de salvamento está em andamento.
 
     // Determina se deve ser realizada uma criação ou atualização com base na existência de um ID na entidade.
-    const saveOperation = this.entity?.id
-      ? this.exemploService.update(this.getDataCreate(), this.entity.id)
+    const saveOperation = this.entity?.nroIntAlu
+      ? this.exemploService.patchUpdate(this.getDataCreate(), this.entity.nroIntAlu)
       : this.exemploService.create(this.getDataCreate());
 
     // Subscreve-se à operação de salvamento e gerencia o sucesso e o erro.
@@ -100,10 +100,10 @@ export class ExemploEditComponent extends BaseFormComponent<Exemplo> implements 
   }
 
   private onSaveSuccess(): void {
-    const message = this.entity?.id ? 'Alterado com sucesso!' : 'Criado com sucesso!'; // Define a mensagem de sucesso.
+    const message = this.entity?.nroIntAlu ? 'Alterado com sucesso!' : 'Criado com sucesso!'; // Define a mensagem de sucesso.
 
     // Se for uma atualização, exibe a mensagem de sucesso e finaliza o carregamento.
-    if (this.entity?.id) {
+    if (this.entity?.nroIntAlu) {
       this.msgSuccess(message);
       this.loaded();
     } else {
