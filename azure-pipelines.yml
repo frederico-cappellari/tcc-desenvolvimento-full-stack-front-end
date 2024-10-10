@@ -28,8 +28,8 @@ steps:
     SonarQube: 'sonar-apm-angular-aap'
     scannerMode: 'CLI'
     configMode: 'manual'
-    cliProjectKey: 'org.sonarqube:com.procergs.apm-angular-aap'
-    cliSources: '.'
+    cliProjectKey: 'apm-angular-aap'
+    cliSources: 'src'
 
 # - task: CmdLine@2
 #   displayName: 'Sonar Quality Gate'
@@ -43,9 +43,11 @@ steps:
   inputs:
     command: 'custom'
     customCommand: 'run build:des'
+
 - task: SonarQubeAnalyze@6
   inputs:
     jdkversion: 'JAVA_HOME'
+    
 # - task: SonarQubeAnalyze@6
 #   inputs:
 #     jdkversion: 'JAVA_HOME_17_X64'
