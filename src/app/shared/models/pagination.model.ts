@@ -4,3 +4,11 @@ export interface Pagination {
   totalItems: number;
   maxSize: number;
 }
+export interface PaginationRequest {
+  ascending: boolean;
+  data: any[];
+  page: number;
+  pageCount: number;
+  pageSize: number;
+  total: number;
+}

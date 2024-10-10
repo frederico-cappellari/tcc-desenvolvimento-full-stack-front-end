@@ -8,6 +8,7 @@ import { PaginationComponent } from '../../../../shared/components/pagination/pa
 import { Exemplo } from '../../models/exemplo.model';
 import { ExemploService } from '../../services/exemplo.service';
 import { ExemploPipe } from '../../../../shared/pipes/exemplo.pipe';
+import { EventSharedService } from '../../../../shared/services/event-shared.service';
 
 @Component({
   selector: 'app-exemplo-list',
@@ -28,19 +29,32 @@ export class ExemploListComponent extends BaseListComponent<Exemplo> implements 
 
   ngOnInit(): void {
     this.initList();
+    this.onChangePage();
   }
 
   initList() {
     this.loading();
     this.addSub(
-      this.exemploService.findAll().subscribe({
+      this.exemploService.getListPaginate(this.pagination.currentPage, this.pagination.itemsPerPage).subscribe({
         next: (res) => {
-          this.entity = res;
+          this.entity = res.data;
+          this.pagination.currentPage = res.page;
+          this.pagination.itemsPerPage = res.pageSize;
+          this.pagination.totalItems = res.total;
           this.loaded();
         },
         error: (error) => {
           this.handleError(error);
         }
+      })
+    )
+  }
+
+  onChangePage() {
+    this.addSub(
+      EventSharedService.get('loadList').subscribe((page: number) => {
+        this.pagination.currentPage = page;
+        this.initList()
       })
     )
   }

@@ -9,9 +9,7 @@
     "build:des": "ng build --configuration=des",
     "test": "ng test",
     "lint": "eslint . --ext .ts,.html",
-    "lint:fix": "eslint . --ext .ts,.html --fix",
-    "api": "node ./src/server/server.js",
-    "api:des": "node ./dist/procergs-apm-angular/browser/server/server.js"
+    "lint:fix": "eslint . --ext .ts,.html --fix"
   },
   "private": true,
   "dependencies": {

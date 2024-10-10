@@ -2,7 +2,7 @@ export const environment = {
   production: false,
   // Configurações Aplicação:
   clientUrl: 'https://apm02.des.intra.rs.gov.br',
-  apiUrl: 'https://apm02.des.intra.rs.gov.br:3000',
+  apiUrl: 'http://apm-quarkus-procergs-apm-quarkus-des.apps.kildes4830.des.intra.rs.gov.br',
 
   soeauth: {
     authority: 'https://soe.intra.rs.gov.br/soeauth-des/.well-known/openid-configuration',

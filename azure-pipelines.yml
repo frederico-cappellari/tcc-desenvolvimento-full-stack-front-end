@@ -17,7 +17,7 @@ steps:
     versionSpec: '20.12.x'
   displayName: 'Install Node.js'
 
-# Instala as dependências
+# Instala as dependências do projeto
 - task: Npm@1
   displayName: 'Npm Install'
   inputs:
@@ -38,16 +38,13 @@ steps:
     command: 'custom'
     customCommand: 'run build:des'
 
+- task: SonarQubeAnalyze@6
+  inputs:
+    jdkversion: 'JAVA_HOME_17_X64'
+
 - task: SonarQubePublish@6
   inputs:
     pollingTimeoutSec: '300'
-
-# Inicia o servidor Node.js após o build
-# - task: Npm@1
-#  displayName: 'Run API (Node.js Server)'
-#  inputs:
-#    command: 'custom'
-#    customCommand: 'run api:des'
 
 # Publica os artefatos de build para o destino correto
 - task: PublishBuildArtifacts@1
