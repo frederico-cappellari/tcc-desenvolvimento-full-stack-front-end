@@ -23,6 +23,14 @@ steps:
   inputs:
     command: 'install'
 
+- task: SonarQubePrepare@6
+  inputs:
+    SonarQube: 'sonar-apm-angular-aap'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'org.sonarqube:com.procergs.apm-angular-aap'
+    cliSources: '.'
+
 # Executa o build para o ambiente 'des'
 - task: Npm@1
   displayName: 'Run npm build:des'
@@ -30,12 +38,16 @@ steps:
     command: 'custom'
     customCommand: 'run build:des'
 
-# Inicia o servidor Node.js após o build
-- task: Npm@1
-  displayName: 'Run API (Node.js Server)'
+- task: SonarQubePublish@6
   inputs:
-    command: 'custom'
-    customCommand: 'run api:des'
+    pollingTimeoutSec: '300'
+
+# Inicia o servidor Node.js após o build
+# - task: Npm@1
+#  displayName: 'Run API (Node.js Server)'
+#  inputs:
+#    command: 'custom'
+#    customCommand: 'run api:des'
 
 # Publica os artefatos de build para o destino correto
 - task: PublishBuildArtifacts@1
