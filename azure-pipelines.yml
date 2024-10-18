@@ -18,18 +18,17 @@ steps:
   displayName: 'Install Node.js'
 
 # Instala as dependências do projeto
-# - task: Npm@1
-#   displayName: 'Npm Install'
-#   inputs:
-#     command: 'install'
+- task: Npm@1
+  displayName: 'Npm Install'
+  inputs:
+    command: 'install'
 
-# - task: SonarQubePrepare@6
-#   inputs:
-#     SonarQube: 'sonar-apm-angular-aap'
-#     scannerMode: 'CLI'
-#     configMode: 'manual'
-#     cliProjectKey: 'apm-angular-aap'
-#     cliSources: 'src'
+# Executa o build para o ambiente 'des'
+- task: Npm@1
+  displayName: 'Run npm build:des'
+  inputs:
+    command: 'custom'
+    customCommand: 'run build:des'
 
 # Step 1: Download SonarScanner CLI for Windows
 - powershell: |
@@ -39,41 +38,16 @@ steps:
     echo "##vso[task.setvariable variable=PATH]$env:PATH"
   displayName: 'Download and extract SonarScanner CLI for Windows'
 
-# Step 2: Add SonarScanner to PATH
-# - powershell: |
-#     $env:PATH = "$(System.DefaultWorkingDirectory)\sonar-scanner-4.7.0.2747-windows\bin;$env:PATH"
-#     echo "##vso[task.setvariable variable=PATH]$env:PATH"
-#   displayName: 'Add SonarScanner to PATH'
-
 #Step 3: Verify SonarScanner CLI is available
 - script: |
     sonar-scanner.bat -Dsonar.projectKey=apm-angular-aap -Dsonar.sources=src/app/ -Dsonar.qualitygate.wait=true -Dsonar.host.url=https://sonar-9x.pro.intra.rs.gov.br/ -Dsonar.login=$(tokenSonar)
   displayName: 'Run SonarScanner'
 
-# # Executa o build para o ambiente 'des'
-# - task: Npm@1
-#   displayName: 'Run npm build:des'
-#   inputs:
-#     command: 'custom'
-#     customCommand: 'run build:des'
-
-# # - task: SonarQubeAnalyze@6
-# #   inputs:
-# #     jdkversion: 'JAVA_HOME'
-    
-# # - task: SonarQubeAnalyze@6
-# #   inputs:
-# #     jdkversion: 'JAVA_HOME_17_X64'
-
-# - task: SonarQubePublish@6
-#   inputs:
-#     pollingTimeoutSec: '300'
-
-# # Publica os artefatos de build para o destino correto
-# - task: PublishBuildArtifacts@1
-#   displayName: 'Publish Artifact (profs02)'
-#   inputs:
-#     PathtoPublish: '$(Build.SourcesDirectory)\dist\procergs-apm-angular\browser'
-#     ArtifactName: dist
-#     publishLocation: FilePath
-#     TargetPath: '$(pastaPublicacao)'
+# Publica os artefatos de build para o destino correto
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact (profs02)'
+  inputs:
+    PathtoPublish: '$(Build.SourcesDirectory)\dist\procergs-apm-angular\browser'
+    ArtifactName: dist
+    publishLocation: FilePath
+    TargetPath: '$(pastaPublicacao)'
