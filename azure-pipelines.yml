@@ -46,6 +46,8 @@ steps:
 # Step 3: Verify SonarScanner CLI is available
 - script: |
     sonar-scanner.bat --version
+
+    sonar-scanner -Dsonar.projectKey=apm-angular-aap -Dsonar.sources=src/app/ -Dsonar.qualitygate.wait=true -Dsonar.host.url=https://sonar-9x.pro.intra.rs.gov.br/ -Dsonar.login=$(tokenSonar)
   displayName: 'Verify SonarScanner Installation'
 
 # # Executa o build para o ambiente 'des'
