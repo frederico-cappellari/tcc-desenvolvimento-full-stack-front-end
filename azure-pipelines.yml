@@ -23,13 +23,13 @@ steps:
   inputs:
     command: 'install'
 
-# - task: SonarQubePrepare@6
-#   inputs:
-#     SonarQube: 'sonar-apm-angular-aap'
-#     scannerMode: 'CLI'
-#     configMode: 'manual'
-#     cliProjectKey: 'apm-angular-aap'
-#     cliSources: 'src'
+- task: SonarQubePrepare@6
+  inputs:
+    SonarQube: 'sonar-apm-angular-aap'
+    scannerMode: 'CLI'
+    configMode: 'manual'
+    cliProjectKey: 'apm-angular-aap'
+    cliSources: 'src'
 
 # - task: CmdLine@2
 #   displayName: 'Sonar Quality Gate'
