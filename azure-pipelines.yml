@@ -38,9 +38,8 @@ steps:
       echo "Sonar scanner CLI"
       curl -LO https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
       unzip sonar-scanner-cli-4.7.0.2747-linux.zip
-      # export PATH=$PATH:$PWD
       $env:PATH = "$(System.DefaultWorkingDirectory)\sonar-scanner-4.7.0.2747-windows\bin;$env:PATH"
-      # sonar-scanner -v
+      sonar-scanner -v
 
 # # Executa o build para o ambiente 'des'
 # - task: Npm@1
