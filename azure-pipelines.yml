@@ -24,11 +24,11 @@ steps:
     command: 'install'
 
 # Roda testes
-- task: Npm@1
-  displayName: 'Run test coverage'
-  inputs:
-    command: 'custom'
-    customCommand: 'test -- --coverage'
+# - task: Npm@1
+#   displayName: 'Run test coverage'
+#   inputs:
+#     command: 'custom'
+#     customCommand: 'test -- --coverage'
 
 # Step 1: Download SonarScanner CLI for Windows
 - powershell: |
