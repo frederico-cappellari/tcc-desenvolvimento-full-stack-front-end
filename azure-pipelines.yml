@@ -31,15 +31,22 @@ steps:
 #     cliProjectKey: 'apm-angular-aap'
 #     cliSources: 'src'
 
-- task: CmdLine@2
-  displayName: 'Sonar Quality Gate'
-  inputs:
-    script: |
-      echo "Sonar scanner CLI"
-      curl -LO https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
-      unzip sonar-scanner-cli-4.7.0.2747-linux.zip
-      $env:PATH = "$(System.DefaultWorkingDirectory)\sonar-scanner-4.7.0.2747-windows\bin;$env:PATH"
-      sonar-scanner -v
+# Step 1: Download SonarScanner CLI for Windows
+- powershell: |
+    Invoke-WebRequest -Uri https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-windows.zip -OutFile sonar-scanner-cli-windows.zip
+    Expand-Archive -Path sonar-scanner-cli-windows.zip -DestinationPath .
+  displayName: 'Download and extract SonarScanner CLI for Windows'
+
+# Step 2: Add SonarScanner to PATH
+- powershell: |
+    $env:PATH = "$(System.DefaultWorkingDirectory)\sonar-scanner-4.7.0.2747-windows\bin;$env:PATH"
+    echo "##vso[task.setvariable variable=PATH]$env:PATH"
+  displayName: 'Add SonarScanner to PATH'
+
+# Step 3: Verify SonarScanner CLI is available
+- script: |
+    sonar-scanner.bat --version
+  displayName: 'Verify SonarScanner Installation'
 
 # # Executa o build para o ambiente 'des'
 # - task: Npm@1
