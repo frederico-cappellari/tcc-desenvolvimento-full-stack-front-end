@@ -37,7 +37,6 @@ steps:
     Expand-Archive -Path sonar-scanner-cli-windows.zip -DestinationPath .
     $env:PATH = "$(System.DefaultWorkingDirectory)\sonar-scanner-4.7.0.2747-windows\bin;$env:PATH"
     echo "##vso[task.setvariable variable=PATH]$env:PATH"
-    sonar-scanner.bat -Dsonar.projectKey=apm-angular-aap -Dsonar.sources=src/app/ -Dsonar.qualitygate.wait=true -Dsonar.host.url=https://sonar-9x.pro.intra.rs.gov.br/ -Dsonar.login=$(tokenSonar)
   displayName: 'Download and extract SonarScanner CLI for Windows'
 
 # Step 2: Add SonarScanner to PATH
@@ -46,10 +45,10 @@ steps:
 #     echo "##vso[task.setvariable variable=PATH]$env:PATH"
 #   displayName: 'Add SonarScanner to PATH'
 
-# Step 3: Verify SonarScanner CLI is available
-# - script: |
-#     sonar-scanner.bat -Dsonar.projectKey=apm-angular-aap -Dsonar.sources=src/app/ -Dsonar.qualitygate.wait=true -Dsonar.host.url=https://sonar-9x.pro.intra.rs.gov.br/ -Dsonar.login=$(tokenSonar)
-#   displayName: 'Verify SonarScanner Installation'
+#Step 3: Verify SonarScanner CLI is available
+- script: |
+    sonar-scanner.bat -Dsonar.projectKey=apm-angular-aap -Dsonar.sources=src/app/ -Dsonar.qualitygate.wait=true -Dsonar.host.url=https://sonar-9x.pro.intra.rs.gov.br/ -Dsonar.login=$(tokenSonar)
+  displayName: 'Run SonarScanner'
 
 # # Executa o build para o ambiente 'des'
 # - task: Npm@1
