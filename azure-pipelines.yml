@@ -12,10 +12,10 @@ pool:
   name: PROCERGS
 
 steps:
-# - task: NodeTool@0
-#   inputs:
-#     versionSpec: '20.12.x'
-#   displayName: 'Install Node.js'
+- task: NodeTool@0
+  inputs:
+    versionSpec: '20.12.x'
+  displayName: 'Install Node.js'
 
 # Instala as dependências do projeto
 # - task: Npm@1
