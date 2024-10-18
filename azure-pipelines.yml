@@ -9,7 +9,7 @@ trigger:
        - master
 
 pool:
-  name: PROCERGS
+  name: 'Maven Local'
 
 steps:
 - task: NodeTool@0
@@ -23,19 +23,19 @@ steps:
   inputs:
     command: 'install'
 
-- task: SonarQubePrepare@6
-  inputs:
-    SonarQube: 'sonar-apm-angular-aap'
-    scannerMode: 'CLI'
-    configMode: 'manual'
-    cliProjectKey: 'apm-angular-aap'
-    cliSources: 'src'
-
-# - task: CmdLine@2
-#   displayName: 'Sonar Quality Gate'
+# - task: SonarQubePrepare@6
 #   inputs:
-#     script: |
-#       sonar-scanner -Dsonar.projectKey=apm-angular-aap -Dsonar.sources=src
+#     SonarQube: 'sonar-apm-angular-aap'
+#     scannerMode: 'CLI'
+#     configMode: 'manual'
+#     cliProjectKey: 'apm-angular-aap'
+#     cliSources: 'src'
+
+- task: CmdLine@2
+  displayName: 'Sonar Quality Gate'
+  inputs:
+    script: |
+      sonar-scanner -Dsonar.projectKey=apm-angular-aap -Dsonar.sources=src/app/
 
 # Executa o build para o ambiente 'des'
 - task: Npm@1
