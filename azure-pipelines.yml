@@ -9,7 +9,7 @@ trigger:
        - master
 
 pool:
-  name: 'Maven Local'
+  name: PROCERGS
 
 steps:
 - task: NodeTool@0
@@ -35,32 +35,36 @@ steps:
   displayName: 'Sonar Quality Gate'
   inputs:
     script: |
-      sonar-scanner -Dsonar.projectKey=apm-angular-aap -Dsonar.sources=src/app/
+      echo "Baixando OpenShift CLI (oc)"
+      curl -LO https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
+      unzip sonar-scanner-cli-4.7.0.2747-linux.zip
+      export PATH=$PATH:$PWD
+      sonar-scanner -v
 
-# Executa o build para o ambiente 'des'
-- task: Npm@1
-  displayName: 'Run npm build:des'
-  inputs:
-    command: 'custom'
-    customCommand: 'run build:des'
-
-# - task: SonarQubeAnalyze@6
+# # Executa o build para o ambiente 'des'
+# - task: Npm@1
+#   displayName: 'Run npm build:des'
 #   inputs:
-#     jdkversion: 'JAVA_HOME'
+#     command: 'custom'
+#     customCommand: 'run build:des'
+
+# # - task: SonarQubeAnalyze@6
+# #   inputs:
+# #     jdkversion: 'JAVA_HOME'
     
-# - task: SonarQubeAnalyze@6
+# # - task: SonarQubeAnalyze@6
+# #   inputs:
+# #     jdkversion: 'JAVA_HOME_17_X64'
+
+# - task: SonarQubePublish@6
 #   inputs:
-#     jdkversion: 'JAVA_HOME_17_X64'
+#     pollingTimeoutSec: '300'
 
-- task: SonarQubePublish@6
-  inputs:
-    pollingTimeoutSec: '300'
-
-# Publica os artefatos de build para o destino correto
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact (profs02)'
-  inputs:
-    PathtoPublish: '$(Build.SourcesDirectory)\dist\procergs-apm-angular\browser'
-    ArtifactName: dist
-    publishLocation: FilePath
-    TargetPath: '$(pastaPublicacao)'
+# # Publica os artefatos de build para o destino correto
+# - task: PublishBuildArtifacts@1
+#   displayName: 'Publish Artifact (profs02)'
+#   inputs:
+#     PathtoPublish: '$(Build.SourcesDirectory)\dist\procergs-apm-angular\browser'
+#     ArtifactName: dist
+#     publishLocation: FilePath
+#     TargetPath: '$(pastaPublicacao)'
