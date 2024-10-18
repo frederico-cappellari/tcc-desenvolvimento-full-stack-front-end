@@ -12,16 +12,16 @@ pool:
   name: PROCERGS
 
 steps:
-- task: NodeTool@0
-  inputs:
-    versionSpec: '20.12.x'
-  displayName: 'Install Node.js'
+# - task: NodeTool@0
+#   inputs:
+#     versionSpec: '20.12.x'
+#   displayName: 'Install Node.js'
 
 # Instala as dependências do projeto
-- task: Npm@1
-  displayName: 'Npm Install'
-  inputs:
-    command: 'install'
+# - task: Npm@1
+#   displayName: 'Npm Install'
+#   inputs:
+#     command: 'install'
 
 # - task: SonarQubePrepare@6
 #   inputs:
