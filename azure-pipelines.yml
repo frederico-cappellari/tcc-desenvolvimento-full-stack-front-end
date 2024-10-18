@@ -23,12 +23,11 @@ steps:
   inputs:
     command: 'install'
 
-# Executa o build para o ambiente 'des'
+# Roda testes
 - task: Npm@1
-  displayName: 'Run npm build:des'
+  displayName: 'Run test coverage'
   inputs:
-    command: 'custom'
-    customCommand: 'run build:des'
+    customCommand: 'test -- --coverage'
 
 # Step 1: Download SonarScanner CLI for Windows
 - powershell: |
@@ -38,10 +37,17 @@ steps:
     echo "##vso[task.setvariable variable=PATH]$env:PATH"
   displayName: 'Download and extract SonarScanner CLI for Windows'
 
-#Step 3: Verify SonarScanner CLI is available
+#Step 3: Run  Sonar
 - script: |
     sonar-scanner.bat -Dsonar.projectKey=apm-angular-aap -Dsonar.sources=src/app/ -Dsonar.qualitygate.wait=true -Dsonar.host.url=https://sonar-9x.pro.intra.rs.gov.br/ -Dsonar.login=$(tokenSonar)
   displayName: 'Run SonarScanner'
+
+  # Executa o build para o ambiente 'des'
+- task: Npm@1
+  displayName: 'Run npm build:des'
+  inputs:
+    command: 'custom'
+    customCommand: 'run build:des'
 
 # Publica os artefatos de build para o destino correto
 - task: PublishBuildArtifacts@1
