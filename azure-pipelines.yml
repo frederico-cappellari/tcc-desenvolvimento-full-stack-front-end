@@ -31,15 +31,15 @@ steps:
 #     cliProjectKey: 'apm-angular-aap'
 #     cliSources: 'src'
 
-- task: CmdLine@2
-  displayName: 'Sonar Quality Gate'
-  inputs:
-    script: |
-      echo "Baixando OpenShift CLI (oc)"
-      curl -LO https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
-      unzip sonar-scanner-cli-4.7.0.2747-linux.zip
-      export PATH=$PATH:$PWD
-      sonar-scanner -v
+# - task: CmdLine@2
+#   displayName: 'Sonar Quality Gate'
+#   inputs:
+#     script: |
+#       echo "Baixando OpenShift CLI (oc)"
+#       curl -LO https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-linux.zip
+#       unzip sonar-scanner-cli-4.7.0.2747-linux.zip
+#       export PATH=$PATH:$PWD
+#       sonar-scanner -v
 
 # # Executa o build para o ambiente 'des'
 # - task: Npm@1
