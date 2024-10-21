@@ -3,7 +3,7 @@
 </section>
 
 <div>
-  <rating [max]="10" [(ngModel)]="x" [customTemplate]="t" style="color: #0275d8;font-size: 20px;"></rating>
+  <rating class="rating" [max]="10" [(ngModel)]="x" [customTemplate]="t" style="color: #0275d8;font-size: 20px;"></rating>
   <div class="card my-2">
     <pre class="card-block card-header" style="margin:15px 0;"><b>(<i>Nota:</i> {{x}})</b></pre>
   </div>
@@ -11,7 +11,7 @@
 </div>
 
 <div>
-  <rating [max]="10" [(ngModel)]="y" [customTemplate]="tt"></rating>
+  <rating class="rating" [max]="10" [(ngModel)]="y" [customTemplate]="tt"></rating>
 
   <div class="card my-2">
     <pre class="card-block card-header" style="margin:15px 0;"> <b>(<i>Nota:</i> {{y}})</b> </pre>

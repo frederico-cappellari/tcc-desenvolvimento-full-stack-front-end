@@ -14,7 +14,7 @@ export class ExemploPipe implements PipeTransform {
     { id: 4, label: 'Mecânica' },
   ];
 
-  transform(value: number): string | undefined {
+  transform(value?: number): string | undefined {
     const curso = this.CURSOS.find(curso => curso.id === value);
     return curso ? curso.label : 'Curso não encontrado';
   }
