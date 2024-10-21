@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, NO_ERRORS_SCHEMA, OnInit } from '@angular/core';
 import { BaseChartDirective } from 'ng2-charts';
 import { BaseComponent } from '../../../../core/base/base.component';
 
@@ -7,7 +7,8 @@ import { BaseComponent } from '../../../../core/base/base.component';
   standalone: true,
   imports: [BaseChartDirective],
   templateUrl: './grafico.component.html',
-  styleUrl: './grafico.component.scss'
+  styleUrl: './grafico.component.scss',
+  schemas: [NO_ERRORS_SCHEMA],
 })
 export class GraficoComponent extends BaseComponent implements OnInit {
 

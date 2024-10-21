@@ -39,11 +39,11 @@ export class BarraProgressoComponent extends BaseComponent implements OnInit {
     for (let i = 0; i < n; i++) {
       const index = Math.floor(Math.random() * 4);
       const value = Math.floor(Math.random() * 27 + 3);
-      this.stacked.push(<IStack>{
+      this.stacked.push({
         value,
         type: types[index],
         label: value + ' %'
-      });
+      } as IStack);
     }
   }
 }

@@ -99,7 +99,7 @@ export class ExemploEditComponent extends BaseFormComponent<Exemplo> implements 
     );
   }
 
-  private onSaveSuccess(): void {
+  onSaveSuccess(): void {
     const message = this.entity?.nroIntAlu ? 'Alterado com sucesso!' : 'Criado com sucesso!'; // Define a mensagem de sucesso.
 
     // Se for uma atualização, exibe a mensagem de sucesso e finaliza o carregamento.
@@ -115,7 +115,7 @@ export class ExemploEditComponent extends BaseFormComponent<Exemplo> implements 
     }
   }
 
-  private onSaveError(error: any): void {
+  onSaveError(error: any): void {
     // Exibe uma mensagem de erro com a resposta do servidor ou uma mensagem genérica.
     this.msgError(error?.error?.message || 'Erro ao salvar.');
     this.loaded(); // Finaliza o estado de carregamento.

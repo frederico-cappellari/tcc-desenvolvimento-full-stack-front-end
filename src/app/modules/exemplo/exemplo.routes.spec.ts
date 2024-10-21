@@ -7,6 +7,7 @@ import { ClassificavelComponent } from './components/classificavel/classificavel
 import { ExemploEditComponent } from './components/exemplo-edit/exemplo-edit.component';
 import { ExemploListComponent } from './components/exemplo-list/exemplo-list.component';
 import { GraficoComponent } from './components/grafico/grafico.component';
+import { MapaComponent } from './components/mapa/mapa.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { ExemploRoutes } from './exemplo.routes';
 import { ExemploResolver } from './resolver/exemplo.resolver';
@@ -66,6 +67,10 @@ describe('ExemploRoutes', () => {
             component: GraficoComponent,
           },
           {
+            path: 'mapa',
+            component: MapaComponent,
+          },
+          {
             path: 'modal',
             component: ModalComponent,
           },
@@ -88,7 +93,7 @@ describe('ExemploRoutes', () => {
     const childrenRoute = parentRoute?.children;
     expect(childrenRoute).toBeTruthy();
     expect(Array.isArray(childrenRoute)).toBe(true);
-    expect(childrenRoute?.length).toBe(10); // número de rotas
+    expect(childrenRoute?.length).toBe(11); // número de rotas
   });
 
   it('should define the correct components for the routes', () => {
@@ -108,7 +113,8 @@ describe('ExemploRoutes', () => {
       expect(childrenRoute[6].component).toBe(CarrosselComponent);
       expect(childrenRoute[7].component).toBe(ClassificavelComponent);
       expect(childrenRoute[8].component).toBe(GraficoComponent);
-      expect(childrenRoute[9].component).toBe(ModalComponent);
+      expect(childrenRoute[9].component).toBe(MapaComponent);
+      expect(childrenRoute[10].component).toBe(ModalComponent);
     }
   });
 });

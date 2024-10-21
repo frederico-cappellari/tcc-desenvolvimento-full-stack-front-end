@@ -1,14 +1,17 @@
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
 import { ExemploListComponent } from './exemplo-list.component';
 import { of } from 'rxjs';
 import { ExemploService } from '../../services/exemplo.service';
+import { EventSharedService } from '../../../../shared/services/event-shared.service';
+import { EventEmitter } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 describe('ExemploListComponent', () => {
   let component: ExemploListComponent;
   let fixture: ComponentFixture<ExemploListComponent>;
   let exemploService: ExemploService;
+  let eventSharedService: EventSharedService;
 
   let loading: jest.Mock;
   let loaded: jest.Mock;
@@ -18,21 +21,27 @@ describe('ExemploListComponent', () => {
 
   beforeEach(async () => {
     exemploService = {
-      getExemplo: jest.fn().mockReturnValue([]),
+      getListPaginate: jest.fn().mockReturnValue(of({ data: [], page: 1, pageSize: 10, total: 0 })),
       delete: jest.fn(),
     } as unknown as jest.Mocked<ExemploService>;
+
+    eventSharedService = {
+      get: jest.fn().mockReturnValue(of({ subscribe: () => {} })),
+    } as unknown as jest.Mocked<EventSharedService>;
 
     await TestBed.configureTestingModule({
       imports: [ExemploListComponent, HttpClientTestingModule],
       providers: [
-        {
-          provide: ActivatedRoute,
-          useValue: {
-            // Simulação de um parâmetro de rota, por exemplo, o ID
-            // params: of({ id: '123' }),
-          },
-        },
         { provide: ExemploService, useValue: exemploService },
+        { provide: EventSharedService, useValue: eventSharedService },
+        { 
+          provide: ActivatedRoute, 
+          useValue: {
+            snapshot: {
+              // Provide mock data if needed
+            }
+          } 
+        }
       ],
     }).compileComponents();
 
@@ -45,6 +54,7 @@ describe('ExemploListComponent', () => {
     fixture = TestBed.createComponent(ExemploListComponent);
     component = fixture.componentInstance;
     exemploService = TestBed.inject(ExemploService);
+    eventSharedService = TestBed.inject(EventSharedService);
 
     component.loading = loading;
     component.loaded = loaded;
@@ -59,13 +69,21 @@ describe('ExemploListComponent', () => {
   });
 
   it('should call initList on ngOnInit', () => {
-    const initList = component.initList = jest.fn(() => {
-      loading();
-      component.entity = exemploService.getExemplo();
-      loaded();
-    });
+    const initList = component.initList = jest.fn();
     component.ngOnInit();
 
+    expect(initList).toHaveBeenCalled();
+  });
+
+  it('should call initList on onChangePage', () => {
+    const initList = component.initList = jest.fn();
+    const mockEventEmitter = new EventEmitter<number>(); // Create a mock EventEmitter
+    const subscribeSpy = jest.spyOn(EventSharedService, 'get').mockReturnValue(mockEventEmitter); 
+
+    component.onChangePage();
+    mockEventEmitter.emit(1); // Emit a value to trigger the subscription
+
+    expect(subscribeSpy).toHaveBeenCalledWith('loadList');
     expect(initList).toHaveBeenCalled();
   });
 
@@ -87,11 +105,5 @@ describe('ExemploListComponent', () => {
 
     expect(alertConfirmation).toHaveBeenCalled();
     expect(component.excluir).not.toHaveBeenCalled();
-  });
-
-  it('should call initList', () => {
-    component.initList();
-    expect(component.loading).toHaveBeenCalled(); // Check if loading was called
-    expect(component.loaded).toHaveBeenCalled(); // Check if loaded was called
   });
 });

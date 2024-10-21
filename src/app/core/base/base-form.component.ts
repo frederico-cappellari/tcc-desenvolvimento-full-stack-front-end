@@ -1,7 +1,7 @@
 import { FormGroup } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { BaseComponent } from "./base.component";
-import { defineLocale, formatDate } from 'ngx-bootstrap/chronos';
+import { formatDate } from 'ngx-bootstrap/chronos';
 
 export abstract class BaseFormComponent<T> extends BaseComponent {
 
