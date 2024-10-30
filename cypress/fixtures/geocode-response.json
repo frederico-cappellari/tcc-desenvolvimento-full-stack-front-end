@@ -1,0 +1,13 @@
+{
+  "results": [
+    {
+      "address_components": [
+        { "long_name": "Endereço Simulado", "short_name": "End. Sim.", "types": ["route"] },
+        { "long_name": "Cidade Teste", "short_name": "Cidade Teste", "types": ["administrative_area_level_2"] },
+        { "long_name": "UF", "short_name": "UF", "types": ["administrative_area_level_1"] }
+      ],
+      "formatted_address": "Endereço Simulado, Cidade Teste - UF"
+    }
+  ],
+  "status": "OK"
+}
