@@ -23,12 +23,24 @@ steps:
   inputs:
     command: 'install'
 
-# Roda testes
+# Cria um env local
+- powershell: |
+    echo '{ "organizacao": "PROCERGS", "matricula": "$(MATRICULA)", "senha": "$(SENHA)", "token": "Bearer" }' > exemplo.cypress.env.json
+  displayName: 'Reescreve exemplo.cypress.env.json'
+
+# Roda testes do Jest
 - task: Npm@1
-  displayName: 'Run test coverage'
+  displayName: 'Run test coverage Jest'
   inputs:
     command: 'custom'
     customCommand: 'test -- --coverage'
+
+# Roda testes do Cypress
+- task: Npm@1
+  displayName: 'Run test cypress'
+  inputs:
+    command: 'custom'
+    customCommand: 'npx cypress run'
 
 # Step 1: Download SonarScanner CLI for Windows
 - powershell: |
