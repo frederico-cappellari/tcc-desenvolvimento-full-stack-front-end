@@ -25,7 +25,7 @@ steps:
 
 # Cria um env local
 - powershell: |
-    echo '{ "organizacao": "PROCERGS", "matricula": "$(MATRICULA)", "senha": "$(SENHA)", "token": "Bearer" }' > exemplo.cypress.env.json
+    echo '{ "organizacao": "PROCERGS", "matricula": "$(MATRICULA)", "senha": "$(SENHA)", "token": "Bearer" }' > cypress.env.json
   displayName: 'Reescreve exemplo.cypress.env.json'
 
 # Roda testes do Jest
