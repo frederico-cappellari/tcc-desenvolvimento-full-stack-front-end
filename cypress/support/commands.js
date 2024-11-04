@@ -39,23 +39,25 @@
 
 Cypress.Commands.add('oauthLogin', () => {
   // Acessa a página inicial de login do seu site
-  cy.visit('http://localhost:4200/login');
+  cy.session([Cypress.env('organizacao'), Cypress.env('matricula'), Cypress.env('senha')], () => {
+    cy.visit('http://localhost:4200/login');
 
-  // Clica no botão para redirecionar para a página externa de login
-  cy.get('button .marca-soe').click();
+    // Clica no botão para redirecionar para a página externa de login
+    cy.get('button .marca-soe').click();
 
-  // Usa cy.origin para lidar com o domínio externo de autenticação
-  cy.origin('https://soe.intra.rs.gov.br', () => {
-    // Insere as credenciais de autenticação
-    cy.get('input[name="organizacao"]').clear().type(Cypress.env('organizacao'));
-    cy.get('input[name="matricula"]').clear().type(Cypress.env('matricula'));
-    cy.get('input[name="senha"]').clear().type(Cypress.env('senha'));
+    // Usa cy.origin para lidar com o domínio externo de autenticação
+    cy.origin('https://soe.intra.rs.gov.br', () => {
+      // Insere as credenciais de autenticação
+      cy.get('input[name="organizacao"]').clear().type(Cypress.env('organizacao'));
+      cy.get('input[name="matricula"]').clear().type(Cypress.env('matricula'));
+      cy.get('input[name="senha"]').clear().type(Cypress.env('senha'));
 
-    // Clica no botão de login
-    cy.get('input#btnLogonOrganizacao').click();
+      // Clica no botão de login
+      cy.get('input#btnLogonOrganizacao').click();
+    });
+
+    // Verifica se o redirecionamento para a página autenticada do seu site foi bem-sucedido
+    cy.url().should('include', 'http://localhost:4200');
+    cy.wait(1000);
   });
-
-  // Verifica se o redirecionamento para a página autenticada do seu site foi bem-sucedido
-  cy.url().should('include', 'http://localhost:4200');
-  cy.wait(1000);
 });
