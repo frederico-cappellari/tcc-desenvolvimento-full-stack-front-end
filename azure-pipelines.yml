@@ -40,7 +40,7 @@ steps:
   displayName: 'Run test cypress'
   inputs:
     command: 'custom'
-    customCommand: 'cypress'
+    customCommand: 'npm run cypress'
 
 # Step 1: Download SonarScanner CLI for Windows
 - powershell: |
