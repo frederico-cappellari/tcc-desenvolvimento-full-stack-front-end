@@ -3,7 +3,7 @@ describe('CarrosselComponent', () => {
     // Chama o comando de login OAuth2
     cy.oauthLogin();
     // Visita a página do componente carrossel 
-    cy.visit('http://localhost:4200/exemplo/carrossel');
+    cy.visit('https://apm02.des.intra.rs.gov.br/carrossel');
   });
 
   it('Deve exibir o carrossel com o primeiro slide ativo', () => {

@@ -40,7 +40,7 @@
 Cypress.Commands.add('oauthLogin', () => {
   // Acessa a página inicial de login do seu site
   cy.session([Cypress.env('organizacao'), Cypress.env('matricula'), Cypress.env('senha')], () => {
-    cy.visit('http://localhost:4200/login');
+    cy.visit('https://apm02.des.intra.rs.gov.br/login');
 
     // Clica no botão para redirecionar para a página externa de login
     cy.get('button .marca-soe').click();

@@ -3,7 +3,7 @@ describe('ModalComponent', () => {
     // Chama o comando de login OAuth2
     cy.oauthLogin();
     // Visita a página do componente modal
-    cy.visit('http://localhost:4200/exemplo/modal');
+    cy.visit('https://apm02.des.intra.rs.gov.br/exemplo/modal');
   });
 
   it('Deve abrir e fechar o modal corretamente', () => {

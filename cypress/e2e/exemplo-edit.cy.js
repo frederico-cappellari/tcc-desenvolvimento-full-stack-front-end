@@ -2,7 +2,7 @@ describe('Exemplo Edit Component', () => {
   beforeEach(() => {
     // Chama o comando de login OAuth2
     cy.oauthLogin();
-    cy.visit('http://localhost:4200/exemplo/formulario/adicionar');
+    cy.visit('https://apm02.des.intra.rs.gov.br/exemplo/formulario/adicionar');
   });
 
   it('Deve carregar o formulário com os campos vazios ou preenchidos conforme o estado inicial', () => {
@@ -27,7 +27,7 @@ describe('Exemplo Edit Component', () => {
   });
 
   it('Deve carregar dados para edição e salvar as alterações', () => {
-    cy.visit('http://localhost:4200/exemplo/formulario/10642');
+    cy.visit('https://apm02.des.intra.rs.gov.br/exemplo/formulario/10642');
     const random = Math.round(Math.random() * 10000);
     cy.get('textarea#nomeAlu').clear().type('Aluno ' + random);
     cy.get('button[type="submit"]').click();

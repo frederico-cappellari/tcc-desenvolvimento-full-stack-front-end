@@ -2,7 +2,7 @@ describe('Exemplo List Component', () => {
   beforeEach(() => {
     // Chama o comando de login OAuth2
     cy.oauthLogin();
-    cy.visit('http://localhost:4200/exemplo/lista');
+    cy.visit('https://apm02.des.intra.rs.gov.br/exemplo/lista');
   });
 
   it('Deve navegar para a próxima página na paginação', () => {
