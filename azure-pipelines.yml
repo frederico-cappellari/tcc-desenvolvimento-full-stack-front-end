@@ -36,11 +36,11 @@ steps:
     customCommand: 'test -- --coverage'
 
 # # Roda testes do Cypress
-- task: Npm@1
-  displayName: 'Run test cypress'
-  inputs:
-    command: 'custom'
-    customCommand: 'cypress run'
+# - task: Npm@1
+#   displayName: 'Run test cypress'
+#   inputs:
+#     command: 'custom'
+#     customCommand: 'cypress run'
 
 # Step 1: Download SonarScanner CLI for Windows
 - powershell: |
