@@ -110,3 +110,9 @@ Este projeto utiliza uma variedade de bibliotecas para fornecer funcionalidades 
 8. ngx-mask
    Este pacote simplifica a aplicação de máscaras em inputs. Ele é particularmente útil quando se trata de formatar e validar dados de entrada, como números de telefone, datas, CPFs, entre outros, em formulários web.
    Documentação: [ngx-mask](https://github.com/JsDaddy/ngx-mask/blob/develop/USAGE.md)
+
+## Atualizando para uma versão mais recente do Angular
+
+Manter o projeto atualizado com as versões mais recentes do Angular é essencial para garantir desempenho otimizado, acesso a novos recursos e melhorias de segurança. O guia oficial de atualização do Angular fornece instruções detalhadas para migrar de uma versão para outra, ajudando a manter a compatibilidade do código e assegurar que o projeto permaneça estável e eficiente.
+
+Guia de atualização: [Angular Update Guide](https://angular.dev/update-guide)
