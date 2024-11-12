@@ -13,13 +13,21 @@ pool:
   name: PROCERGS
 
 variables:
-  # Pega o nome da branch (sem refs/heads/)
-  environment: $[Build.SourceBranchName]
   # Define o nome do ambiente baseado na branch
-  environmentName: $[if(eq(variables['environment'], 'master'), 'prod', 
-                      if(eq(variables['environment'], 'develop'), 'hml', 'des'))]
+  environmentName: 'des'  # Valor padrão
 
 steps:
+# Define o ambiente com base na branch
+- powershell: |
+    if ("$(Build.SourceBranchName)" -eq "master") {
+      Write-Output "##vso[task.setvariable variable=environmentName]prod"
+    } elseif ("$(Build.SourceBranchName)" -eq "develop") {
+      Write-Output "##vso[task.setvariable variable=environmentName]hml"
+    } else {
+      Write-Output "##vso[task.setvariable variable=environmentName]des"
+    }
+  displayName: 'Set environmentName based on branch'
+
 - task: NodeTool@0
   inputs:
     versionSpec: '20.12.x'
