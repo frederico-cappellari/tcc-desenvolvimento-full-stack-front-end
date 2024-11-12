@@ -13,15 +13,16 @@ pool:
   name: PROCERGS
 
 variables:
-  # Define o nome do ambiente baseado na branch
-  environmentName: 'des'  # Valor padrão
+  # Define o nome do ambiente com um valor padrão
+  environmentName: 'des'
 
 steps:
 # Define o ambiente com base na branch
 - powershell: |
-    if ("$(Build.SourceBranchName)" -eq "master") {
+    $branchName = "$(Build.SourceBranch)".Replace("refs/heads/", "")
+    if ($branchName -eq "master") {
       Write-Output "##vso[task.setvariable variable=environmentName]prod"
-    } elseif ("$(Build.SourceBranchName)" -eq "develop") {
+    } elseif ($branchName -eq "develop") {
       Write-Output "##vso[task.setvariable variable=environmentName]hml"
     } else {
       Write-Output "##vso[task.setvariable variable=environmentName]des"
