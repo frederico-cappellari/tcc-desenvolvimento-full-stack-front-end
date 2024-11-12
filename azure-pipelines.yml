@@ -60,7 +60,7 @@ steps:
   displayName: 'Run npm build:des'
   inputs:
     command: 'custom'
-    customCommand: 'run build:des'
+    customCommand: 'run build -- --env des'
 
 # Publica os artefatos de build para o destino correto
 - task: PublishBuildArtifacts@1
