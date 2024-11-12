@@ -23,37 +23,37 @@ steps:
   inputs:
     command: 'install'
 
-# Cria um env local
-- powershell: |
-    echo '{ "organizacao": "PROCERGS", "matricula": "$(MATRICULA)", "senha": "$(SENHA)", "token": "Bearer" }' > cypress.env.json
-  displayName: 'Reescreve exemplo.cypress.env.json'
+# # Cria um env local
+# - powershell: |
+#     echo '{ "organizacao": "PROCERGS", "matricula": "$(MATRICULA)", "senha": "$(SENHA)", "token": "Bearer" }' > cypress.env.json
+#   displayName: 'Reescreve exemplo.cypress.env.json'
 
-# Roda testes do Jest
-- task: Npm@1
-  displayName: 'Run test coverage Jest'
-  inputs:
-    command: 'custom'
-    customCommand: 'test -- --coverage'
-
-# # Roda testes do Cypress
+# # Roda testes do Jest
 # - task: Npm@1
-#   displayName: 'Run test cypress'
+#   displayName: 'Run test coverage Jest'
 #   inputs:
 #     command: 'custom'
-#     customCommand: 'cypress run'
+#     customCommand: 'test -- --coverage'
 
-# Step 1: Download SonarScanner CLI for Windows
-- powershell: |
-    Invoke-WebRequest -Uri https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-windows.zip -OutFile sonar-scanner-cli-windows.zip
-    Expand-Archive -Path sonar-scanner-cli-windows.zip -DestinationPath .
-    $env:PATH = "$(System.DefaultWorkingDirectory)\sonar-scanner-4.7.0.2747-windows\bin;$env:PATH"
-    echo "##vso[task.setvariable variable=PATH]$env:PATH"
-  displayName: 'Download and extract SonarScanner CLI for Windows'
+# # # Roda testes do Cypress
+# # - task: Npm@1
+# #   displayName: 'Run test cypress'
+# #   inputs:
+# #     command: 'custom'
+# #     customCommand: 'cypress run'
 
-#Step 3: Run  Sonar
-- script: |
-    sonar-scanner.bat -Dsonar.projectKey=apm-angular-aap -Dsonar.sources=src/app/ -Dsonar.qualitygate.wait=true -Dsonar.host.url=https://sonar-9x.pro.intra.rs.gov.br/ -Dsonar.login=$(tokenSonar)
-  displayName: 'Run SonarScanner'
+# # Step 1: Download SonarScanner CLI for Windows
+# - powershell: |
+#     Invoke-WebRequest -Uri https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-windows.zip -OutFile sonar-scanner-cli-windows.zip
+#     Expand-Archive -Path sonar-scanner-cli-windows.zip -DestinationPath .
+#     $env:PATH = "$(System.DefaultWorkingDirectory)\sonar-scanner-4.7.0.2747-windows\bin;$env:PATH"
+#     echo "##vso[task.setvariable variable=PATH]$env:PATH"
+#   displayName: 'Download and extract SonarScanner CLI for Windows'
+
+# #Step 3: Run  Sonar
+# - script: |
+#     sonar-scanner.bat -Dsonar.projectKey=apm-angular-aap -Dsonar.sources=src/app/ -Dsonar.qualitygate.wait=true -Dsonar.host.url=https://sonar-9x.pro.intra.rs.gov.br/ -Dsonar.login=$(tokenSonar)
+#   displayName: 'Run SonarScanner'
 
   # Executa o build para o ambiente 'des'
 - task: Npm@1
