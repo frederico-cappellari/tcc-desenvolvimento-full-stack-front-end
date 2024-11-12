@@ -7,6 +7,8 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "build:des": "ng build --configuration=des",
+    "build:hml": "ng build --configuration=hml",
+    "build:prod": "ng build --configuration=prod",
     "test": "ng test",
     "lint": "eslint . --ext .ts,.html",
     "lint:fix": "eslint . --ext .ts,.html --fix",
