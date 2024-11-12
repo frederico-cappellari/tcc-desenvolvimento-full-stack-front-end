@@ -1,4 +1,3 @@
-
 import { HTTP_INTERCEPTORS, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { ApplicationConfig, importProvidersFrom, provideZoneChangeDetection } from '@angular/core';
 import { provideClientHydration } from '@angular/platform-browser';
@@ -11,8 +10,6 @@ import { IConfig, provideEnvironmentNgxMask } from 'ngx-mask';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { AuthInterceptor } from './shared/services/auth.interceptor';
-
-const config = environment.soeauth;
 
 const maskConfigFunction: () => Partial<IConfig> = () => {
   return {
@@ -27,7 +24,9 @@ export const appConfig: ApplicationConfig = {
     provideAnimations(),
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideHttpClient(withInterceptorsFromDi()),
-    provideAuth({ config }),
+    provideAuth({
+      config: [environment.soeauth, environment.loginCidadao],
+    }),
     importProvidersFrom(ModalModule.forRoot()),
     provideEnvironmentNgxMask(maskConfigFunction),
     provideCharts(withDefaultRegisterables()),

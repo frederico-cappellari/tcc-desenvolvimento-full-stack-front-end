@@ -2,22 +2,38 @@
   <div class="login-content">
     <div class="login-box p-4">
       <div class="text-center">
-        <div class="d-flex justify-content-center">
+        <!-- <div class="d-flex justify-content-center">
           <img class="apm-logo" src="assets/images/procergsLogo.png" alt="Logo">
-        </div>
-        <h2 class="font-weight-bold">LOGIN</h2>
+        </div> -->
+        <h2 class="font-weight-bold">Login com SOE</h2>
       </div>
       <div class="content-soe">
-        <button type="button" (click)="login()">
-          <img src="../../../../assets/images/marca_SOE.png" class="marca-soe" alt="SOE"/>
-
-          <p><i>Identifique-se para entrar</i></p>
+        <button type="button" (click)="loginSOE()">
+          <img src="../../../../assets/images/marca_SOE.png" class="marca-soe" alt="SOE" />
         </button>
+        <p><i>Identifique-se para entrar</i></p>
       </div>
+    </div>
 
-      <div class="text-right mt-3">
-        <img class="me-3" width="auto" height="20" src="assets/images/procergsLogo.png" alt="Procergs Logo" />
-        <small>&copy;{{date.getFullYear()}}</small>
+    <div class="login-box p-4">
+      <div class="text-center">
+        <!-- <div class="d-flex justify-content-center">
+          <img class="apm-logo" src="assets/images/procergsLogo.png" alt="Logo">
+        </div> -->
+        <h2 class="font-weight-bold">Login com GOVBR</h2>
+      </div>
+      <div class="content-soe">
+        <button type="button" (click)="loginCidadao()">
+          <img src="../../../../assets/images/gov-br.png" alt="gov-br" />
+        </button>
+        <p><i>Identifique-se para entrar</i></p>
       </div>
     </div>
   </div>
+</div>
+<footer>
+  <div class="text-right">
+    <img class="me-3" width="auto" height="20" src="assets/images/procergsLogo.png" alt="Procergs Logo" />
+    <small>&copy;{{date.getFullYear()}}</small>
+  </div>
+</footer>
