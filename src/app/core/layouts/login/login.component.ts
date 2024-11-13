@@ -1,14 +1,11 @@
-import { CommonModule } from "@angular/common";
 import { Component } from "@angular/core";
-import { FormsModule } from "@angular/forms";
-import { LoadingComponent } from "../../../shared/components/loading/loading.component";
 import { AuthService } from "../../../shared/services/auth.service";
 
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [CommonModule, FormsModule, LoadingComponent],
+  imports: [],
   providers: [AuthService],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss'
@@ -18,7 +15,13 @@ export class LoginComponent {
 
   constructor(private authService: AuthService) {}
 
-  login() {
+  loginSOE() {
+    this.authService.setCurrentLoginMethod('soe');
+    this.authService.login();
+  }
+
+  loginCidadao() {
+    this.authService.setCurrentLoginMethod('cidadao');
     this.authService.login();
   }
 }

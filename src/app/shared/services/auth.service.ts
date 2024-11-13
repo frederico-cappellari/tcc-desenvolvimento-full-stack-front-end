@@ -1,29 +1,45 @@
 import { Injectable } from '@angular/core';
 import { OidcSecurityService } from 'angular-auth-oidc-client';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
-  providedIn: 'root', // Define o serviço como provido na raiz do aplicativo, tornando-o acessível em todo o app.
+  providedIn: 'root',
 })
 export class AuthService {
 
-  constructor(
-    public oidcSecurityService: OidcSecurityService,
-  ) { }
+  private currentLoginMethod: string | null = 'soe';
+
+  constructor(private oidcSecurityService: OidcSecurityService,) { }
+
+  // Define o método de autenticação
+  setCurrentLoginMethod(method: string) {
+    window.sessionStorage.setItem('currentLoginMethod', method);
+  }
+
+  // Retorna o configId com base no método de login atual
+  public getConfigId(): string {
+    this.currentLoginMethod = window.sessionStorage.getItem('currentLoginMethod');
+    return this.currentLoginMethod === 'soe' ? environment.soeauth.configId : environment.loginCidadao.configId;
+  }
 
   login() {
-    this.oidcSecurityService.authorize();
+    // Usa o configId correto para iniciar a autenticação
+    const configId = this.getConfigId();
+    this.oidcSecurityService.authorize(configId);
   }
 
   logout() {
-    this.oidcSecurityService.logoff().subscribe((result) => console.log(result));
+    const configId = this.getConfigId();
+    this.oidcSecurityService.logoff(configId).subscribe((result) => console.log(result));
   }
 
   getAccessToken() {
-    return this.oidcSecurityService.getAccessToken();
+    const configId = this.getConfigId();
+    return this.oidcSecurityService.getAccessToken(configId);
   }
 
-  getUserInfo(){
-    return this.oidcSecurityService.getUserData();
+  getUserInfo() {
+    const configId = this.getConfigId();
+    return this.oidcSecurityService.getUserData(configId);
   }
-
 }

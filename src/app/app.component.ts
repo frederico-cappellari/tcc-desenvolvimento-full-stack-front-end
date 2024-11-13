@@ -1,13 +1,14 @@
 import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { RouterLink, RouterOutlet } from '@angular/router';
+import { RouterOutlet } from '@angular/router';
 import { AuthInterceptor, OidcSecurityService } from 'angular-auth-oidc-client';
+import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [CommonModule, RouterOutlet, RouterLink],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [
@@ -18,10 +19,10 @@ import { AuthInterceptor, OidcSecurityService } from 'angular-auth-oidc-client';
 export class AppComponent implements OnInit {
   title = 'APM.Angular18';
 
-  constructor(public oidcSecurityService: OidcSecurityService) { }
+  constructor(public oidcSecurityService: OidcSecurityService, private authService: AuthService) { }
 
   ngOnInit() {
-    this.oidcSecurityService.checkAuth().subscribe(({ isAuthenticated }) => {
+    this.oidcSecurityService.checkAuth('', this.authService.getConfigId()).subscribe(({ isAuthenticated }) => {
       if (!isAuthenticated) {
         console.error('Autenticação falhou');
       }
