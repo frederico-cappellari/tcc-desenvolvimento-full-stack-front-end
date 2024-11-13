@@ -18,8 +18,10 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 80%;
     height: 100%;
+    flex-wrap: wrap;
+    margin: 0 auto;
 
     .login-box {
       margin: 0px auto;
@@ -29,27 +31,44 @@
       background-color: #f1f1f1;
       box-shadow: 0px 1px 3px rgba(54, 54, 54, 0.3);
 
-      .content-soe{
+      .content-soe {
         width: 100%;
         margin: 40px auto;
         display: flex;
         align-items: center;
         justify-content: center;
+        flex-direction: column;
 
-        button{
+        button {
           width: 300px;
           padding: 1em;
           border: 0;
           box-shadow: 0px 1px 3px rgba(54, 54, 54, 0.3);
           border-radius: 20px;
+          height: 165px;
 
-          img{
+          img {
             max-width: 150px;
             width: 90%;
             height: auto;
           }
-
         }
+
+        p {
+          padding-top: 10px;
+        }
+      }
+    }
+
+    @media(max-width: 1040px) {
+      margin: 0 auto;
+      flex-direction: column;
+      justify-content: flex-start;
+      width: 100%;
+
+      .login-box {
+        margin: 20px auto 0;
+
       }
     }
   }
@@ -61,4 +80,14 @@
 
 .invalido-p-l {
   padding-left: 12px;
+}
+
+footer {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  z-index: 1;
+  background: #fff;
+  padding: 5px 20px;
+  border-radius: 12px 12px 0 0;
 }
