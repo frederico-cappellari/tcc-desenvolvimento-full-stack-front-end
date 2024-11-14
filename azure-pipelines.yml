@@ -74,7 +74,7 @@ steps:
 
   # Executa o build para o ambiente
 - task: Npm@1
-  displayName: 'Run npm build:$(environmentName)'
+  displayName: 'Run npm build'
   inputs:
     command: 'custom'
     customCommand: 'run build:$(environmentName)'

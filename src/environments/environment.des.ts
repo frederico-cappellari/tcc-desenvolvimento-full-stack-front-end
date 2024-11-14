@@ -22,8 +22,8 @@ export const environment = {
     clientId: '530_re15h32dv7kws04s044gwo8o40kc4g8gw0kcsgo48cw4cossk',
     scope: 'openid',
     responseType: 'code',
-    redirectUrl: 'http://localhost:4200',
-    postLogoutRedirectUri: 'http://localhost:4200/login'
+    redirectUrl: "https://apm02.des.intra.rs.gov.br",
+    postLogoutRedirectUri: "https://apm02.des.intra.rs.gov.br/login",
   },
 
   mapsKey: 'AIzaSyAsPR982x3S-7a8SSHJzgIiUrnWU1c82X0',
