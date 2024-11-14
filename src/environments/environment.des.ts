@@ -5,6 +5,7 @@ export const environment = {
   apiUrl: 'https://apm-quarkus.apps.kildes4830.des.intra.rs.gov.br',
 
   soeauth: {
+    configId: 'soeAuthConfig',
     authority: 'https://soe.intra.rs.gov.br/soeauth-des/.well-known/openid-configuration',
     clientId: 'apm.i2.des.5Q2MC0k5pwA5Vy1JNfV',
     redirectUrl: "https://apm02.des.intra.rs.gov.br",
