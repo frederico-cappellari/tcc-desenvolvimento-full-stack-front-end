@@ -50,7 +50,7 @@ steps:
   displayName: 'Run test coverage Jest'
   inputs:
     command: 'custom'
-    customCommand: 'test'
+    customCommand: 'test -- --coverage'
 
 # # # Roda testes do Cypress
 # - task: Npm@1
