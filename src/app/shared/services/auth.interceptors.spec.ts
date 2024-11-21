@@ -77,8 +77,11 @@ describe('AuthInterceptor', () => {
             handle: jest.fn().mockReturnValue(throwError(() => new HttpErrorResponse({ status: 401 }))),
         };
 
-        await interceptor.intercept(request, next).toPromise().catch(() => {
-            expect(authServiceMock.logout).toHaveBeenCalled();
+        interceptor.intercept(request, next).subscribe({
+            next: () => { },
+            error: () => {
+                expect(authServiceMock.logout).toHaveBeenCalled();                
+            },
         });
     });
 
