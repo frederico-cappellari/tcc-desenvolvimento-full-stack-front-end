@@ -77,7 +77,7 @@ steps:
   displayName: 'Run npm build'
   inputs:
     command: 'custom'
-    customCommand: 'run build'
+    customCommand: 'run build:$(environmentName)'
 
 # Publica os artefatos de build para o destino correto
 - task: PublishBuildArtifacts@1
