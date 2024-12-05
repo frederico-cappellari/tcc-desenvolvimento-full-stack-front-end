@@ -27,6 +27,5 @@ export const environment = {
     redirectUrl: 'http://localhost:4200',
     postLogoutRedirectUri: 'http://localhost:4200/login'
   },
-
   mapsKey: 'AIzaSyAsPR982x3S-7a8SSHJzgIiUrnWU1c82X0',
 };
