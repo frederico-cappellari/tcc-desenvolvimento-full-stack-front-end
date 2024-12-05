@@ -25,6 +25,5 @@ export const environment = {
     redirectUrl: "https://apm02.des.intra.rs.gov.br",
     postLogoutRedirectUri: "https://apm02.des.intra.rs.gov.br/login",
   },
-
   mapsKey: 'AIzaSyAsPR982x3S-7a8SSHJzgIiUrnWU1c82X0',
 };
