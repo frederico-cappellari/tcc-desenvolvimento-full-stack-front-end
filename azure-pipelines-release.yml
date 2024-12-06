@@ -62,7 +62,7 @@ steps:
 - task: AzureCLI@2
   displayName: 'Create Release in Azure DevOps'
   inputs:
-    azureSubscription: 'PROCERGS' # Substitua pelo nome da conexão de serviço configurada no Azure DevOps
+    azureSubscription: 'ARM' # Substitua pelo nome da conexão de serviço configurada no Azure DevOps
     scriptType: 'bash'
     scriptLocation: 'inlineScript'
     inlineScript: |
