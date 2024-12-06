@@ -34,11 +34,11 @@ steps:
     versionSpec: '20.12.x'
   displayName: 'Install Node.js'
 
-# Instala as dependências do projeto
-- task: Npm@1
-  displayName: 'Npm Install'
-  inputs:
-    command: 'install'
+# # Instala as dependências do projeto
+# - task: Npm@1
+#   displayName: 'Npm Install'
+#   inputs:
+#     command: 'install'
 
 # # Cria um env local
 # - powershell: |
