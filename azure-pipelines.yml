@@ -9,11 +9,6 @@ trigger:
        - master
        - develop
 
-pr:
-  branches:
-    include:
-      - master 
-
 pool:
   name: PROCERGS
 
@@ -84,23 +79,11 @@ steps:
     command: 'custom'
     customCommand: 'run build:$(environmentName)'
 
-- powershell: |
-    if ($(System.PullRequest.PullRequestId)") {
-      - task: PublishBuildArtifacts@1
-        displayName: 'Publish Artifact (profs02)'
-        inputs:
-          PathtoPublish: '$(Build.SourcesDirectory)\dist\procergs-apm-angular\browser'
-          ArtifactName: dist
-          publishLocation: FilePath
-          TargetPath: '$(pastaPublicacao)' 
-    }
-  displayName: 'Set environmentName based on branch'
-
-# # Publica os artefatos de build para o destino correto
-# - task: PublishBuildArtifacts@1
-#   displayName: 'Publish Artifact (profs02)'
-#   inputs:
-#     PathtoPublish: '$(Build.SourcesDirectory)\dist\procergs-apm-angular\browser'
-#     ArtifactName: dist
-#     publishLocation: FilePath
-#     TargetPath: '$(pastaPublicacao)'
+# Publica os artefatos de build para o destino correto
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact (profs02)'
+  inputs:
+    PathtoPublish: '$(Build.SourcesDirectory)\dist\procergs-apm-angular\browser'
+    ArtifactName: dist
+    publishLocation: FilePath
+    TargetPath: '$(pastaPublicacao)'
