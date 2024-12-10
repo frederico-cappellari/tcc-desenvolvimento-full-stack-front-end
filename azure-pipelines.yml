@@ -67,10 +67,10 @@ steps:
     echo "##vso[task.setvariable variable=PATH]$env:PATH"
   displayName: 'Download and extract SonarScanner CLI for Windows'
 
-#Step 3: Run  Sonar
-- script: |
-    sonar-scanner.bat -Dsonar.projectKey=apm-angular-aap -Dsonar.sources=src/app/ -Dsonar.qualitygate.wait=true -Dsonar.host.url=https://sonar-9x.pro.intra.rs.gov.br/ -Dsonar.login=$(tokenSonar)
-  displayName: 'Run SonarScanner'
+# #Step 3: Run  Sonar
+# - script: |
+#     sonar-scanner.bat -Dsonar.projectKey=apm-angular-aap -Dsonar.sources=src/app/ -Dsonar.qualitygate.wait=true -Dsonar.host.url=https://sonar-9x.pro.intra.rs.gov.br/ -Dsonar.login=$(tokenSonar)
+#   displayName: 'Run SonarScanner'
 
   # Executa o build para o ambiente
 - task: Npm@1
