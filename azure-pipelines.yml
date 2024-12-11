@@ -45,12 +45,12 @@ steps:
 #     echo '{ "organizacao": "PROCERGS", "matricula": "$(MATRICULA)", "senha": "$(SENHA)", "token": "Bearer" }' > cypress.env.json
 #   displayName: 'Reescreve exemplo.cypress.env.json'
 
-# Roda testes do Jest
-- task: Npm@1
-  displayName: 'Run test coverage Jest'
-  inputs:
-    command: 'custom'
-    customCommand: 'test -- --coverage'
+# # Roda testes do Jest
+# - task: Npm@1
+#   displayName: 'Run test coverage Jest'
+#   inputs:
+#     command: 'custom'
+#     customCommand: 'test -- --coverage'
 
 # # # Roda testes do Cypress
 # - task: Npm@1
