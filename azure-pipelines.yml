@@ -54,20 +54,6 @@ steps:
 #     sonar-scanner.bat -Dsonar.projectKey=apm-angular-aap -Dsonar.sources=src/app/ -Dsonar.qualitygate.wait=true -Dsonar.host.url=https://sonar-9x.pro.intra.rs.gov.br/ -Dsonar.login=$(tokenSonar)
 #   displayName: 'Run SonarScanner' 
 
-# Adiciona a tarefa de cache para os pacotes npm
-- task: Cache@2
-  inputs:
-    key: 'npm | "$(Agent.OS)" | package-lock.json'
-    restoreKeys: |
-      npm | "$(Agent.OS)"
-    path: ~/.npm
-  displayName: 'Cache npm packages'
-
-# Instala as dependências do projeto usando o cache, se disponível
-- script: |
-    npm ci
-  displayName: 'Instalar dependências usando cache'
-
 # Executa o build para o ambiente
 - task: Npm@1
   displayName: 'Run npm build'
