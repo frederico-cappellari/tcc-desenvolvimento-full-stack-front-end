@@ -29,6 +29,13 @@ steps:
     }
   displayName: 'Set environmentName based on branch'
 
+# Limpa o cache
+- task: Npm@1
+  displayName: 'Npm clean cache'
+  inputs:
+    command: 'custom'
+    customCommand: 'cache clean --force'
+
 - task: NodeTool@0
   inputs:
     versionSpec: '20.12.x'
