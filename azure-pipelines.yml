@@ -41,7 +41,7 @@ steps:
     versionSpec: '20.12.x'
   displayName: 'Install Node.js'
 
-# Instala as dependências do projeto
+# Instala dependências do projeto
 - task: Npm@1
   displayName: 'Npm Install'
   inputs:
