@@ -1,4 +1,4 @@
-# pipeline para criação de artefato e deploy
+# pipeline para criação de artefato e deploy em Homologação
 
 # branch que vai disparar o pipeline
 trigger:
@@ -56,7 +56,8 @@ stages:
           - task: PublishBuildArtifacts@1
             displayName: 'Publish Artifact (profs02)'
             inputs:
-              PathtoPublish: '$(Build.SourcesDirectory)\dist\procergs-apm-angular\browser'
+            # PathtoPublish: '$(Build.SourcesDirectory)\dist\procergs-apm-angular\browser' forma de criar pasta no destino utilizando o nome do pipeline
+              PathtoPublish: 'APM.Angular\dist\procergs-apm-angular\browser'
               ArtifactName: dist
               publishLocation: FilePath
               TargetPath: '$(pastaPublicacao)'
