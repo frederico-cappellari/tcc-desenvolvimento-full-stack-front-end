@@ -1,8 +1,13 @@
 # pipeline para criação de artefato e deploy em Homologação
 
 # branch que vai disparar o pipeline
-trigger:
+#trigger:
 # - master
+
+trigger:
+  branches:
+    exclude:
+      - "*"
 
 stages:
   # Stage de Build
