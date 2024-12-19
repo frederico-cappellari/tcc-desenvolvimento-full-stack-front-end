@@ -82,7 +82,7 @@ stages:
         - task: LVPIncluiItem@2
           displayName: 'LVP - Inclui Item na Liberação'
           inputs:
-            LocalOrigem: '\\profs02.procergs.reders\PROINSTALA\PRES\DSTR\DGT\AAP\$(Build.DefinitionName)\$(Build.BuildNumber)\dist'
+            LocalOrigem: '\\profs02.procergs.reders\PROINSTALA\PRES\DSTR\DGT\AAP\APM.Angular\$(Build.BuildNumber)\dist'
             GrupoMaquinas: 'APM_LINUX_2'
             PastaDestino: '\APM\apm03.hml.intra.rs.gov.br'
       
