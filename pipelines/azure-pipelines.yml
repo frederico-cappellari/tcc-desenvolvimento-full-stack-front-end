@@ -30,18 +30,16 @@ steps:
     }
   displayName: 'Set environmentName based on branch'
 
-# - task: NodeTool@0
-#   inputs:
-#     versionSpec: '20.12.x'
-#   displayName: 'Install Node.js'
+- task: NodeTool@0
+  inputs:
+    versionSpec: '20.12.x'
+  displayName: 'Install Node.js'
 
-# # Instala as dependências do projeto
-# - task: Npm@1
-#   displayName: 'Npm Install'
-#   inputs:
-#     command: 'install'
-
-- template: 'template-node-install.yml'
+# Instala as dependências do projeto
+- task: Npm@1
+  displayName: 'Npm Install'
+  inputs:
+    command: 'install'
 
 # Roda testes do Jest
 - task: Npm@1
