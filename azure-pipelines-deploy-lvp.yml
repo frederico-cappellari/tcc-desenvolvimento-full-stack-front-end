@@ -1,0 +1,93 @@
+# pipeline para criação de artefato e deploy
+
+# branch que vai disparar o pipeline
+trigger:
+- master
+
+stages:
+  # Stage de Build
+  - stage: Build
+    displayName: "Build Stage"
+    jobs:
+      - job: BuildJob
+        displayName: "Build Application"
+        pool:
+          name: PROCERGS
+        steps:
+          - task: NodeTool@0
+            inputs:
+              versionSpec: '20.12.x'
+            displayName: 'Install Node.js'
+
+          # Instala as dependências do projeto
+          - task: Npm@1
+            displayName: 'Npm Install'
+            inputs:
+              command: 'install'
+
+          # Roda testes unitários com Jest
+          - task: Npm@1
+            displayName: 'Run test coverage Jest'
+            inputs:
+              command: 'custom'
+              customCommand: 'test -- --coverage'
+
+          # Download SonarScanner CLI for Windows
+          - powershell: |
+                Invoke-WebRequest -Uri https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-4.7.0.2747-windows.zip -OutFile sonar-scanner-cli-windows.zip
+                Expand-Archive -Path sonar-scanner-cli-windows.zip -DestinationPath .
+                $env:PATH = "$(System.DefaultWorkingDirectory)\sonar-scanner-4.7.0.2747-windows\bin;$env:PATH"
+                echo "##vso[task.setvariable variable=PATH]$env:PATH"
+            displayName: 'Download and extract SonarScanner CLI for Windows'
+
+          # Roda o Sonar
+          - script: |
+                sonar-scanner.bat -Dsonar.projectKey=apm-angular-aap -Dsonar.sources=src/app/ -Dsonar.qualitygate.wait=true -Dsonar.host.url=https://sonar-9x.pro.intra.rs.gov.br/ -Dsonar.login=$(tokenSonar)
+            displayName: 'Run SonarScanner'
+
+          # Executa o build para o ambiente
+          - task: Npm@1
+            displayName: 'Run npm build'
+            inputs:
+              command: 'custom'
+              customCommand: 'run build:prod'
+
+          # Publica os artefatos de build para o destino correto
+          - task: PublishBuildArtifacts@1
+            displayName: 'Publish Artifact (profs02)'
+            inputs:
+              PathtoPublish: '$(Build.SourcesDirectory)\dist\procergs-apm-angular\browser'
+              ArtifactName: dist
+              publishLocation: FilePath
+              TargetPath: '$(pastaPublicacao)'
+
+  # Stage de Deploy
+  - stage: Deploy
+    displayName: "Deploy Stage"
+    dependsOn: Build
+    condition: succeeded() # Executa o Deploy apenas se o Build for bem-sucedido
+    jobs:
+      - job: DeployJob
+        displayName: "Deploy para ambiente de Homologação"
+        pool:
+          name: PROCERGS
+        steps:        
+        - task: LVPCriaCabecalho@2
+          displayName: 'LVP - Cria Cabeçalho do Roteiro'
+          inputs:
+            Sistema: APM
+            SO: L
+            Ambiente: 'Homologação'
+
+        - task: LVPIncluiItem@2
+          displayName: 'LVP - Inclui Item na Liberação'
+          inputs:
+            LocalOrigem: '\\profs02.procergs.reders\PROINSTALA\PRES\DSTR\DGT\AAP\$(Build.DefinitionName)\$(Build.BuildNumber)\dist'
+            GrupoMaquinas: 'APM_LINUX_2'
+            PastaDestino: '\APM\apm03.hml.intra.rs.gov.br'
+      
+        - task: LVPExecutaLiberacao@2
+          displayName: 'LVP - Executa Liberação'
+          inputs:
+            Matricula: '$(matriculaSOE)'
+            Senha: '$(senhaSOE)'         
