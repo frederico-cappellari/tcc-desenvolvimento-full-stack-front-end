@@ -55,9 +55,8 @@ stages:
           # Publica os artefatos de build para o destino correto
           - task: PublishBuildArtifacts@1
             displayName: 'Publish Artifact (profs02)'
-            inputs:
-            # PathtoPublish: '$(Build.SourcesDirectory)\dist\procergs-apm-angular\browser' forma de criar pasta no destino utilizando o nome do pipeline
-              PathtoPublish: 'APM.Angular\dist\procergs-apm-angular\browser'
+            inputs:            
+              PathtoPublish: '$(Build.SourcesDirectory)\dist\procergs-apm-angular\browser'
               ArtifactName: dist
               publishLocation: FilePath
               TargetPath: '$(pastaPublicacao)'
