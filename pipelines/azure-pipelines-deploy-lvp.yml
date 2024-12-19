@@ -1,4 +1,5 @@
 # pipeline para criação de artefato e deploy em Homologação
+# exemplo de utilização de template
 
 # branch que vai disparar o pipeline
 #trigger:
@@ -19,16 +20,9 @@ stages:
         pool:
           name: PROCERGS
         steps:
-          - task: NodeTool@0
-            inputs:
-              versionSpec: '20.12.x'
-            displayName: 'Install Node.js'
-
-          # Instala as dependências do projeto
-          - task: Npm@1
-            displayName: 'Npm Install'
-            inputs:
-              command: 'install'
+          
+          # Template para instalação do Node e pacotes do projeto
+          - template: 'template-node-install.yml'
 
           # Roda testes unitários com Jest
           - task: Npm@1
