@@ -2,7 +2,7 @@
 
 # branch que vai disparar o pipeline
 trigger:
-- master
+# - master
 
 stages:
   # Stage de Build
