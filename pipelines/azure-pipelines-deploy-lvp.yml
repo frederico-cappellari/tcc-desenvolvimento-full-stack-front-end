@@ -77,6 +77,8 @@ stages:
             Sistema: APM
             SO: L
             Ambiente: 'Homologação'
+            #RDM: 
+            #Incidente: 
 
         - task: LVPIncluiItem@2
           displayName: 'LVP - Inclui Item na Liberação'
