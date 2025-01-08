@@ -8,6 +8,11 @@ steps:
     versionSpec: '20.12.x'
   displayName: 'Install Node.js'
 
+# Autenticação
+- task: npmAuthenticate@0
+  inputs:
+    workingFile: './.npmrc'
+
 # Instala as dependências do projeto
 - task: Npm@1
   displayName: 'Npm Install'
