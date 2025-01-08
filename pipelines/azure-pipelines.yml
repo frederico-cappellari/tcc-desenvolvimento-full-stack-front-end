@@ -72,11 +72,20 @@ steps:
     command: 'custom'
     customCommand: 'run build:$(environmentName)'
 
+- task: ArchiveFiles@2
+  inputs:
+    rootFolderOrFile: '$(Build.SourcesDirectory)\dist\procergs-apm-angular\browser'
+    includeRootFolder: true
+    archiveType: 'zip'
+    archiveFile: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
+    replaceExistingArchive: true
+
+
 # Publica os artefatos de build para o destino correto
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact (profs02)'
   inputs:
-    PathtoPublish: '$(Build.SourcesDirectory)\dist\procergs-apm-angular\browser'
+    PathtoPublish: '$(Build.ArtifactStagingDirectory)/$(Build.BuildId).zip'
     ArtifactName: dist
     publishLocation: FilePath
     TargetPath: '$(pastaPublicacao)'
