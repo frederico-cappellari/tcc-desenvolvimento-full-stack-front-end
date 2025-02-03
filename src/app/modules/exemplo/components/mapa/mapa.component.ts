@@ -23,6 +23,49 @@ export class MapaComponent extends BaseComponent implements OnInit {
   enderecoList: any;
   enderecoHTML = '';
 
+  apiList = [
+    {
+      name: 'Geocoding',
+      link: 'geocoding',
+      id: 1,
+    },
+    {
+      name: 'Geolocation',
+      link: 'geolocation',
+      id: 2,
+    },
+    {
+      name: 'Maps JavaScript',
+      link: 'javascript',
+      id: 3,
+    },
+    {
+      name: 'Maps Static',
+      link: 'maps-static',
+      id: 4,
+    },
+    {
+      name: 'Directions',
+      link: 'directions',
+      id: 5,
+    },
+    {
+      name: 'Places',
+      link: 'places',
+      id: 6,
+    },
+    {
+      name: 'SDK for Android',
+      link: 'android-sdk',
+      id: 7,
+    },
+    {
+      name: 'SDK for IOs',
+      link: 'ios-sdk',
+      id: 8,
+    },
+  ]
+
   @ViewChild('map') mapElement!: ElementRef;
 
   constructor(private mapaService: MapaService) {
