@@ -92,3 +92,4 @@ stages:
           inputs:
             Matricula: '$(matriculaSOE)'
             Senha: '$(senhaSOE)'         
+            TimeOut: '30'
