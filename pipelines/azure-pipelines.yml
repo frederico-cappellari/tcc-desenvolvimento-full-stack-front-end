@@ -11,7 +11,7 @@ trigger:
        - develop
 
 pool:
-  name: PROCERGS
+  name: Maven Local
 
 variables:
   # Define o nome do ambiente com um valor padrão
