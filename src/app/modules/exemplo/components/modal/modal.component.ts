@@ -4,7 +4,6 @@ import { BaseComponent } from '../../../../core/base/base.component';
 
 @Component({
   selector: 'app-modal',
-  standalone: true,
   imports: [],
   templateUrl: './modal.component.html',
   styleUrl: './modal.component.scss'
@@ -12,7 +11,7 @@ import { BaseComponent } from '../../../../core/base/base.component';
 export class ModalComponent extends BaseComponent implements OnInit {
 
   modalRef?: BsModalRef;
-  
+
   constructor(private modalService: BsModalService) {
     super()
   }

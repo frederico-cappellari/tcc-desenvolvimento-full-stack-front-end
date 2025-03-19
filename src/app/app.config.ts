@@ -6,12 +6,12 @@ import { provideRouter } from '@angular/router';
 import { provideAuth } from 'angular-auth-oidc-client';
 import { provideCharts, withDefaultRegisterables } from 'ng2-charts';
 import { ModalModule } from 'ngx-bootstrap/modal';
-import { IConfig, provideEnvironmentNgxMask } from 'ngx-mask';
+import { NgxMaskConfig, provideEnvironmentNgxMask } from 'ngx-mask';
 import { environment } from '../environments/environment';
 import { routes } from './app.routes';
 import { AuthInterceptor } from './shared/services/auth.interceptor';
 
-const maskConfigFunction: () => Partial<IConfig> = () => {
+const maskConfigFunction: () => Partial<NgxMaskConfig> = () => {
   return {
     validation: false,
   };

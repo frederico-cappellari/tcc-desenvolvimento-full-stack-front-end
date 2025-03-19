@@ -2,7 +2,7 @@ export const environment = {
   production: false,
   // Configurações Aplicação:
   clientUrl: 'https://apm02.des.intra.rs.gov.br',
-  apiUrl: 'https://apm-quarkus.apps.kildes4830.des.intra.rs.gov.br',
+  apiUrl: 'https://apm.hml.intra.rs.gov.br',
 
   soeauth: {
     configId: 'soeAuthConfig',

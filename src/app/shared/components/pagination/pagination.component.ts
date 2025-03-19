@@ -8,7 +8,6 @@ import { EventSharedService } from '../../services/event-shared.service';
 
 @Component({
   selector: 'app-pagination',
-  standalone: true,
   imports: [CommonModule, FormsModule, PaginationModule],
   templateUrl: './pagination.component.html',
   styleUrl: './pagination.component.scss'

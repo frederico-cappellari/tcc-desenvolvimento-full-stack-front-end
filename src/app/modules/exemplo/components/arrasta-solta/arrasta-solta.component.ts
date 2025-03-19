@@ -11,7 +11,6 @@ interface IItemObject {
 
 @Component({
   selector: 'app-arrasta-solta',
-  standalone: true,
   imports: [CommonModule, FormsModule, SortableModule],
   templateUrl: './arrasta-solta.component.html',
   styleUrl: './arrasta-solta.component.scss'

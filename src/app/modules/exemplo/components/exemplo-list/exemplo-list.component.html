@@ -20,15 +20,15 @@
         currentPage: pagination.currentPage,
         totalItems: pagination.totalItems}; track $index; let i = $index) {
         <tr>
-          <th>{{ item.nroIntAlu }}</th>
+          <th>{{ item.id }}</th>
           <td>
             {{ item.nomeAlu }}
           </td>
           <td>{{ item.curso | ExemploPipe }}</td>
           <td>
             <div class="btn-action">
-              <a routerLink="/exemplo/formulario/{{item.nroIntAlu}}"><i class="bi bi-pencil-square" tooltip="Editar" placement="bottom"></i></a>
-              <button class="delete" *ngIf="item?.nroIntAlu" (click)="confirmDelete(item?.nroIntAlu)"><i class="bi bi-trash" tooltip="Excluir" placement="bottom"></i></button>
+              <a routerLink="/exemplo/formulario/{{item.id}}"><i class="bi bi-pencil-square" tooltip="Editar" placement="bottom"></i></a>
+              <button class="delete" *ngIf="item?.id" (click)="confirmDelete(item?.id)"><i class="bi bi-trash" tooltip="Excluir" placement="bottom"></i></button>
             </div>
           </td>
         </tr>

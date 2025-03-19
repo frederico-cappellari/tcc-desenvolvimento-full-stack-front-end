@@ -7,7 +7,7 @@ describe('Exemplo Edit Component', () => {
 
   it('Deve carregar o formulário com os campos vazios ou preenchidos conforme o estado inicial', () => {
     cy.get('textarea#nomeAlu').should('have.value', '');
-    cy.get('input#nroIntAlu').should('be.disabled');
+    cy.get('input#id').should('be.disabled');
     cy.get('input#ano').should('exist');
     cy.get('ng-select#curso').should('exist');
     cy.get('input#iptData').should('exist');

@@ -171,15 +171,15 @@
         currentPage: pagination.currentPage,
         totalItems: pagination.totalItems}; track $index; let i = $index) {
         &lt;tr&gt;
-          &lt;th&gt;{{ item.nroIntAlu }}&lt;/th&gt;
+          &lt;th&gt;{{ item.id }}&lt;/th&gt;
           &lt;td&gt;
             {{ item.nomeAlu }}
           &lt;/td&gt;
           &lt;td&gt;{{ item.curso | ExemploPipe }}&lt;/td&gt;
           &lt;td&gt;
             &lt;div class="btn-action"&gt;
-              &lt;a routerLink="/exemplo/formulario/{{item.nroIntAlu}}"&gt;&lt;i class="bi bi-pencil-square" tooltip="Editar" placement="bottom"&gt;&lt;/i&gt;&lt;/a&gt;
-              &lt;button class="delete" *ngIf="item?.nroIntAlu" (click)="confirmDelete(item?.nroIntAlu)"&gt;&lt;i class="bi bi-trash" tooltip="Excluir" placement="bottom"&gt;&lt;/i&gt;&lt;/button&gt;
+              &lt;a routerLink="/exemplo/formulario/{{item.id}}"&gt;&lt;i class="bi bi-pencil-square" tooltip="Editar" placement="bottom"&gt;&lt;/i&gt;&lt;/a&gt;
+              &lt;button class="delete" *ngIf="item?.id" (click)="confirmDelete(item?.id)"&gt;&lt;i class="bi bi-trash" tooltip="Excluir" placement="bottom"&gt;&lt;/i&gt;&lt;/button&gt;
             &lt;/div&gt;
           &lt;/td&gt;
         &lt;/tr&gt;

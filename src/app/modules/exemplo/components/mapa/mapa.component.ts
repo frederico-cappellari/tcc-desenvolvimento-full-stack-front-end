@@ -8,7 +8,6 @@ declare const google: any;
 
 @Component({
   selector: 'app-mapa',
-  standalone: true,
   imports: [GoogleMapsModule],
   providers: [MapaService],
   templateUrl: './mapa.component.html',

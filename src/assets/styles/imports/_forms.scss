@@ -1,5 +1,6 @@
 // Custom style ng-select
-@import "@ng-select/ng-select/themes/default.theme.css";
+@use "@ng-select/ng-select/themes/default.theme.css";
+@use 'variables' as vars;
 
 .section-form {
   margin: 0 auto;
@@ -49,12 +50,12 @@
 
   &.ng-dirty.ng-invalid {
     .ng-select-container {
-      border: 1px solid $red;
+      border: 1px solid vars.$dangerColor;
     }
   }
 }
 
 input.ng-dirty.ng-invalid,
 textarea.ng-dirty.ng-invalid {
-  border: 1px solid $red !important;
+  border: 1px solid vars.$dangerColor !important;
 }

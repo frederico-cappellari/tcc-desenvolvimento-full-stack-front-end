@@ -12,11 +12,10 @@ import { EventSharedService } from '../../../../shared/services/event-shared.ser
 
 @Component({
   selector: 'app-exemplo-list',
-  standalone: true,
-  imports: [CommonModule, RouterModule, DecimalPipe, NgxPaginationModule, PaginationComponent, TooltipModule, ExemploPipe],
+  imports: [CommonModule, RouterModule, NgxPaginationModule, PaginationComponent, TooltipModule, ExemploPipe],
   providers: [ExemploService],
   templateUrl: './exemplo-list.component.html',
-  styleUrl: './exemplo-list.component.scss',
+  styleUrl: './exemplo-list.component.scss'
 })
 
 export class ExemploListComponent extends BaseListComponent<Exemplo> implements OnInit {

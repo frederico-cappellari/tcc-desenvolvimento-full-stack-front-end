@@ -1,3 +1,5 @@
+@use 'variables' as vars;
+
 .section-list {
   margin: 0 auto;
   width: 100%;
@@ -21,7 +23,7 @@
           border-bottom: 1px solid #3636362C;
 
           th {
-            background: $primaryColor;
+            background: vars.$primaryColor;
             font-size: 16px;
             font-weight: 500;
             color: #fff;
@@ -89,7 +91,7 @@
           border: 0;
           background-color: inherit;
           font-size: 1.5em;
-          color: $primaryColor;
+          color: vars.$primaryColor;
           margin-right: 16px;
           cursor: pointer;
           text-decoration: none;
@@ -100,7 +102,7 @@
           }
 
           &.delete {
-            color: $dangerColor;
+            color: vars.$dangerColor;
           }
 
           &:hover {
@@ -166,8 +168,8 @@
     }
 
     &.active {
-      background-color: $primaryColor;
-      border: 1px solid $primaryColor;
+      background-color: vars.$primaryColor;
+      border: 1px solid vars.$primaryColor;
 
       .page-link {
         color: #fff;
@@ -183,7 +185,7 @@
     position: absolute;
 
     &.disabled {
-      background-color: $defaultColor;
+      background-color: vars.$defaultColor;
 
       a {
         cursor: no-drop;
@@ -212,7 +214,7 @@
     position: absolute;
 
     &.disabled {
-      background-color: $defaultColor;
+      background-color: vars.$defaultColor;
 
       a {
         cursor: no-drop;

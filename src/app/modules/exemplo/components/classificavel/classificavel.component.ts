@@ -6,7 +6,6 @@ import { BaseComponent } from '../../../../core/base/base.component';
 
 @Component({
   selector: 'app-classificavel',
-  standalone: true,
   imports: [CommonModule, FormsModule, RatingModule],
   templateUrl: './classificavel.component.html',
   styleUrl: './classificavel.component.scss'

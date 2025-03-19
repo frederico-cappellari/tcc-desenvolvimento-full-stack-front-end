@@ -2,7 +2,6 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-field-message',
-  standalone: true,
   imports: [],
   templateUrl: './field-message.component.html',
   styleUrl: './field-message.component.scss'

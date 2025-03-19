@@ -1,23 +1,23 @@
 // Importing Bootstrap SCSS file.
-@import "bootstrap/scss/bootstrap";
-@import "bootstrap-icons/font/bootstrap-icons.scss";
+@use "bootstrap/scss/bootstrap";
+@use "bootstrap-icons/font/bootstrap-icons.scss";
 
 //Fonts
-@import 'imports/fonts';
+@use 'imports/fonts';
 
 // Variables, Mixins
-@import 'imports/variables';
-@import 'imports/mixins';
+@use 'imports/variables' as vars;
+@use 'imports/mixins';
 
 //theme
-@import 'imports/custon';
-@import 'imports/buttons';
-@import 'imports/navbar';
-@import 'imports/navigation';
-@import 'imports/ng-datepicker';
-@import 'imports/table';
-@import 'imports/forms';
-@import 'imports/loading';
+@use 'imports/custon';
+@use 'imports/buttons';
+@use 'imports/navbar';
+@use 'imports/navigation';
+@use 'imports/ng-datepicker';
+@use 'imports/table';
+@use 'imports/forms';
+@use 'imports/loading';
 
 
 
@@ -29,7 +29,7 @@
 
 
   body {
-    color: $text-color;
+    color: vars.$text-color;
 
     &::-webkit-scrollbar {
       width: 10px;

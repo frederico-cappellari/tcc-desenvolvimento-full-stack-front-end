@@ -8,7 +8,6 @@ import { Usuario } from '../../../shared/models/usuario.model';
 
 @Component({
   selector: 'app-navbar',
-  standalone: true,
   imports: [CommonModule, MenuComponent, BsDropdownModule, RouterModule],
   templateUrl: './navbar.component.html',
   styleUrl: './navbar.component.scss'

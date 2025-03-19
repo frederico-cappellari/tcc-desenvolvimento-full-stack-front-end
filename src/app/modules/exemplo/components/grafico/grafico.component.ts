@@ -4,7 +4,6 @@ import { BaseComponent } from '../../../../core/base/base.component';
 
 @Component({
   selector: 'app-grafico',
-  standalone: true,
   imports: [BaseChartDirective],
   templateUrl: './grafico.component.html',
   styleUrl: './grafico.component.scss',

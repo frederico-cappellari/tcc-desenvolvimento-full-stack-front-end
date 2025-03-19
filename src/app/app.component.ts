@@ -7,14 +7,13 @@ import { AuthService } from './shared/services/auth.service';
 
 @Component({
   selector: 'app-root',
-  standalone: true,
   imports: [CommonModule, RouterOutlet],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss',
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
     { provide: LocationStrategy, useClass: HashLocationStrategy }
-  ],
+  ]
 })
 export class AppComponent implements OnInit {
   title = 'APM.Angular18';
@@ -25,6 +24,7 @@ export class AppComponent implements OnInit {
     this.oidcSecurityService.checkAuth('', this.authService.getConfigId()).subscribe(({ isAuthenticated }) => {
       if (!isAuthenticated) {
         console.error('Autenticação falhou');
+        console.error('Commit teste nova branch');
       }
     });
   }

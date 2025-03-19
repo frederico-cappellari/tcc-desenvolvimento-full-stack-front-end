@@ -5,7 +5,7 @@ import { BaseFormComponent } from './base-form.component';
 import { Component } from '@angular/core';
 
 @Component({
-  template: '' // Add a simple template for the test component
+  template: '', // Add a simple template for the test component
 })
 class TestFormComponent extends BaseFormComponent<any> {
   constructor(activatedRoute: ActivatedRoute) {
@@ -26,7 +26,6 @@ describe('BaseFormComponent', () => {
           useValue: { snapshot: { data: { entity: {} } } },
         },
       ],
-      declarations: [TestFormComponent],
     }).compileComponents();
 
     fixture = TestBed.createComponent(TestFormComponent);

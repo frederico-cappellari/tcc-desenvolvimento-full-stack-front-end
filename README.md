@@ -1,6 +1,6 @@
-# APMAngular18
+# APMAngular19
 
-Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 18.2.2.
+Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli) versão 19.0.1.
 
 ## Dicas para iniciar o projeto:
 

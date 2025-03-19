@@ -4,11 +4,10 @@ import { Router, RouterModule } from '@angular/router';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 
 @Component({
-  selector: 'app-menu',
-  standalone: true,
-  imports: [CommonModule, CollapseModule, RouterModule],
-  templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.scss'],
+    selector: 'app-menu',
+    imports: [CommonModule, CollapseModule, RouterModule],
+    templateUrl: './menu.component.html',
+    styleUrls: ['./menu.component.scss']
 })
 export class MenuComponent {
 

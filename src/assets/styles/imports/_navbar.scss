@@ -1,3 +1,5 @@
+@use 'variables' as vars;
+
 .navbar {
   background-color: #fff;
   height: 80px;
@@ -14,7 +16,7 @@
 
   .navbar-brand {
     font-size: 1.5em;
-    color: $primaryColor;
+    color: vars.$primaryColor;
     margin: 0 0 0 20px;
   }
 
@@ -23,7 +25,7 @@
     border: 0;
 
     i {
-      color: $primaryColor;
+      color: vars.$primaryColor;
       font-size: 1.8em;
     }
   }
@@ -60,7 +62,7 @@
         .dropdown-icon {
           margin: 4px 0 0 4px;
           font-size: 12px;
-          color: $primaryColor;
+          color: vars.$primaryColor;
         }
 
         @media (max-width: 500px) {
@@ -72,7 +74,7 @@
         .user-icon {
           font-size: 20px;
           margin-right: 4px;
-          color: $primaryColor;
+          color: vars.$primaryColor;
         }
       }
     }

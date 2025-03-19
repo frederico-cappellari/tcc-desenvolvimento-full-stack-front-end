@@ -1,15 +1,16 @@
-@import "ngx-bootstrap/datepicker/bs-datepicker.scss";
+@use "ngx-bootstrap/datepicker/bs-datepicker.scss";
+@use 'variables' as vars;
 
 .theme-green .bs-datepicker-head {
-  background-color: $primaryColor;
+  background-color: vars.$primaryColor;
 }
 
 .theme-green .bs-datepicker-body table td.week span {
-  color: $primaryColor;
+  color: vars.$primaryColor;
 }
 
 .theme-green .bs-datepicker-body table td span.selected, .theme-green .bs-datepicker-body table td.selected span {
-  background-color: $primaryColor;
+  background-color: vars.$primaryColor;
 }
 
 .bs-datepicker-container {

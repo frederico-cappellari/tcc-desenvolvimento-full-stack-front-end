@@ -8,7 +8,6 @@ import { ClassificavelComponent } from '../classificavel/classificavel.component
 
 @Component({
   selector: 'app-abas',
-  standalone: true,
   imports: [CommonModule, TabsModule, AcordeaoComponent, BarraProgressoComponent, ClassificavelComponent],
   templateUrl: './abas.component.html',
   styleUrl: './abas.component.scss'

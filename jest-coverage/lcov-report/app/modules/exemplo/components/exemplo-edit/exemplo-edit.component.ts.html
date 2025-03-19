@@ -369,14 +369,14 @@ export class ExemploEditComponent extends BaseFormComponent&lt;Exemplo&gt; imple
     // Configura o formulário com controles e validadores.
     this.form = new FormGroup({
       nomeAlu: new FormControl('', [Validators.required]),
-      nroIntAlu: new FormControl({value: null, disabled: true}),
+      id: new FormControl({value: null, disabled: true}),
       curso: new FormControl(null),
       ano: new FormControl(null),
       data: new FormControl(null),  
     });
 &nbsp;
     // Se a entidade já existir (edição), preenche o formulário com os dados existentes.
-    if (this.entity?.nroIntAlu) {
+    if (this.entity?.id) {
       this.actionLabel = 'Editar'; // Atualiza o rótulo de ação para indicar que é uma edição.
       this.form.patchValue(this.entity); // Preenche o formulário com os valores da entidade.
     }
@@ -397,8 +397,8 @@ export class ExemploEditComponent extends BaseFormComponent&lt;Exemplo&gt; imple
     this.loading(); // Inicia o estado de carregamento enquanto a operação de salvamento está em andamento.
 &nbsp;
     // Determina se deve ser realizada uma criação ou atualização com base na existência de um ID na entidade.
-    const saveOperation = this.entity?.nroIntAlu
-      ? this.exemploService.patchUpdate(this.getDataCreate(), this.entity.nroIntAlu)
+    const saveOperation = this.entity?.id
+      ? this.exemploService.patchUpdate(this.getDataCreate(), this.entity.id)
       : this.exemploService.create(this.getDataCreate());
 &nbsp;
     // Subscreve-se à operação de salvamento e gerencia o sucesso e o erro.
@@ -411,10 +411,10 @@ export class ExemploEditComponent extends BaseFormComponent&lt;Exemplo&gt; imple
   }
 &nbsp;
   onSaveSuccess(): void {
-    const message = this.entity?.nroIntAlu ? 'Alterado com sucesso!' : <span class="branch-1 cbranch-no" title="branch not covered" >'Criado com sucesso!';</span> // Define a mensagem de sucesso.
+    const message = this.entity?.id ? 'Alterado com sucesso!' : <span class="branch-1 cbranch-no" title="branch not covered" >'Criado com sucesso!';</span> // Define a mensagem de sucesso.
 &nbsp;
     // Se for uma atualização, exibe a mensagem de sucesso e finaliza o carregamento.
-    if (this.entity?.nroIntAlu) {
+    if (this.entity?.id) {
       this.msgSuccess(message);
       this.loaded();
     } else <span class="missing-if-branch" title="else path not taken" >E</span>{

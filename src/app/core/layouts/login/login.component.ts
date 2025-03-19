@@ -4,7 +4,6 @@ import { AuthService } from "../../../shared/services/auth.service";
 
 @Component({
   selector: 'app-login',
-  standalone: true,
   imports: [],
   providers: [AuthService],
   templateUrl: './login.component.html',
@@ -13,7 +12,7 @@ import { AuthService } from "../../../shared/services/auth.service";
 export class LoginComponent {
   date = new Date(); // Armazena a data atual para ser usada no template.
 
-  constructor(private authService: AuthService) {}
+  constructor(private authService: AuthService) { }
 
   loginSOE() {
     this.authService.setCurrentLoginMethod('soe');

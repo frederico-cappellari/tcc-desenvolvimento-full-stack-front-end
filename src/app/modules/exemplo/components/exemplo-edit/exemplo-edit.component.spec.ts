@@ -31,7 +31,7 @@ describe('ExemploEditComponent', () => {
           useValue: {
             snapshot: {
               data: {
-                entity: { nroIntAlu: 1, nomeAlu: 'Teste', curso: 1, ano: 2023, data: '26/10/2023' }, // Provide mock entity
+                entity: { id: 1, nomeAlu: 'Teste', curso: 1, ano: 2023, data: '26/10/2023' }, // Provide mock entity
               },
             },
             ...mockActivatedRoute
@@ -57,9 +57,9 @@ describe('ExemploEditComponent', () => {
   });
 
   it('should patch form if entity exists', () => {
-    const entity = { nroIntAlu: 1, nomeAlu: 'Teste', curso: 1, ano: 2023, data: '26/10/2023' };
+    const entity = { id: 1, nomeAlu: 'Teste', curso: 1, ano: 2023, data: '26/10/2023' };
     component.entity = entity;
-    component.form.get('nroIntAlu')?.enable();
+    component.form.get('id')?.enable();
     component.ngOnInit();
   });
 
@@ -81,7 +81,7 @@ describe('ExemploEditComponent', () => {
 
   it('should call patchUpdate service when saving an existing entity', async () => {
     const patchUpdateSpy = jest.spyOn(exemploService, 'patchUpdate');
-    const entity = { nroIntAlu: 1, nomeAlu: 'Teste', curso: 1, ano: 2023, data: '26/10/2023' };
+    const entity = { id: 1, nomeAlu: 'Teste', curso: 1, ano: 2023, data: '26/10/2023' };
     component.entity = entity;
     component.form.patchValue(entity);
     component.salvar();

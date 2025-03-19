@@ -8,7 +8,6 @@ import { BaseComponent } from '../../base/base.component';
 
 @Component({
   selector: 'app-standard',
-  standalone: true,
   imports: [CommonModule, RouterModule, NavbarComponent, LoadingComponent],
   templateUrl: './standard.component.html',
   styleUrl: './standard.component.scss'

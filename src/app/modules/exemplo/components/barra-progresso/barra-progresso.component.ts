@@ -11,7 +11,6 @@ interface IStack {
 
 @Component({
   selector: 'app-barra-progresso',
-  standalone: true,
   imports: [ProgressbarModule],
   templateUrl: './barra-progresso.component.html',
   styleUrl: './barra-progresso.component.scss'

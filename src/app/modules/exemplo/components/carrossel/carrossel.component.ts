@@ -4,7 +4,6 @@ import { BaseComponent } from '../../../../core/base/base.component';
 
 @Component({
   selector: 'app-carrossel',
-  standalone: true,
   imports: [CarouselModule],
   providers: [
     { provide: CarouselConfig, useValue: { interval: 4000, noPause: true, showIndicators: true } }

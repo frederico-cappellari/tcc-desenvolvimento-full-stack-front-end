@@ -4,7 +4,7 @@ describe('API Alunos', () => {
   it("Valida a presença das propriedades na resposta da API de alunos", () => {
     cy.request({
       method: 'GET',
-      url: 'https://apm-quarkus.apps.kildes4830.des.intra.rs.gov.br/alunos?asc=true',
+      url: 'https://apm.hml.intra.rs.gov.br/alunos?asc=true',
       headers: { authorization },
     }).then((res) => {
       // Verifica o status da resposta
@@ -25,7 +25,7 @@ describe('API Alunos', () => {
 
       // Verifica se cada item em 'data' possui as propriedades esperadas
       res.body.data.forEach(item => {
-        expect(item).to.have.property('nroIntAlu').that.is.a('number');
+        expect(item).to.have.property('id').that.is.a('number');
         expect(item).to.have.property('nomeAlu').that.is.a('string');
       });
     });
