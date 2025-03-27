@@ -9,10 +9,11 @@ import { Exemplo } from '../../models/exemplo.model';
 import { ExemploService } from '../../services/exemplo.service';
 import { ExemploPipe } from '../../../../shared/pipes/exemplo.pipe';
 import { EventSharedService } from '../../../../shared/services/event-shared.service';
+import { ButtonComponent } from '../../../../shared/components/button/button.component';
 
 @Component({
   selector: 'app-exemplo-list',
-  imports: [CommonModule, RouterModule, NgxPaginationModule, PaginationComponent, TooltipModule, ExemploPipe],
+  imports: [CommonModule, RouterModule, NgxPaginationModule, PaginationComponent, TooltipModule, ExemploPipe, ButtonComponent],
   providers: [ExemploService],
   templateUrl: './exemplo-list.component.html',
   styleUrl: './exemplo-list.component.scss'

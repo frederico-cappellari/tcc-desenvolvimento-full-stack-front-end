@@ -6,7 +6,7 @@
 </section>
 
 <section class="section-form">
-  <form [formGroup]="form" (ngSubmit)="salvar()">
+  <form [formGroup]="form">
     <div class="form-group row mb-3">
       <div class="col-sm-12 col-xl-8">
         <label for="nomeAlu" class="col-sm-12 pb-1">Nome</label>
@@ -49,9 +49,9 @@
     </div>
 
     <div class="form-group row d-flex justify-content-end">
-      <div class="col-sm-8 col-sm-offset-2 d-flex justify-content-end">
-        <button class="btn btn-white me-2" type="button" routerLink="/exemplo">Voltar</button>
-        <button class="btn btn-primary" type="submit">Salvar</button>
+      <div class="col-sm-8 col-sm-offset-2 d-flex justify-content-end gap-3">
+        <app-button text="Voltar" classBtn="light" route="/exemplo"></app-button>
+        <app-button text="Salvar" classBtn="primary" (click)="salvar()"></app-button>
       </div>
     </div>
   </form>

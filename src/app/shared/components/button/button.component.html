@@ -1,0 +1,9 @@
+@if(route && route !== ''){
+<a [routerLink]="[route]" [class]="'btn btn-' + classBtn" [class.btn-lg]="isLarge" [class.btn-sm]="isSmall">
+  {{text}}
+</a>
+} @else{
+<button type="button" [class]="'btn btn-' + classBtn" [class.btn-lg]="isLarge" [class.btn-sm]="isSmall" [disabled]="disabled">
+  {{text}}
+</button>
+}

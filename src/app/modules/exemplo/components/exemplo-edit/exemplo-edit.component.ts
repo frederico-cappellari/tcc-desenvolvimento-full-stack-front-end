@@ -10,6 +10,7 @@ import { BaseFormComponent } from '../../../../core/base/base-form.component';
 import { FieldMessageComponent } from '../../../../shared/components/field-message/field-message.component';
 import { Exemplo } from '../../models/exemplo.model';
 import { ExemploService } from '../../services/exemplo.service';
+import { ButtonComponent } from '../../../../shared/components/button/button.component';
 
 defineLocale('pt-br', ptBrLocale);
 @Component({
@@ -23,6 +24,7 @@ defineLocale('pt-br', ptBrLocale);
     NgSelectComponent,
     BsDatepickerModule,
     FieldMessageComponent,
+    ButtonComponent,
   ],
   providers: [
     ExemploService,
