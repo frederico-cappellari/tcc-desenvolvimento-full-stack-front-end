@@ -14,7 +14,7 @@ pr:
       - develop
 
 pool:
-  name: PROCERGS-MOB
+  name: PROCERGS
 
 steps:
 # Instala o Node
