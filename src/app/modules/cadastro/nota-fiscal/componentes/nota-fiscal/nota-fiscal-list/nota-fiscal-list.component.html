@@ -1,0 +1,34 @@
+<section class="section-list">
+    <div class="table-conteiner">
+        <table aria-describedby="table-list" class="table table-striped">
+            <thead>
+                <tr>
+                    <th scope="col">Chave de Acesso</th>
+                    <th scope="col">Data</th>
+                    <th scope="col">Valor Total</th>
+                    <th scope="col">Possui Itens Não Encotrados na Lista de Compras</th>
+                    <th scope="col">Situação</th>
+                </tr>
+            </thead>
+            <tbody>
+                @for (item of entity | paginate: {
+                itemsPerPage: pagination.itemsPerPage,
+                currentPage: pagination.currentPage,
+                totalItems: pagination.totalItems}; track $index; let i = $index) {
+                <tr>
+                    <td>{{ item.chaveDeAcesso }}</td>
+                    <td>{{ item.data }}</td>
+                    <td>{{ item.valorTotal | MoedaPipe }}</td>
+                    <td>{{ item.possuiItensNaoEncontrados }}</td>
+                    <td>{{ item.situacao }}</td>
+                </tr>
+                }
+                <tr *ngIf="!entity?.length" class="border-b-radius">
+                    <td colspan="5" class="text-center">Nenhum cadastrado encontrado.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <app-pagination [pagination]="pagination" [totalItems]="pagination.totalItems"></app-pagination>
+</section>

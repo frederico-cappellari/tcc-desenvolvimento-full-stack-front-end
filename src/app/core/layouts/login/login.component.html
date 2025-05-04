@@ -1,39 +1,49 @@
-<div class="login">
-  <div class="login-content">
-    <div class="login-box p-4">
-      <div class="text-center">
-        <!-- <div class="d-flex justify-content-center">
-          <img class="apm-logo" src="assets/images/procergsLogo.png" alt="Logo">
-        </div> -->
-        <h2 class="font-weight-bold">Login com SOE</h2>
+<div class="tela-login container text-center">
+  <div class="row">
+    
+    <div class="col-sm-12 col-md-12 col-lg-6 d-flex flex-column">
+      
+      <div class="boas-vindas card row">
+        <div class="col-12" style="height: 50%;">
+          <h2>Seja Bem Vindo!</h2>
+        </div>
+        <div class="col-12" style="height: 50%;">
+          <p><i class="msg-boas-vindas">Aqui você poderá fazer a sua gestão financeira, projetar seus gastos e sair do vermelho!</i></p>
+        </div>
       </div>
-      <div class="content-soe">
-        <button type="button" (click)="loginSOE()">
-          <img src="../../../../assets/images/marca_SOE.png" class="marca-soe" alt="SOE" />
-        </button>
-        <p><i>Identifique-se para entrar</i></p>
+
+      <div class="fomulario-login card row">
+          <div class="col-12">
+            <form (ngSubmit)="login()" [formGroup]="formLogin" class="form-login">
+
+              <label for="login" class="label-login">Login:</label>
+              <input type="text" class="form-control campo-login" id="login" name="login" formControlName="login" placeholder="Digite seu login">
+
+              @if (formLogin.get('login')?.invalid && formLogin.get('login')?.touched) {
+                <div class="alert alert-danger">
+                  Login deve ser informado.
+                </div>
+              }
+
+              <label for="senha" class="label-login">Senha:</label>
+              <input type="password" class="form-control campo-login" id="senha" name="senha" formControlName="senha">
+             
+              @if (formLogin.get('senha')?.invalid && formLogin.get('senha')?.touched) {
+                <div class="alert alert-danger">
+                  Senha deve ser informada.
+                </div>
+              }
+              <button type="submit" class="btn btn-outline-success botao-login" style="width: 100%;"><span class="">Entrar</span></button>
+            </form>
+          </div>
       </div>
+
     </div>
 
-    <div class="login-box p-4">
-      <div class="text-center">
-        <!-- <div class="d-flex justify-content-center">
-          <img class="apm-logo" src="assets/images/procergsLogo.png" alt="Logo">
-        </div> -->
-        <h2 class="font-weight-bold">Login com GOVBR</h2>
-      </div>
-      <div class="content-soe">
-        <button type="button" (click)="loginCidadao()">
-          <img src="../../../../assets/images/gov-br.png" alt="gov-br" />
-        </button>
-        <p><i>Identifique-se para entrar</i></p>
+    <div class="col-sm-12 col-md-12 col-lg-6 d-flex flex-column">
+      <div class="card">
+        <img src="../../../../assets/images/Logo App v2.png" alt="Gestão Financeira" width="100%" height="100%"/>
       </div>
     </div>
   </div>
 </div>
-<footer>
-  <div class="text-right">
-    <img class="me-3" width="auto" height="20" src="assets/images/procergsLogo.png" alt="Procergs Logo" />
-    <small>&copy;{{date.getFullYear()}}</small>
-  </div>
-</footer>

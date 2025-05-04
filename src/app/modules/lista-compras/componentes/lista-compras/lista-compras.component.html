@@ -1,0 +1,13 @@
+<accordion [isAnimated]="true">
+    <accordion-group [isOpen]="true">
+        <button class="btn btn-block justify-content-between d-flex w-100 shadow-none acordeao" accordion-heading type="button">
+            <span>Nova Item de Compra</span>
+        </button>
+        <app-lista-compras-form (registroIncluido)="onRegistroIncluido()"></app-lista-compras-form>
+    </accordion-group>
+    <accordion-group>
+        <button class="btn btn-block justify-content-between d-flex w-100 shadow-none acordeao" accordion-heading type="button">
+            <span>Lista de Compras</span>
+        </button>
+        <app-lista-compras-list></app-lista-compras-list>
+    </accordion-group>

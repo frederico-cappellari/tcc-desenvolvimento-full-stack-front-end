@@ -9,22 +9,9 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
    - Ver instruções aqui: https://www.typescriptlang.org/#installation
 
 2. Instalar o Node JS https://nodejs.org/en/download/
-   2.1 Configurar para apontar para o Azure Artifacts:
-   ```
-   >npm config set registry https://azuredevops.pro.intra.rs.gov.br/tfs/PROCERGSCollection/_packaging/procergs/npm/registry/
-   ```
-   Obs.: Alternativamente, pode-se apontar diretamente para o repositorio original (https://registry.npmjs.org/) configurando o proxy Procergs:
-   ```
-   >npm config set proxy http://nome-sobrenome:senha@proxy.procergs.reders:3128
-   >npm config set https-proxy http://nome-sobrenome:senha@proxy.procergs.reders:3128
-   >npm config set strict-ssl false
-   ```
+   
 3. Instalar o Visual Studio Code: https://code.visualstudio.com/download
-   - Configurar proxy, em Settings, editar:
-     ```
-     "http.proxy": "http://nome-sobrenome:senha@proxy.procergs.reders:3128",
-     "http.proxyStrictSSL": false,
-     ```
+   
 4. Reiniciar o computador para que o Integrated Terminal do Vs Code reconheça os comandos npm.
 
 5. Abrir e executar a aplicação no Visual Studio Code:
@@ -51,7 +38,6 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
 
    ## Rodando o Servidor (API Quarkus)
 
-   Para suportar a aplicação front-end, utilizamos a APM.Java.Quarkus (`https://azuredevops.pro.intra.rs.gov.br/tfs/PROCERGSCollection/DGT.AAP/_git/APM.Java.Quarkus`)
 
 ## Outras dicas:
 
@@ -67,12 +53,6 @@ Este projeto foi gerado com [Angular CLI](https://github.com/angular/angular-cli
    > ng test
    ```
 
-3. Para fazer o Deploy/Release da aplicação:
-   - Executar o comando:
-     ```
-     > ng build --prod --base-href
-     ```
-   - Copiar o conteúdo gerado na pasta `dist` do projeto.
 
 ## Links Úteis:
 

@@ -1,0 +1,13 @@
+<accordion [isAnimated]="true">
+    <accordion-group [isOpen]="true">
+        <button class="btn btn-block justify-content-between d-flex w-100 shadow-none acordeao" accordion-heading type="button">
+            <span>Nova Nota Fiscal</span>
+        </button>
+        <app-nota-fiscal-form (registroIncluido)="onRegistroIncluido()"></app-nota-fiscal-form>
+    </accordion-group>
+    <accordion-group>
+        <button class="btn btn-block justify-content-between d-flex w-100 shadow-none acordeao" accordion-heading type="button">
+            <span>Notas Fiscais Anteriores</span>
+        </button>
+        <app-nota-fiscal-list></app-nota-fiscal-list>
+    </accordion-group>

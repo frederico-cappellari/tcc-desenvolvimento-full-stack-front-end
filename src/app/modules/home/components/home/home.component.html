@@ -1,0 +1,66 @@
+<div class="home container">
+  <div class="row">
+    <div class="col-sm-12 col-md-12 col-lg-6 d-flex flex-column">
+      
+      <section class="section-title">
+        <h2>Receitas/Despesas do Mês</h2>
+      </section>
+
+      <section class="{{getStyleBalanco(getBalancoDoMes())}}">
+        Balanço do Mês: {{ getBalancoDoMes() | MoedaPipe }}
+      </section>
+      
+      <section class="section-list">
+        <div class="table-conteiner">
+          <table aria-describedby="table-list" class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">Descrição</th>
+                <th scope="col">Data</th>
+                <th scope="col">Tipo</th>
+                <th scope="col">Categoria</th>
+                <th scope="col">Valor Médio</th>
+                <th scope="col">Valor</th>
+              </tr>
+            </thead>
+            <tbody>
+              @for (receitaDespesa of listaReceitasDespesasMes ; track $index; let i = $index) {
+              <tr>
+                <td>{{ receitaDespesa.descricao }}</td>
+                <td>{{ receitaDespesa.data }}</td>
+                <td>{{ receitaDespesa | TipoTransacaoFinanceiraPipe }}</td>
+                <td>{{ receitaDespesa.categoriaDescricao }}</td>
+                <td>{{ receitaDespesa.valorMedio | MoedaPipe }}</td>
+                <td>{{ receitaDespesa.valor | MoedaPipe }}</td>
+              </tr>
+              }
+              <tr *ngIf="!listaReceitasDespesasMes?.length" class="border-b-radius">
+                <td colspan="5" class="text-center">Nenhum cadastrado encontrado.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+    <div class="col-sm-12 col-md-12 col-lg-6 d-flex flex-column">
+      <section class="section-title">
+        <h2>Projeção Lista de Compras</h2>
+      </section>
+      <section class="{{getStyleBalanco(getBalancoDoMesPosListaDeCompras())}}">
+        Balanço Projetado Após Compra dos Itens da Lista: {{ getBalancoDoMesPosListaDeCompras() | MoedaPipe }}
+      </section>
+      <section class="balanco">
+        Tamanho da Lista de Compras: {{ getNumeroDeItensListaDeCompras() }} Item(ns)
+      </section>
+      <section class="balanco-danger">
+        Atual Valor Projetado para Lista de Compras: {{ getTotalValorListaDeCompras() | MoedaPipe }}
+      </section>
+
+      <section>
+        <div class="canva">
+          <canvas baseChart height="300" width="800" [type]="'line'" [data]="getGraficoDeGastos().data" [options]="getGraficoDeGastos().options" [legend]="getGraficoDeGastos().legend"></canvas>
+        </div>
+      </section>
+    </div>
+  </div>
+</div>

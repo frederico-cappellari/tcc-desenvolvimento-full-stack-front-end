@@ -4,24 +4,19 @@
       <button class="btn btn-default btn-toggler" type="button" (click)="toggleMenu()">
         <i class="bi bi-list"></i>
       </button>
-      <a class="navbar-brand" href="#">APM</a>
+      <a class="navbar-brand" href="#">Gestão Financeira</a>
     </div>
 
     <ul class="navbar-top-links">
       <li class="dropdown" dropdown>
         <a dropdownToggle title="Usuário conectado" class="info_user">
           <i class="bi bi-person user-icon"></i>
-          <div class="user-name">{{userInfo.name}}</div>
+          <div class="user-name">{{userInfo}}</div>
           <i class="bi bi-caret-down-fill dropdown-icon"></i>
         </a>
         <ul *dropdownMenu class="dropdown-menu animated fadeInRight" role="menu">
           <li class="dropdown-user-name">
-            <div>{{userInfo.name}}</div>
-          </li>
-          <li>
-            <a class="dropdown-item">
-              <i class="bi bi-person"></i>Alterar Senha
-            </a>
+            <div>{{userInfo}}</div>
           </li>
           <li>
             <a class="dropdown-item" (click)="logout()">

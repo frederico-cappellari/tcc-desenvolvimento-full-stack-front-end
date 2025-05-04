@@ -1,0 +1,36 @@
+.balanco-success{
+    font-size: large;
+    color: green;
+    font-family: fantasy;
+}
+
+.balanco-warning{
+    font-size: large;
+    color: yellow;
+    font-family: fantasy;
+}
+
+.balanco-danger{
+    font-size: large;
+    color: red;
+    font-family: fantasy;
+}
+
+.balanco{
+    font-size: large;
+    color: black;
+    font-family: fantasy;
+}
+
+.home {
+    margin: 0px;
+    display: inline;
+}
+
+.canva {
+    width: 80%;
+    canvas {
+      max-width: 100%;
+      height: auto;
+    }
+}

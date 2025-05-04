@@ -1,0 +1,50 @@
+<form [formGroup]="form">
+    <div class="form-group row mb-3">
+        <div class="col-sm-12 col-xl-4">
+            <label for="descricao" class="col-sm-12 pb-1">Descrição</label>
+            <input type="text" id="descricao" class="form-control" formControlName="descricao" placeholder="Descrição"/>
+            <app-field-message [field]="fieldMessageRequired('descricao')" [erros]="fieldErros('descricao')"></app-field-message>
+        </div>
+
+        <div class="col-sm-12 col-xl-4">
+            <label for="categoriaId" class="col-sm-12 pb-1">Categoria</label>
+            <ng-select id="categoriaId" class="ng-select-alternative" [items]="listaCategorias" bindLabel="descricao" bindValue="id" placeholder="Selecione" formControlName="categoriaId">
+            </ng-select>
+            <app-field-message [field]="fieldMessageRequired('categoriaId')" [erros]="fieldErros('categoriaId')"></app-field-message>
+        </div>
+
+        <div class="col-sm-12 col-xl-4">
+            <label for="recorrente" class="col-sm-12 pb-1">Recorrente</label>
+            <ng-select id="recorrente" class="ng-select-alternative" [items]="listaRecorrente" bindLabel="label" bindValue="value" placeholder="Selecione" formControlName="recorrente">
+            </ng-select>
+            <app-field-message [field]="fieldMessageRequired('recorrente')" [erros]="fieldErros('recorrente')"></app-field-message>
+        </div>
+    </div>
+
+    <div class="form-group row mb-3">
+        <div class="col-sm-12 col-xl-4">
+            <label for="data" class="col-sm-12 pb-1">Data</label>
+            <input id="data" class="form-control" #datepickerYMD="bsDatepicker" bsDatepicker [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY'}" formControlName="data" autocomplete="off" />
+            <app-field-message [field]="fieldMessageRequired('data')" [erros]="fieldErros('data')"></app-field-message>
+        </div>
+
+        <div class="col-sm-12 col-xl-4">
+            <label for="tipo" class="col-sm-12 pb-1">Tipo</label>
+            <ng-select id="tipo" class="ng-select-alternative" [items]="listaTipos" bindLabel="label" bindValue="value" placeholder="Selecione" formControlName="tipo">
+            </ng-select>
+            <app-field-message [field]="fieldMessageRequired('tipo')" [erros]="fieldErros('tipo')"></app-field-message>
+        </div>
+
+        <div class="col-sm-12 col-xl-4">
+            <label for="valor" class="col-sm-12 pb-1">Valor</label>
+            <input id="valor" class="form-control" formControlName="valor" placeholder="Valor" mask="separator.2" thousandSeparator="." decimalMarker=","/>
+            <app-field-message [field]="fieldMessageRequired('valor')" [erros]="fieldErros('valor')"></app-field-message>
+        </div>
+    </div>
+
+    <div class="form-group row d-flex justify-content-start">
+        <div class="col-sm-8 col-sm-offset-2 d-flex justify-content-start gap-3">
+            <app-button text="Salvar" classBtn="primary" (click)="salvar()"></app-button>
+        </div>
+    </div>
+</form>

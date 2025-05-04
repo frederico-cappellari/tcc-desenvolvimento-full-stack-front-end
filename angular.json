@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "procergs-apm-angular": {
+    "gestao-financeira": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular/build:application",
           "options": {
-            "outputPath": "dist/procergs-apm-angular",
+            "outputPath": "dist/gestao-financeira",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
@@ -139,16 +139,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "prod": {
-              "buildTarget": "procergs-apm-angular:build:prod"
-            },
-            "hml": {
-              "buildTarget": "procergs-apm-angular:build:hml"
-            },
-            "des": {
-              "buildTarget": "procergs-apm-angular:build:des"
+              "buildTarget": "gestao-financeira:build:prod"
             },
             "local": {
-              "buildTarget": "procergs-apm-angular:build:local"
+              "buildTarget": "gestao-financeira:build:local"
             }
           },
           "defaultConfiguration": "local"
@@ -184,6 +178,7 @@
   "cli": {
     "schematicCollections": [
       "@angular-eslint/schematics"
-    ]
+    ],
+    "analytics": "a31ec0b2-6b6c-4ed4-9951-0ac07db90707"
   }
 }

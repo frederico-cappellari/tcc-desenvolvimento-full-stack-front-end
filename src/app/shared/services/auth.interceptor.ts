@@ -12,31 +12,25 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
     if (request.url.indexOf('login') === -1 && request.url.indexOf('public') === -1) {
-      // Converte a chamada ao token em um Observable com 'from'
-      return from(this.authService.getAccessToken()).pipe(
-        switchMap(token => {
-          let changedRequest = request;
 
-          // Cria o headerSettings a partir dos headers atuais
-          const headerSettings: Record<string, string | string[]> = {};
-          for (const key of request.headers.keys()) {
-            headerSettings[key] = request.headers.getAll(key) || '';
-          }
+      let changedRequest = request;
 
-          // Adiciona o token de autenticação se disponível
-          if (token) {
-            headerSettings['Authorization'] = 'Bearer ' + token;
-          }
+      // Cria o headerSettings a partir dos headers atuais
+      const headerSettings: Record<string, string | string[]> = {};
+      for (const key of request.headers.keys()) {
+        headerSettings[key] = request.headers.getAll(key) || '';
+      }
+      // Adiciona o token de autenticação se disponível
+      if (this.authService.getAccessToken()) {
+        headerSettings['Authorization'] = 'Bearer ' + this.authService.getAccessToken();
+      }
 
-          // Cria novos headers com as configurações modificadas
-          const newHeader = new HttpHeaders(headerSettings);
-          changedRequest = request.clone({ headers: newHeader });
-
-          // Passa o request modificado ao próximo handler
-          return next.handle(changedRequest).pipe(
-            catchError(error => this.handleAuthError(error))
-          );
-        })
+      // Cria novos headers com as configurações modificadas
+      const newHeader = new HttpHeaders(headerSettings);
+      changedRequest = request.clone({ headers: newHeader });
+      // Passa o request modificado ao próximo handler
+      return next.handle(changedRequest).pipe(
+        catchError(error => this.handleAuthError(error))
       );
     } else {
       // Para URLs de login ou públicas, não é necessário modificar o request

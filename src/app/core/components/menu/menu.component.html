@@ -1,25 +1,17 @@
 <div [ngClass]="{'nav-after': !menuActived}"></div>
 <nav id="navbarNavigation" class="navbar-navigation custom-collapse" [ngClass]="{'collapsed': !menuActived}">
   <ul class="list-links">
-
     <li class="nav-link">
-      <a href="#" (click)="toggleCollapsed('exemplo', $event)" [attr.aria-expanded]="isCollapsed['exemplo']" [ngClass]="{'active': activeRoute('exemplo')}" aria-controls="collapseEvent">
-        <i class="bi bi-house"></i>
-        <span>Exemplo</span>
+      <a href="#" (click)="toggleCollapsed('cadastro', $event)" [attr.aria-expanded]="isCollapsed['cadastro']" [ngClass]="{'active': activeRoute('cadastro')}" aria-controls="collapseEvent">
+        Cadastro
       </a>
-      <ul [collapse]="!isCollapsed['exemplo']" [isAnimated]="true" class="list-unstyled">
-        <li class="second-link"><a [routerLink]="['/exemplo/abas']" [ngClass]="{'active': activeRoute('/exemplo/abas')}">Abas</a></li>
-        <li class="second-link"><a [routerLink]="['/exemplo/acordeao']" [ngClass]="{'active': activeRoute('/exemplo/acordeao')}">Acordeão</a></li>
-        <li class="second-link"><a [routerLink]="['/exemplo/arrasta-e-solta']" [ngClass]="{'active': activeRoute('/exemplo/arrasta-e-solta')}">Arrasta e Solta</a></li>
-        <li class="second-link"><a [routerLink]="['/exemplo/barra-de-progresso']" [ngClass]="{'active': activeRoute('/exemplo/barra-de-progresso')}">Barras de Progresso</a></li>
-        <li class="second-link"><a [routerLink]="['/exemplo/carrossel']" [ngClass]="{'active': activeRoute('/exemplo/carrossel')}">Carrossel</a></li>
-        <li class="second-link"><a [routerLink]="['/exemplo/classificavel']" [ngClass]="{'active': activeRoute('/exemplo/classificavel')}">Classificável</a></li>
-        <li class="second-link"><a [routerLink]="['/exemplo/formulario']" [ngClass]="{'active': activeRoute('/exemplo/formulario')}">Formulário</a></li>
-        <li class="second-link"><a [routerLink]="['/exemplo/grafico']" [ngClass]="{'active': activeRoute('/exemplo/grafico')}">Gráfico</a></li>
-        <li class="second-link"><a [routerLink]="['/exemplo/lista']" [ngClass]="{'active': activeRoute('/exemplo/lista')}">Lista</a></li>
-        <li class="second-link"><a [routerLink]="['/exemplo/mapa']" [ngClass]="{'active': activeRoute('/exemplo/mapa')}">Mapa</a></li>
-        <li class="second-link"><a [routerLink]="['/exemplo/modal']" [ngClass]="{'active': activeRoute('/exemplo/modal')}">Modal</a></li>
+      <ul [collapse]="!isCollapsed['cadastro']" [isAnimated]="true" class="list-unstyled">
+        <li class="second-link"><a [routerLink]="['/gestao-financeira/cadastro/nota-fiscal']" [ngClass]="{'active': activeRoute('/gestao-financeira/cadastro/nota-fiscal')}">Nota Fiscal</a></li>
+        <li class="second-link"><a [routerLink]="['/gestao-financeira/cadastro/receita-despesa']" [ngClass]="{'active': activeRoute('/gestao-financeira/cadastro/receita-despesao')}">Receita/Despesa</a></li>
       </ul>
+    </li>
+    <li class="nav-link">
+      <a [routerLink]="['/gestao-financeira/lista-compras']" [ngClass]="{'active': activeRoute('/gestao-financeira/lista-compras')}">Lista de Compras</a>
     </li>
   </ul>
 </nav>

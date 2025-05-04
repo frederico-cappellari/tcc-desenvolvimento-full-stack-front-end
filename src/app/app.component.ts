@@ -2,7 +2,7 @@ import { CommonModule, HashLocationStrategy, LocationStrategy } from '@angular/c
 import { HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AuthInterceptor, OidcSecurityService } from 'angular-auth-oidc-client';
+import { AuthInterceptor } from './shared/services/auth.interceptor';
 import { AuthService } from './shared/services/auth.service';
 
 @Component({
@@ -16,16 +16,13 @@ import { AuthService } from './shared/services/auth.service';
   ]
 })
 export class AppComponent implements OnInit {
-  title = 'APM.Angular18';
+  title = 'Gestão Financeira';
 
-  constructor(public oidcSecurityService: OidcSecurityService, private authService: AuthService) { }
+  constructor(private authService: AuthService) { }
 
   ngOnInit() {
-    this.oidcSecurityService.checkAuth('', this.authService.getConfigId()).subscribe(({ isAuthenticated }) => {
-      if (!isAuthenticated) {
-        console.error('Autenticação falhou');
-        console.error('Commit teste nova branch');
-      }
-    });
+    if (!this.authService.isLoggedIn()) {
+      console.error('Autenticação falhou');
+    }
   }
 }

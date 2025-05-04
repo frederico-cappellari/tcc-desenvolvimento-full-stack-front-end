@@ -1,0 +1,13 @@
+<accordion [isAnimated]="true">
+    <accordion-group [isOpen]="true">
+        <button class="btn btn-block justify-content-between d-flex w-100 shadow-none acordeao" accordion-heading type="button">
+            <span>Nova Receitas/Despesas</span>
+        </button>
+        <app-receita-despesa-form (registroIncluido)="onRegistroIncluido()"></app-receita-despesa-form>
+    </accordion-group>
+    <accordion-group>
+        <button class="btn btn-block justify-content-between d-flex w-100 shadow-none acordeao" accordion-heading type="button">
+            <span>Receitas/Despesas Anteriores</span>
+        </button>
+        <app-receita-despesa-list></app-receita-despesa-list>
+    </accordion-group>
