@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -16,7 +16,9 @@ import { EventSharedService } from '../../../../../shared/services/event-shared.
   templateUrl: './lista-compras-list.component.html',
   styleUrl: './lista-compras-list.component.scss'
 })
-export class ListaComprasListComponent extends BaseListComponent<ItemCompraDTO> {
+export class ListaComprasListComponent extends BaseListComponent<ItemCompraDTO> implements OnDestroy {
+
+  componenteAtivo = false;
 
   constructor(
     private listaComprasService: ListaComprasService,
@@ -24,7 +26,12 @@ export class ListaComprasListComponent extends BaseListComponent<ItemCompraDTO> 
     super()
   }
 
+  ngOnDestroy(): void {
+    this.componenteAtivo = false;
+  }
+
   ngOnInit(): void {
+    this.componenteAtivo = true;
     this.initList();
     this.onChangePage();
   }
@@ -50,8 +57,10 @@ export class ListaComprasListComponent extends BaseListComponent<ItemCompraDTO> 
   onChangePage() {
     this.addSub(
       EventSharedService.get('loadList').subscribe((page: number) => {
-        this.pagination.currentPage = page;
-        this.initList()
+        if (this.componenteAtivo) {
+          this.pagination.currentPage = page;
+          this.initList();
+        }
       })
     )
   }

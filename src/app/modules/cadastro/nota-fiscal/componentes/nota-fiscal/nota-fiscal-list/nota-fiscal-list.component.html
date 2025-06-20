@@ -19,8 +19,8 @@
                     <td>{{ item.chaveDeAcesso }}</td>
                     <td>{{ item.data }}</td>
                     <td>{{ item.valorTotal | MoedaPipe }}</td>
-                    <td>{{ item.possuiItensNaoEncontrados }}</td>
-                    <td>{{ item.situacao }}</td>
+                    <td>{{ item.possuiItensNaoEncontrados | SimNaoPipe }}</td>
+                    <td>{{ item | SituacaoNotaFiscalPipe }}</td>
                 </tr>
                 }
                 <tr *ngIf="!entity?.length" class="border-b-radius">

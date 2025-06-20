@@ -1,23 +1,26 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { BaseListComponent } from '../../../../../../core/base/base-list.component';
 import { PaginationComponent } from '../../../../../../shared/components/pagination/pagination.component';
 import { MoedaPipe } from '../../../../../../shared/pipes/moeda.pipe';
-import { TipoTransacaoFinanceiraPipe } from '../../../../../../shared/pipes/tipo-transacao-financeira.pipe';
+import { SimNaoPipe } from '../../../../../../shared/pipes/sim-nao.pipe';
+import { SituacaoNotaFiscalPipe } from '../../../../../../shared/pipes/situacao-nota-fiscal.pipe';
 import { EventSharedService } from '../../../../../../shared/services/event-shared.service';
 import { NotaFiscalDTO } from '../../../models/nota-fiscal-dto';
 import { NotaFiscalService } from '../../../services/nota-fiscal.service';
 
 @Component({
   selector: 'app-nota-fiscal-list',
-  imports: [CommonModule, RouterModule, NgxPaginationModule, PaginationComponent, TooltipModule, MoedaPipe],
+  imports: [CommonModule, RouterModule, NgxPaginationModule, PaginationComponent, TooltipModule, MoedaPipe, SituacaoNotaFiscalPipe, SimNaoPipe],
   templateUrl: './nota-fiscal-list.component.html',
   styleUrl: './nota-fiscal-list.component.scss'
 })
-export class NotaFiscalListComponent extends BaseListComponent<NotaFiscalDTO> {
+export class NotaFiscalListComponent extends BaseListComponent<NotaFiscalDTO> implements OnDestroy {
+
+  componenteAtivo = false;
 
   constructor(
     private notaFiscalService: NotaFiscalService,
@@ -25,7 +28,12 @@ export class NotaFiscalListComponent extends BaseListComponent<NotaFiscalDTO> {
     super()
   }
 
+  ngOnDestroy(): void {
+    this.componenteAtivo = false;
+  }
+
   ngOnInit(): void {
+    this.componenteAtivo = true;
     this.initList();
     this.onChangePage();
   }
@@ -51,8 +59,10 @@ export class NotaFiscalListComponent extends BaseListComponent<NotaFiscalDTO> {
   onChangePage() {
     this.addSub(
       EventSharedService.get('loadList').subscribe((page: number) => {
-        this.pagination.currentPage = page;
-        this.initList()
+        if (this.componenteAtivo) {
+          this.pagination.currentPage = page;
+          this.initList();
+        }
       })
     )
   }

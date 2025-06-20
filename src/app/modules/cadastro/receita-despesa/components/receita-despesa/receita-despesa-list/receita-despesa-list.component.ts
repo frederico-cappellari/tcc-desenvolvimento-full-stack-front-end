@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { NgxPaginationModule } from 'ngx-pagination';
@@ -17,7 +17,9 @@ import { PaginationComponent } from '../../../../../../shared/components/paginat
   templateUrl: './receita-despesa-list.component.html',
   styleUrl: './receita-despesa-list.component.scss'
 })
-export class ReceitaDespesaListComponent extends BaseListComponent<TransacaoFinanceiraDTO> {
+export class ReceitaDespesaListComponent extends BaseListComponent<TransacaoFinanceiraDTO> implements OnDestroy {
+
+  componenteAtivo = false;
 
   constructor(
     private transacaoFinanceiraService: TransacaoFinanceiraService,
@@ -25,7 +27,12 @@ export class ReceitaDespesaListComponent extends BaseListComponent<TransacaoFina
     super()
   }
 
+  ngOnDestroy(): void {
+    this.componenteAtivo = false;
+  }
+
   ngOnInit(): void {
+    this.componenteAtivo = true;
     this.initList();
     this.onChangePage();
   }
@@ -51,8 +58,10 @@ export class ReceitaDespesaListComponent extends BaseListComponent<TransacaoFina
   onChangePage() {
     this.addSub(
       EventSharedService.get('loadList').subscribe((page: number) => {
-        this.pagination.currentPage = page;
-        this.initList()
+        if (this.componenteAtivo) {
+          this.pagination.currentPage = page;
+          this.initList();
+        }
       })
     )
   }
